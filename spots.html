@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壯遊據點 ｜ 嘉義青年壯遊 ‧ 搜集文化好時光</title>
+    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/spots.css">
+
+    <!-- 典雅字體引入 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700..900;1,6..96,400..700&family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="spots-map-body">
+
+<!-- ==================== 1. 全域固定頂部導覽列 ==================== -->
+<header class="site-header" id="siteHeader">
+    <div class="nav-container">
+        <a href="index.html" class="nav-brand">
+            <img src="六腳LOGO.png" alt="嘉義六腳青年壯遊 LOGO" class="nav-logo-img">
+        </a>
+
+        <nav class="nav-menu" id="navMenu">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html" class="nav-link">關於我們</a></li>
+                <li class="nav-item"><a href="spots.html" class="nav-link active">壯遊據點</a></li>
+                <li class="nav-item nav-has-dropdown">
+                    <a href="itinerary.html" class="nav-link nav-dropdown-trigger">
+                        走讀路線
+                        <svg class="dropdown-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="itinerary-detail.html" class="dropdown-link"><span class="route-badge">1 DAY</span><div><strong>一日遊規劃</strong><small>工藝、老街、科技等 A~F 方案</small></div></a></li>
+                        <li><a href="twoday-detail.html" class="dropdown-link"><span class="route-badge">2 DAYS</span><div><strong>兩日遊規劃</strong><small>工廠村寄宿與雙城深度慢活</small></div></a></li>
+                        <li><a href="creative-detail.html" class="dropdown-link"><span class="route-badge">CRAFT</span><div><strong>文創產業線</strong><small>日式官舍、刺繡館與木藍染</small></div></a></li>
+                        <li><a href="outdoor-detail.html" class="dropdown-link"><span class="route-badge">EDU</span><div><strong>戶外教育專案</strong><small>嘉禮有糖高中職 A~D 走讀</small></div></a></li>
+                        <li><a href="global-detail.html" class="dropdown-link"><span class="route-badge">GLOBAL</span><div><strong>國際壯遊引力</strong><small>跨國青年炒糖與雙偶文化體驗</small></div></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="journal.html" class="nav-link">職人故事</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link">最新消息</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="nav-action-btn" id="navSearchBtn" aria-label="搜尋">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <div class="lang-dropdown-wrapper">
+                <button class="nav-lang-btn" id="langBtn">繁中 ˅</button>
+            </div>
+            <a href="contact.html" class="nav-btn-cta">開始規劃</a>
+        </div>
+    </div>
+</header>
+
+<!-- ==================== 2. 全螢幕搜尋浮層 ==================== -->
+<div class="search-overlay" id="searchOverlay">
+    <button class="search-close-btn" id="searchCloseBtn" aria-label="關閉搜尋">✕</button>
+    <div class="search-modal-inner">
+        <span class="search-sub-title">SEARCH SPOTS</span>
+        <div class="search-box">
+            <input type="text" id="globalSearchInput" placeholder="搜尋 12 個壯遊據點、文化空間與工坊..." autocomplete="off">
+            <button class="search-submit-btn">搜尋</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3. 首屏 100vh 滿版全景封面 ==================== -->
+<section class="spots-hero-full-banner">
+    <div class="hero-bg-layer">
+        <img src="assets/水道頭文創聚落.jpg" alt="六腳朴子壯遊據點全景" class="hero-bg-img">
+        <div class="hero-gradient-overlay"></div>
+    </div>
+
+    <div class="hero-content-inner">
+        <div class="hero-vertical-meta">
+            <span>PEOPLE</span>
+            <span>PLACES</span>
+            <span>CULTURE</span>
+            <span>STORIES</span>
+        </div>
+
+        <div class="hero-heading-block">
+            <span class="hero-eyebrow">S P O T S</span>
+            <h1 class="hero-main-title">壯遊據點</h1>
+            <p class="hero-sub-slogan">走進六腳與朴子，探索土地最真實的樣貌。</p>
+        </div>
+
+        <div class="hero-script-floating">
+            從一個據點開始，<br>發現更多土地的故事。
+        </div>
+    </div>
+
+    <a href="#spotsMapStage" class="hero-scroll-indicator" aria-label="向下滾動查看地圖">
+        <span class="scroll-prompt-text">SCROLL TO MAP</span>
+        <div class="scroll-mouse-icon">
+            <span class="scroll-wheel-dot"></span>
+        </div>
+    </a>
+</section>
+
+<!-- ==================== 4. 第二屏：純滿版手繪地圖 (分類緊扣圖面橫線) ==================== -->
+<main class="spots-map-viewport" id="spotsMapStage">
+    <div class="map-interactive-canvas" id="mapCanvas">
+        <div class="map-artwork-container">
+            
+            <!-- 新版手繪風土地圖 (帶左側格線與圓點) -->
+            <img src="assets/地圖.png" alt="嘉義六腳朴子風土地圖" class="map-base-illustration">
+
+            <!-- 左側 8 大分類選單：精準對準底圖 8 條橫線 -->
+            <nav class="map-inline-filter-list">
+                <button class="inline-cat-item active" data-cat="all">
+                    <span class="icat-icon">▣</span>
+                    <span class="icat-name">全部據點</span>
+                    <span class="icat-num">12</span>
+                </button>
+                <button class="inline-cat-item" data-cat="industry">
+                    <span class="icat-icon">♜</span>
+                    <span class="icat-name">產業文化</span>
+                    <span class="icat-num">3</span>
+                </button>
+                <button class="inline-cat-item" data-cat="craft">
+                    <span class="icat-icon">♨</span>
+                    <span class="icat-name">工藝創作</span>
+                    <span class="icat-num">2</span>
+                </button>
+                <button class="inline-cat-item" data-cat="food">
+                    <span class="icat-icon">♟</span>
+                    <span class="icat-name">在地飲食</span>
+                    <span class="icat-num">2</span>
+                </button>
+                <button class="inline-cat-item" data-cat="community">
+                    <span class="icat-icon">♧</span>
+                    <span class="icat-name">社區人文</span>
+                    <span class="icat-num">2</span>
+                </button>
+                <button class="inline-cat-item" data-cat="nature">
+                    <span class="icat-icon">⌂</span>
+                    <span class="icat-name">自然生態</span>
+                    <span class="icat-num">1</span>
+                </button>
+                <button class="inline-cat-item" data-cat="religion">
+                    <span class="icat-icon">▤</span>
+                    <span class="icat-name">宗教信仰</span>
+                    <span class="icat-num">1</span>
+                </button>
+                <button class="inline-cat-item" data-cat="innovation">
+                    <span class="icat-icon">▤</span>
+                    <span class="icat-name">文化創新</span>
+                    <span class="icat-num">1</span>
+                </button>
+            </nav>
+
+            <!-- 地圖 Pin 標點 (暫排道路節點位置) -->
+            <!-- 點位 1 -->
+            <div class="map-spot-pin pin-orange active" style="top: 25%; left: 50%;" data-spot="sugar" data-category="industry">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 2 -->
+            <div class="map-spot-pin pin-brown" style="top: 21%; left: 68%;" data-spot="liqing" data-category="craft">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 3 -->
+            <div class="map-spot-pin pin-orange" style="top: 36%; left: 56%;" data-spot="yongjiu" data-category="community">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 4 -->
+            <div class="map-spot-pin pin-red" style="top: 48%; left: 42%;" data-spot="embroidery" data-category="craft">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 5 -->
+            <div class="map-spot-pin pin-orange" style="top: 41%; left: 74%;" data-spot="oldstreet" data-category="food">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 6 -->
+            <div class="map-spot-pin pin-blue" style="top: 56%; left: 63%;" data-spot="bookstore" data-category="innovation">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 7 -->
+            <div class="map-spot-pin pin-green" style="top: 59%; left: 52%;" data-spot="dongyao" data-category="nature">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 8 -->
+            <div class="map-spot-pin pin-darkgray" style="top: 56%; left: 78%;" data-spot="bantaoyao" data-category="industry">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 點位 9 -->
+            <div class="map-spot-pin pin-purple" style="top: 76%; left: 40%;" data-spot="sanmai" data-category="religion">
+                <div class="pin-marker-bubble">
+                    <svg class="pin-svg-icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 4-3. 浮動資訊卡片 (點選 Pin 彈出，支援多相片縮圖切換) -->
+    <div class="spot-popup-card-overlay" id="spotModal">
+        <div class="popup-card-inner">
+            <div class="popup-head-row">
+                <span class="popup-loc-tag">📍 <span id="modalTown">六腳鄉</span></span>
+                <button class="popup-close-btn" id="modalCloseBtn" aria-label="關閉卡片">✕</button>
+            </div>
+
+            <div class="popup-gallery-block">
+                <div class="popup-main-pic">
+                    <img src="assets/水道頭文創聚落.jpg" id="modalMainImg" alt="據點主照片">
+                </div>
+                <div class="popup-thumbs-strip" id="modalThumbsStrip"></div>
+            </div>
+
+            <div class="popup-text-block">
+                <div class="popup-tags-wrap" id="modalTags"></div>
+                <h3 class="popup-title" id="modalTitle">蒜頭糖廠文化園區</h3>
+                <p class="popup-desc" id="modalDesc"></p>
+
+                <div class="popup-features-list">
+                    <div class="feat-row"><span class="feat-bullet">✦</span><span id="modalFeat1"></span></div>
+                    <div class="feat-row"><span class="feat-bullet">✦</span><span id="modalFeat2"></span></div>
+                </div>
+
+                <a href="itinerary.html" class="popup-link-btn" id="modalLink">查看推薦走讀路線 →</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- ==================== 5. 第三屏：全站統一標準頁尾 ==================== -->
+<footer class="site-global-footer">
+    <div class="footer-main-grid">
+        <div class="footer-brand-col">
+            <a href="index.html" class="footer-brand-header">
+                <svg class="footer-brand-icon" width="28" height="24" viewBox="0 0 28 24" fill="none">
+                    <rect x="3" y="4" width="22" height="16" rx="3" stroke="#FFFFFF" stroke-width="1.6"/>
+                    <circle cx="2" cy="12" r="2" fill="#FFFFFF"/>
+                    <circle cx="26" cy="12" r="2" fill="#FFFFFF"/>
+                    <line x1="8" y1="9" x2="20" y2="9" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="2 2"/>
+                </svg>
+                <div class="footer-brand-text-group">
+                    <span class="footer-brand-title">嘉義 × 青年壯遊</span>
+                    <span class="footer-brand-slogan">走進土地，遇見真實的日常</span>
+                </div>
+            </a>
+            <p class="footer-brand-desc">
+                用青年的視角，走進六腳與朴子，記錄地方的故事，也創造屬於這個世代的連結。
+            </p>
+            <div class="footer-brand-stamp-en">SAME LAND,<br>NEW VOICES.</div>
+        </div>
+
+        <div class="footer-v-divider"></div>
+
+        <div class="footer-nav-columns">
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">關於我們</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="about.html">計畫介紹</a></li>
+                    <li><a href="about.html">團隊成員</a></li>
+                    <li><a href="about.html">合作夥伴</a></li>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">壯遊據點</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="spots.html?town=六腳">六腳</a></li>
+                    <li><a href="spots.html?town=朴子">朴子</a></li>
+                    <li><a href="spots.html">周邊景點</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">走讀路線</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="itinerary-detail.html">一日遊規劃</a></li>
+                    <li><a href="twoday-detail.html">兩日遊規劃</a></li>
+                    <li><a href="creative-detail.html">文創產業線</a></li>
+                    <li><a href="outdoor-detail.html">戶外教育專案</a></li>
+                    <li><a href="global-detail.html">國際壯遊引力</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">職人故事</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="journal.html">職人列表</a></li>
+                    <li><a href="journal.html">訪談記錄</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">最新消息</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="news.html">全部消息</a></li>
+                    <li><a href="news.html">活動資訊</a></li>
+                    <li><a href="news.html">地方新聞</a></li>
+                    <li><a href="news.html">團隊動態</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-v-divider"></div>
+
+        <div class="footer-subscribe-col">
+            <h4 class="subscribe-col-title">訂閱最新消息</h4>
+            <div class="title-underline"></div>
+            <p class="subscribe-desc">一起關注六腳與朴子的日常，接收最新動態與活動資訊。</p>
+            <form class="subscribe-input-pill" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
+                <input type="email" placeholder="輸入你的電子郵件" required autocomplete="email">
+                <button type="submit" class="btn-subscribe-arrow" aria-label="確認訂閱">➔</button>
+            </form>
+            <div class="footer-social-stack">
+                <a href="https://www.instagram.com/ncyu_tcrc_/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">IG</a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">FB</a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">YT</a>
+                <a href="https://line.me/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LINE">LINE</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-legal-bar">
+        <div class="footer-legal-inner">
+            <p class="copyright-text">© 2026 嘉義 × 青年壯遊 All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">隱私權政策</a>
+                <span class="v-line">｜</span>
+                <a href="#">服務條款</a>
+                <span class="v-line">｜</span>
+                <a href="#">網站地圖</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+    const SPOTS_INFO = {
+        "sugar": {
+            town: "六腳鄉 · 工廠村",
+            title: "蒜頭糖廠文化園區",
+            tags: ["產業文化", "歷史建築"],
+            desc: "見證日治時期糖業發展的歷史現場，走進日式宿舍群、五分車鐵道與老樹林蔭，感受產業與生活交織的時代記憶。",
+            features: ["日式木造官舍群與防空洞探索", "五分車懷舊體驗與製糖機具走讀"],
+            photos: [
+                "assets/水道頭文創聚落.jpg",
+                "assets/笑咪咪懸絲偶劇團.jpg",
+                "assets/藍染體驗.jpg"
+            ],
+            link: "itinerary-detail.html?route=A"
+        },
+        "liqing": {
+            town: "六腳鄉 · 蒜頭村",
+            title: "六腳立青工作室",
+            tags: ["工藝創作", "木偶雕刻"],
+            desc: "國寶級木偶大師黃憲章的創作工坊，保存了近300尊細緻的提線木偶結構與雕琢技術，展現傳統偶戲工藝的精湛造詣。",
+            features: ["黃憲章老師木偶結構專利", "近300尊懸絲偶陳列參觀"],
+            photos: [
+                "assets/笑咪咪懸絲偶劇團.jpg",
+                "assets/水道頭文創聚落.jpg"
+            ],
+            link: "artisan-detail.html?id=1"
+        },
+        "yongjiu": {
+            town: "六腳鄉 · 潭墘村",
+            title: "潭墘用九柑仔店",
+            tags: ["社區人文", "影視文化"],
+            desc: "經典漫畫與改編電視劇原型現場，在百年水圳與老街廓中重溫人情味醇厚的柑仔店風景，也是青年返鄉創生的代表地標。",
+            features: ["電視劇原汁原味拍攝現場", "潭墘社區阿公阿嬤人情生活"],
+            photos: [
+                "assets/水道頭文創聚落.jpg",
+                "assets/藍染體驗.jpg"
+            ],
+            link: "creative-detail.html"
+        },
+        "embroidery": {
+            town: "朴子市",
+            title: "朴子刺繡文化館",
+            tags: ["工藝創作", "女性常民史"],
+            desc: "曾盛極一時的外銷刺繡聚落中心，展示細膩的神明衣、八仙彩與幾何針法工藝，見證朴子作為全台四大刺繡中心的繁華歲月。",
+            features: ["日本官舍建築活化再利用", "傳統細緻刺繡針法與八仙彩"],
+            photos: [
+                "assets/水道頭文創聚落.jpg",
+                "assets/笑咪咪懸絲偶劇團.jpg"
+            ],
+            link: "creative-detail.html"
+        },
+        "oldstreet": {
+            town: "朴子市 · 開元老街",
+            title: "朴子老街",
+            tags: ["在地飲食", "歷史街區"],
+            desc: "穿梭開元路蜈蚣陣歷史聚落，品嚐世代相傳的鴨肉羹、麻糬、豆花等道地常民小吃，感受老市街的濃厚生活氣息。",
+            features: ["百年蜈蚣陣傳統閩南店屋", "傳承三代的在地小吃滋味"],
+            photos: [
+                "assets/水道頭文創聚落.jpg",
+                "assets/藍染體驗.jpg"
+            ],
+            link: "twoday-detail.html"
+        },
+        "bookstore": {
+            town: "朴子市",
+            title: "朴子好書室",
+            tags: ["文化創新", "獨立書店"],
+            desc: "老街上的青年獨立文化基地，推動失落百年的木藍生態種植與手作染布生活，也是地方讀書會與文史講座的聚集地。",
+            features: ["木藍在地復育種植基地", "天然手作藍染生活工藝課程"],
+            photos: [
+                "assets/藍染體驗.jpg",
+                "assets/水道頭文創聚落.jpg"
+            ],
+            link: "artisan-detail.html?id=6"
+        },
+        "dongyao": {
+            town: "六腳鄉",
+            title: "東窯茶空間",
+            tags: ["自然生態", "柴燒陶藝"],
+            desc: "隱身六腳田園的柴燒陶與節氣茶席，體驗與泥土、火候深刻對話的減碳生活，感受鄉野緩慢悠閒的心靈療癒節奏。",
+            features: ["落灰自然釉柴燒陶藝器皿", "配合二十四節氣的慢活茶席"],
+            photos: [
+                "assets/藍染體驗.jpg",
+                "assets/笑咪咪懸絲偶劇團.jpg"
+            ],
+            link: "itinerary-detail.html?route=D"
+        },
+        "bantaoyao": {
+            town: "新港鄉",
+            title: "新港板陶窯",
+            tags: ["產業文化", "剪黏工藝"],
+            desc: "全台首屈一指的交趾剪黏藝術基地，大型苦楝樹壁畫在陽光下閃耀釉彩生輝，傳承台灣廟宇傳統剪黏與陶藝精粹。",
+            features: ["巨型苦楝樹交趾陶剪黏壁畫", "手作交趾陶捏塑DIY體驗"],
+            photos: [
+                "assets/水道頭文創聚落.jpg",
+                "assets/藍染體驗.jpg"
+            ],
+            link: "outdoor-detail.html?route=C"
+        },
+        "sanmai": {
+            town: "民雄鄉",
+            title: "民雄三昧堂",
+            tags: ["宗教信仰", "偶藝創新"],
+            desc: "華麗細膩的布袋戲偶創作團隊，將偶戲美學結合宗教刺繡推向國際舞台，賦予傳統布袋戲現代藝術與國際展覽新生命。",
+            features: ["電影級手工精雕刺繡戲偶", "操偶示範與跨國文化策展"],
+            photos: [
+                "assets/笑咪咪懸絲偶劇團.jpg",
+                "assets/水道頭文創聚落.jpg"
+            ],
+            link: "itinerary-detail.html?route=E"
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const pins = document.querySelectorAll('.map-spot-pin');
+        const modal = document.getElementById('spotModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalTown = document.getElementById('modalTown');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalTags = document.getElementById('modalTags');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalFeat1 = document.getElementById('modalFeat1');
+        const modalFeat2 = document.getElementById('modalFeat2');
+        const modalMainImg = document.getElementById('modalMainImg');
+        const modalThumbsStrip = document.getElementById('modalThumbsStrip');
+        const modalLink = document.getElementById('modalLink');
+        const catButtons = document.querySelectorAll('.inline-cat-item');
+
+        function showSpotCard(spotKey) {
+            const data = SPOTS_INFO[spotKey];
+            if (!data) return;
+
+            modalTown.textContent = data.town;
+            modalTitle.textContent = data.title;
+            modalDesc.textContent = data.desc;
+            modalFeat1.textContent = data.features[0] || "";
+            modalFeat2.textContent = data.features[1] || "";
+            modalLink.href = data.link;
+
+            modalTags.innerHTML = data.tags.map((tag, idx) => 
+                `<span class="pop-tag ${idx === 0 ? 'tag-accent' : 'tag-sand'}">${tag}</span>`
+            ).join('');
+
+            if (data.photos && data.photos.length > 0) {
+                modalMainImg.src = data.photos[0];
+                modalThumbsStrip.innerHTML = data.photos.map((src, i) => `
+                    <div class="pop-thumb ${i === 0 ? 'active' : ''}" data-src="${src}">
+                        <img src="${src}" alt="縮圖 ${i+1}">
+                    </div>
+                `).join('');
+
+                document.querySelectorAll('.pop-thumb').forEach(thumb => {
+                    thumb.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        document.querySelectorAll('.pop-thumb').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                        modalMainImg.src = thumb.dataset.src;
+                    });
+                });
+            }
+
+            modal.classList.add('open');
+        }
+
+        // 點擊 Pin 點彈出卡片
+        pins.forEach((pin) => {
+            pin.addEventListener('click', () => {
+                pins.forEach(p => p.classList.remove('active'));
+                pin.classList.add('active');
+                showSpotCard(pin.dataset.spot);
+            });
+        });
+
+        modalCloseBtn.addEventListener('click', () => {
+            modal.classList.remove('open');
+            pins.forEach(p => p.classList.remove('active'));
+        });
+
+        // 8 大分類點選過濾
+        catButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                catButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const targetCat = btn.dataset.cat;
+                pins.forEach((pin) => {
+                    const pinCat = pin.dataset.category;
+                    if (targetCat === 'all' || pinCat === targetCat) {
+                        pin.style.opacity = '1';
+                        pin.style.pointerEvents = 'auto';
+                        pin.style.transform = 'translate(-50%, -50%) scale(1)';
+                    } else {
+                        pin.style.opacity = '0.12';
+                        pin.style.pointerEvents = 'none';
+                        pin.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最新消息 ｜ 嘉義青年壯遊 ‧ 搜集文化好時光</title>
+    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/news.css">
+
+    <!-- 字體引入 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700..900;1,6..96,400..700&family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="news-page-body">
+
+<!-- ==================== 1. 全域標準固定導覽列 ==================== -->
+<header class="site-header" id="siteHeader">
+    <div class="nav-container">
+        
+        <a href="index.html" class="nav-brand">
+            <img src="六腳LOGO.png" alt="嘉義六腳青年壯遊 LOGO" class="nav-logo-img">
+        </a>
+
+        <!-- 電腦版核心導覽選單 (最新消息 Active) -->
+        <nav class="nav-menu" id="navMenu">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html" class="nav-link">關於我們</a></li>
+                <li class="nav-item"><a href="spots.html" class="nav-link">壯遊點位</a></li>
+                <li class="nav-item nav-has-dropdown">
+                    <a href="itinerary.html" class="nav-link nav-dropdown-trigger">
+                        走讀路線
+                        <svg class="dropdown-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="itinerary-detail.html" class="dropdown-link"><span class="route-badge">1 DAY</span><div><strong>一日遊規劃</strong><small>工藝、老街、科技等 A~F 方案</small></div></a></li>
+                        <li><a href="twoday-detail.html" class="dropdown-link"><span class="route-badge">2 DAYS</span><div><strong>兩日遊規劃</strong><small>工廠村寄宿與雙城深度慢活</small></div></a></li>
+                        <li><a href="itinerary.html#creative" class="dropdown-link"><span class="route-badge">CRAFT</span><div><strong>文創產業線</strong><small>日式官舍、刺繡館與木藍染</small></div></a></li>
+                        <li><a href="outdoor-detail.html" class="dropdown-link"><span class="route-badge">EDU</span><div><strong>戶外教育專案</strong><small>嘉禮有糖高中職 A~D 走讀</small></div></a></li>
+                        <li><a href="itinerary.html#global" class="dropdown-link"><span class="route-badge">GLOBAL</span><div><strong>國際壯遊引力</strong><small>跨國青年炒糖與雙偶文化體驗</small></div></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="journal.html" class="nav-link">職人故事</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link active">最新消息</a></li>
+            </ul>
+        </nav>
+
+        <!-- 右側功能操作區 -->
+        <div class="nav-actions">
+            <button class="nav-action-btn" id="navSearchBtn" aria-label="搜尋">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <div class="lang-dropdown-wrapper">
+                <button class="nav-lang-btn" id="langBtn">繁中</button>
+            </div>
+            <a href="contact.html" class="nav-btn-cta">聯絡我們</a>
+        </div>
+
+    </div>
+</header>
+
+<!-- ==================== 2. 全螢幕搜尋浮層 ==================== -->
+<div class="search-overlay" id="searchOverlay">
+    <button class="search-close-btn" id="searchCloseBtn" aria-label="關閉搜尋">✕</button>
+    <div class="search-modal-inner">
+        <span class="search-sub-title">SEARCH NEWS</span>
+        <div class="search-box">
+            <input type="text" id="globalSearchInput" placeholder="搜尋最新消息、活動資訊、地方故事..." autocomplete="off">
+            <button class="search-submit-btn">搜尋</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3. 最新消息主舞台 ==================== -->
+<main class="news-main-stage">
+
+    <!-- 頂部編輯室排版 (文字 ✕ 朴子路燈紅燈籠 ✕ 屋簷手繪) -->
+    <section class="news-hero-editorial">
+        <div class="news-hero-left">
+            <span class="news-eyebrow">NEWS</span>
+            <h1 class="news-main-title">最新消息</h1>
+            <h2 class="news-slogan">關於六腳與朴子的日常，<br>持續發生著。</h2>
+            <p class="news-desc">
+                活動資訊、在地故事、團隊動態，<br>
+                帶你掌握這片土地的最新消息。
+            </p>
+            <div class="news-circle-stamp">
+                <span>SAME<br>LAND,<br>NEW<br>STORIES.</span>
+            </div>
+        </div>
+
+        <div class="news-hero-right">
+            <!-- 朴子路燈與紅燈籠情境照 -->
+            <div class="news-hero-photo-wrapper">
+                <img src="assets/水道頭文創聚落.jpg" alt="朴子街區路燈與紅燈籠" class="news-hero-photo">
+                <div class="photo-curved-backdrop"></div>
+            </div>
+
+            <!-- 右側屋簷線稿與手寫字 -->
+            <div class="news-hero-decor-group">
+                <div class="news-roof-sketch">
+                    <svg viewBox="0 0 100 65" fill="none" stroke="#7A746B" stroke-width="1.2">
+                        <polygon points="10,40 50,15 90,40 85,45 15,45" />
+                        <line x1="50" y1="15" x2="50" y2="40" />
+                        <rect x="25" y="45" width="50" height="18" />
+                    </svg>
+                </div>
+                <div class="news-handwrite-vertical">
+                    發現<br>地方的<br>新日常。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分類膠囊過濾標籤列 -->
+    <nav class="news-filter-bar" aria-label="消息分類">
+        <button class="news-pill-btn active" data-filter="ALL">全部</button>
+        <button class="news-pill-btn" data-filter="ACTIVITY">活動資訊</button>
+        <button class="news-pill-btn" data-filter="LOCAL">地方新聞</button>
+        <button class="news-pill-btn" data-filter="TEAM">團隊動態</button>
+    </nav>
+
+    <!-- 主打置頂焦點大卡 (Featured News Card) -->
+    <article class="news-featured-card" data-category="ACTIVITY">
+        <div class="featured-media-col">
+            <img src="assets/水道頭文創聚落.jpg" alt="六腳青年走讀小旅行">
+            <span class="news-card-badge">活動資訊</span>
+            <div class="featured-image-quote">
+                走進地方，<br>走進更大的自己
+            </div>
+        </div>
+
+        <div class="featured-content-col">
+            <div class="featured-top-row">
+                <div class="news-date-wrap">
+                    <span class="news-date">2026.09.12</span>
+                    <span class="news-new-badge">NEW</span>
+                </div>
+                <!-- 右上角紅色素描裝飾線 -->
+                <div class="decor-red-strokes">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <h3 class="featured-title">六腳青年走讀小旅行 開放報名！</h3>
+            <p class="featured-desc">
+                用雙腳走進地方，用眼睛發現不一樣的六腳與朴子。這次，我們將帶你走訪廟宇、老街、職人工作室，一起體驗地方的日常與故事。
+            </p>
+            <a href="itinerary.html" class="news-read-more-link">閱讀更多 →</a>
+        </div>
+    </article>
+
+    <!-- 一般消息列表 (List Items) -->
+    <section class="news-articles-list" id="newsList">
+
+        <!-- 消息 01 -->
+        <article class="news-list-row" data-category="TEAM">
+            <div class="row-thumb-box">
+                <img src="assets/水道頭文創聚落.jpg" alt="六腳青年走讀 網站正式上線">
+                <span class="news-card-badge">團隊動態</span>
+            </div>
+            <div class="row-content-box">
+                <span class="row-date">2026.09.05</span>
+                <h4 class="row-title">〈六腳青年走讀〉網站正式上線！</h4>
+                <p class="row-desc">集結地方故事、走讀路線與職人訪談，邀請你一起探索六腳與朴子的更多可能。</p>
+                <a href="#" class="row-link">閱讀更多 →</a>
+            </div>
+            <a href="#" class="row-circle-arrow" aria-label="閱讀文章">→</a>
+        </article>
+
+        <!-- 消息 02 -->
+        <article class="news-list-row" data-category="LOCAL">
+            <div class="row-thumb-box">
+                <img src="assets/水道頭文創聚落.jpg" alt="蒜頭糖廠文化景觀再獲關注">
+                <span class="news-card-badge">地方新聞</span>
+            </div>
+            <div class="row-content-box">
+                <span class="row-date">2026.08.20</span>
+                <h4 class="row-title">蒜頭糖廠文化景觀再獲關注</h4>
+                <p class="row-desc">六腳糖廠的歷史價值再度受到重視，地方團體與學者呼籲，讓這片土地的記憶持續被看見。</p>
+                <a href="#" class="row-link">閱讀更多 →</a>
+            </div>
+            <a href="#" class="row-circle-arrow" aria-label="閱讀文章">→</a>
+        </article>
+
+        <!-- 消息 03 -->
+        <article class="news-list-row" data-category="TEAM">
+            <div class="row-thumb-box">
+                <img src="assets/笑咪咪懸絲偶劇團.jpg" alt="青年壯遊團隊 × 在地職人 訪談計畫啟動">
+                <span class="news-card-badge">團隊動態</span>
+            </div>
+            <div class="row-content-box">
+                <span class="row-date">2026.08.05</span>
+                <h4 class="row-title">青年壯遊團隊 × 在地職人 訪談計畫正式啟動</h4>
+                <p class="row-desc">我們走進六腳與朴子，拜訪多位在地職人，記錄他們的故事與堅持。這些真實的聲音，將成為網站的重要內容。</p>
+                <a href="#" class="row-link">閱讀更多 →</a>
+            </div>
+            <a href="#" class="row-circle-arrow" aria-label="閱讀文章">→</a>
+        </article>
+
+        <!-- 消息 04 -->
+        <article class="news-list-row" data-category="ACTIVITY">
+            <div class="row-thumb-box">
+                <img src="assets/藍染體驗.jpg" alt="夏日糖廠市集 一起在老糖廠相遇">
+                <span class="news-card-badge">活動資訊</span>
+            </div>
+            <div class="row-content-box">
+                <span class="row-date">2026.07.28</span>
+                <h4 class="row-title">《夏日糖廠市集》一起在老糖廠相遇！</h4>
+                <p class="row-desc">結合在地小農、手作品牌與表演活動，在百年糖廠裡，感受屬於六腳的夏日風景。</p>
+                <a href="#" class="row-link">閱讀更多 →</a>
+            </div>
+            <a href="#" class="row-circle-arrow" aria-label="閱讀文章">→</a>
+        </article>
+
+    </section>
+
+    <!-- 底部手繪與功能收尾 (騎車速寫 ＋ 載入按鈕 ＋ 手寫金句) -->
+    <div class="news-tail-section">
+        
+        <!-- 左側單車速寫 -->
+        <div class="tail-sketch-col">
+            <svg class="biking-sketch-svg" viewBox="0 0 160 140" fill="none" stroke="#686359" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="40" cy="105" r="22" />
+                <circle cx="120" cy="105" r="22" />
+                <path d="M40 105 L 75 105 L 105 75 L 65 75 Z" />
+                <path d="M75 105 L 65 70 L 63 60" />
+                <path d="M105 75 L 120 105" />
+                <path d="M102 62 L 108 55 L 118 55" />
+                <path d="M60 60 L 72 60" />
+                <circle cx="95" cy="30" r="8" />
+                <path d="M93 38 L 88 58 L 68 62" />
+                <path d="M88 58 L 102 70 L 102 85" />
+                <path d="M90 48 L 108 56" />
+            </svg>
+            <span class="sketch-en-tag">EXPLORE<br>THE EVERYDAY<br>EXTRAORDINARY</span>
+        </div>
+
+        <!-- 中間載入更多與品牌裝飾線 -->
+        <div class="tail-action-col">
+            <button class="btn-load-more-news" id="btnLoadMoreNews">
+                載入更多文章 <span class="arrow-down">↓</span>
+            </button>
+            <div class="tail-brand-divider">
+                <span>嘉義 × 青年壯遊</span>
+            </div>
+        </div>
+
+        <!-- 右側斜體金句 -->
+        <div class="tail-quote-col">
+            <span class="script-cursive-closing">
+                一些地方，<br>
+                因為被記錄，<br>
+                而變得更珍貴。
+            </span>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- ==================== 4. 全站統一標準頁尾 (置於 main 外部) ==================== -->
+<footer class="site-global-footer">
+    <div class="footer-main-grid">
+
+        <!-- 1. 左側品牌欄 -->
+        <div class="footer-brand-col">
+            <a href="index.html" class="footer-brand-header">
+                <svg class="footer-brand-icon" width="28" height="24" viewBox="0 0 28 24" fill="none">
+                    <rect x="3" y="4" width="22" height="16" rx="3" stroke="#FFFFFF" stroke-width="1.6"/>
+                    <circle cx="2" cy="12" r="2" fill="#FFFFFF"/>
+                    <circle cx="26" cy="12" r="2" fill="#FFFFFF"/>
+                    <line x1="8" y1="9" x2="20" y2="9" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="2 2"/>
+                </svg>
+                <div class="footer-brand-text-group">
+                    <span class="footer-brand-title">嘉義 × 青年壯遊</span>
+                    <span class="footer-brand-slogan">走進土地，遇見真實的日常</span>
+                </div>
+            </a>
+
+            <p class="footer-brand-desc">
+                用青年的視角，<br>
+                走進六腳與朴子，<br>
+                記錄地方的故事，<br>
+                也創造屬於這個世代的連結。
+            </p>
+
+            <div class="footer-brand-stamp-en">
+                SAME LAND,<br>
+                NEW VOICES.
+            </div>
+        </div>
+
+        <!-- 垂直分隔線 -->
+        <div class="footer-v-divider"></div>
+
+        <!-- 2. 中間五欄導覽連結 -->
+        <div class="footer-nav-columns">
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">關於我們</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="about.html">計畫介紹</a></li>
+                    <li><a href="about.html">團隊成員</a></li>
+                    <li><a href="about.html">合作夥伴</a></li>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">壯遊據點</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="spots.html?town=六腳">六腳</a></li>
+                    <li><a href="spots.html?town=朴子">朴子</a></li>
+                    <li><a href="spots.html">周邊景點</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">走讀路線</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="itinerary.html#featured">推薦路線</a></li>
+                    <li><a href="itinerary.html#themed">主題路線</a></li>
+                    <li><a href="spots.html">地圖導覽</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">職人故事</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="journal.html">職人列表</a></li>
+                    <li><a href="journal.html">訪談記錄</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav-col">
+                <h4 class="nav-col-title">最新消息</h4>
+                <div class="title-underline"></div>
+                <ul class="nav-link-list">
+                    <li><a href="news.html">全部消息</a></li>
+                    <li><a href="news.html">活動資訊</a></li>
+                    <li><a href="news.html">地方新聞</a></li>
+                    <li><a href="news.html">團隊動態</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 垂直分隔線 -->
+        <div class="footer-v-divider"></div>
+
+        <!-- 3. 右側訂閱與社群 -->
+        <div class="footer-subscribe-col">
+            <h4 class="subscribe-col-title">訂閱最新消息</h4>
+            <div class="title-underline"></div>
+            
+            <p class="subscribe-desc">
+                一起關注六腳與朴子的日常，<br>
+                接收來自地方的最新動態與活動資訊。
+            </p>
+
+            <form class="subscribe-input-pill" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
+                <input type="email" placeholder="輸入你的電子郵件" required autocomplete="email">
+                <button type="submit" class="btn-subscribe-arrow" aria-label="確認訂閱">➔</button>
+            </form>
+
+            <div class="footer-social-stack">
+                <a href="https://www.instagram.com/ncyu_tcrc_/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">IG</a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">FB</a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">YT</a>
+                <a href="https://line.me/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LINE">LINE</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 4. 底部版權條款列 -->
+    <div class="footer-legal-bar">
+        <div class="footer-legal-inner">
+            <p class="copyright-text">© 2026 嘉義 × 青年壯遊 All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">隱私權政策</a>
+                <span class="v-line">｜</span>
+                <a href="#">服務條款</a>
+                <span class="v-line">｜</span>
+                <a href="#">網站地圖</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+    // 分類篩選功能
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.news-pill-btn');
+        const featuredCard = document.querySelector('.news-featured-card');
+        const rows = document.querySelectorAll('.news-list-row');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                // 置頂大卡過濾
+                if (filter === 'ALL' || featuredCard.getAttribute('data-category') === filter) {
+                    featuredCard.style.display = 'grid';
+                } else {
+                    featuredCard.style.display = 'none';
+                }
+
+                // 列表項過濾
+                rows.forEach(row => {
+                    if (filter === 'ALL' || row.getAttribute('data-category') === filter) {
+                        row.style.display = 'grid';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
