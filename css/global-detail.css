@@ -1,0 +1,744 @@
+/* ====================================================================
+   國際壯遊引力線專屬樣式表 (global-detail.css) - 一比一精準還原設計稿
+   ==================================================================== */
+
+body.global-detail-page {
+    background-color: #F8F7F4;
+    color: #1A1A1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 主舞台寬度嚴格對齊全站 1380px 標準 */
+.global-detail-stage {
+    margin-top: 76px;
+    max-width: 1380px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 24px 40px 80px 40px;
+    box-sizing: border-box;
+}
+
+/* 麵包屑導覽 */
+.global-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    color: #8C867C;
+    margin-bottom: 24px;
+}
+
+.global-breadcrumbs a {
+    color: #8C867C;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.global-breadcrumbs a:hover {
+    color: #111111;
+}
+
+.crumb-divider {
+    font-size: 0.7rem;
+    color: #BDB7AB;
+}
+
+.crumb-current {
+    color: #111111;
+    font-weight: 700;
+}
+
+/* ---------------- 1. 頂部 Hero 排版區 ---------------- */
+.global-hero-section {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.hero-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.hero-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(2.8rem, 3.8vw, 4.2rem);
+    font-weight: 900;
+    color: #111111;
+    line-height: 1.08;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.hero-script-badge {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #D96328;
+    transform: rotate(-6deg);
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hero-subtitle {
+    font-family: var(--serif, serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2E2E2E;
+    margin: 0 0 16px 0;
+}
+
+.hero-desc {
+    font-size: 0.88rem;
+    color: #6E6961;
+    line-height: 1.95;
+    margin: 0 0 24px 0;
+}
+
+.hero-seal-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-seal-block span {
+    font-family: var(--display, sans-serif);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.35;
+    color: #9C9589;
+}
+
+/* 右欄照片與插畫拼貼 */
+.hero-collage-col {
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collage-card {
+    position: absolute;
+    background: #FFFFFF;
+    padding: 8px 8px 18px 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.collage-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-youth-group {
+    width: 58%;
+    aspect-ratio: 4 / 3.4;
+    left: 8%;
+    top: 20px;
+    transform: rotate(-4deg);
+    z-index: 2;
+}
+
+.card-building {
+    width: 44%;
+    aspect-ratio: 1 / 1;
+    right: 4%;
+    bottom: 20px;
+    transform: rotate(3.5deg);
+    z-index: 1;
+}
+
+/* 貼紙紙膠帶效果 */
+.handwrite-tape-note {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 4px 10px;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #333333;
+    line-height: 1.2;
+    transform: rotate(-3deg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.hero-reed-illustration {
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    width: 150px;
+    height: 100px;
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.hero-square-stamp {
+    position: absolute;
+    top: 15px;
+    right: 15%;
+    border: 1px solid #B0AAA0;
+    padding: 6px 10px;
+    font-family: var(--display, sans-serif);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.25;
+    color: #6E685F;
+    text-align: center;
+    background: rgba(248, 247, 244, 0.85);
+    backdrop-filter: blur(2px);
+    z-index: 5;
+}
+
+.hero-square-stamp small {
+    font-size: 0.48rem;
+    color: #9C9589;
+    letter-spacing: 1px;
+}
+
+.hero-cursive-bottom {
+    position: absolute;
+    bottom: 5px;
+    right: 8%;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #D96328;
+    transform: rotate(-6deg);
+    z-index: 5;
+}
+
+/* ---------------- 2. 路線標題與雙欄區塊 ---------------- */
+.global-route-section {
+    margin-bottom: 60px;
+}
+
+.route-header-block {
+    margin-bottom: 36px;
+}
+
+.route-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #D96328;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.route-title-line {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.route-name {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #111111;
+    margin: 0;
+}
+
+.route-pill-tags {
+    background: #EDEAE4;
+    color: #D96328;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.route-summary {
+    font-size: 0.92rem;
+    color: #5E584F;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* 雙欄佈局 */
+.route-two-columns {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* 左欄：時間軸 (Timeline) */
+.global-timeline-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+}
+
+/* 垂直連接細線 */
+.global-timeline-col::before {
+    content: '';
+    position: absolute;
+    left: 65px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background-color: #E2DDD5;
+    z-index: 1;
+}
+
+.timeline-step-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.step-time-box {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.step-time-text {
+    font-family: var(--display, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #8C867C;
+    line-height: 1.35;
+    text-align: right;
+}
+
+.step-num-bubble {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #D96328;
+    color: #FFFFFF;
+    font-family: var(--display, sans-serif);
+    font-size: 0.82rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 3px #F8F7F4;
+}
+
+.step-body-card {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #ECE7DE;
+    padding: 14px 18px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step-body-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.step-thumb {
+    width: 105px;
+    height: 76px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #EAE6DF;
+}
+
+.step-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.step-detail {
+    flex: 1;
+}
+
+.step-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.step-title {
+    font-family: var(--serif, serif);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0;
+}
+
+.step-cat-badge {
+    background: rgba(217, 99, 40, 0.1);
+    color: #D96328;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.step-loc {
+    font-size: 0.74rem;
+    color: #D96328;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.step-p {
+    font-size: 0.78rem;
+    color: #6E685F;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* 右欄：規格卡與地圖 */
+.global-sidebar-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.specs-panel-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 24px 22px;
+    border: 1px solid #EBE6DE;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.specs-item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+    color: #4A453E;
+    line-height: 1.5;
+}
+
+.spec-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.spec-meta strong {
+    display: block;
+    color: #111111;
+    font-size: 0.84rem;
+    margin-bottom: 2px;
+}
+
+.spec-meta span {
+    color: #6E685F;
+    font-size: 0.8rem;
+}
+
+.btn-join-route-orange {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #D96328;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 0;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(217, 99, 40, 0.35);
+    margin-top: 18px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+}
+
+.btn-join-route-orange:hover {
+    background-color: #B84E1B;
+    transform: translateY(-2px);
+}
+
+.sidebar-cursive-note {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #D96328;
+    text-align: right;
+    margin-top: 14px;
+    line-height: 1.25;
+}
+
+/* 路線地圖卡片 */
+.map-panel-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 22px 20px;
+    border: 1px solid #EBE6DE;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.map-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #8C867C;
+}
+
+.map-title {
+    font-family: var(--serif, serif);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 4px 0 6px 0;
+}
+
+.map-subtitle {
+    font-size: 0.74rem;
+    color: #77726A;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+}
+
+.map-drawing-container {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #EAE5DC;
+}
+
+.global-vector-map {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-foot-decor {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.map-cursive-tag {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #D96328;
+    line-height: 1.2;
+}
+
+.map-camera-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: right;
+}
+
+.map-camera-tag small {
+    font-family: var(--display, sans-serif);
+    font-size: 0.48rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #9C9589;
+    line-height: 1.2;
+}
+
+/* ---------------- 3. 底部更多交流亮點 (Beyond The Route) ---------------- */
+.beyond-route-section {
+    padding-top: 40px;
+    border-top: 1px solid #E6E1D8;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.beyond-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #8C867C;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.beyond-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 6px 0;
+}
+
+.beyond-subtitle {
+    font-size: 0.82rem;
+    color: #7E786E;
+    margin: 0 0 24px 0;
+    line-height: 1.6;
+}
+
+.highlights-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.highlight-card {
+    background: #FFFFFF;
+    border: 1px solid #E6E1D8;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.highlight-thumb {
+    width: 100%;
+    height: 85px;
+    overflow: hidden;
+    background: #EAE6DF;
+}
+
+.highlight-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.highlight-card:hover .highlight-thumb img {
+    transform: scale(1.06);
+}
+
+.highlight-label {
+    padding: 8px 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #111111;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #FFFFFF;
+}
+
+/* 右側哲學金句氣泡 */
+.beyond-right-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+}
+
+.reflection-quote-bubble {
+    background: #FFFFFF;
+    border: 1px solid #EAE5DC;
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.reflection-quote-text {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #2E2B25;
+    line-height: 1.65;
+    margin: 0;
+}
+
+.btn-circle-action {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #D96328;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-circle-action:hover {
+    background-color: #B84E1B;
+    transform: scale(1.08);
+}
+
+.beyond-wave-line {
+    margin-top: 14px;
+    margin-right: 10px;
+}
+
+/* ---------------- 4. 響應式適配 (RWD) ---------------- */
+@media (max-width: 1100px) {
+    .global-hero-section {
+        grid-template-columns: 1fr;
+    }
+    .route-two-columns {
+        grid-template-columns: 1fr;
+    }
+    .beyond-route-section {
+        grid-template-columns: 1fr;
+    }
+    .highlights-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .beyond-right-col {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .global-detail-stage {
+        padding: 20px 20px 60px 20px;
+    }
+    .step-body-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .step-thumb {
+        width: 100%;
+        height: 130px;
+    }
+}

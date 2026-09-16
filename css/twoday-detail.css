@@ -1,0 +1,617 @@
+/* ====================================================================
+   兩日遊規劃專屬樣式表 (twoday-detail.css) - 一比一還原設計稿
+   ==================================================================== */
+
+body.twoday-page-body {
+    background-color: #F8F7F4;
+    color: #1A1A1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 主舞台寬度對齊全站 1380px 標準 */
+.twoday-detail-stage {
+    margin-top: 76px;
+    max-width: 1380px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 24px 40px 80px 40px;
+    box-sizing: border-box;
+}
+
+/* 麵包屑導覽 */
+.twoday-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    color: #8C867C;
+    margin-bottom: 24px;
+}
+
+.twoday-breadcrumbs a {
+    color: #8C867C;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.twoday-breadcrumbs a:hover {
+    color: #111111;
+}
+
+.crumb-divider {
+    font-size: 0.7rem;
+    color: #BDB7AB;
+}
+
+.crumb-current {
+    color: #111111;
+    font-weight: 700;
+}
+
+/* ---------------- 1. 頂部 Hero 排版區 ---------------- */
+.twoday-hero-section {
+    display: grid;
+    grid-template-columns: 1.15fr 1.35fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.hero-page-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    font-weight: 900;
+    color: #111111;
+    margin: 0 0 14px 0;
+    line-height: 1.08;
+    letter-spacing: 1px;
+}
+
+.hero-cursive-slogan {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #D96328;
+    line-height: 1.45;
+    margin: 0 0 16px 0;
+}
+
+.hero-narrative-p {
+    font-size: 0.88rem;
+    color: #6E6961;
+    line-height: 1.95;
+    margin: 0 0 24px 0;
+}
+
+.hero-bottom-seal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.seal-en {
+    font-family: var(--display, sans-serif);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.35;
+    color: #9C9589;
+}
+
+/* 右欄相片與插畫拼貼 */
+.hero-collage-col {
+    position: relative;
+    height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collage-card {
+    position: absolute;
+    background: #FFFFFF;
+    padding: 8px 8px 18px 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.collage-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 街屋直幅大圖 */
+.card-shophouse {
+    width: 48%;
+    aspect-ratio: 3 / 3.8;
+    left: 12%;
+    top: 15px;
+    transform: rotate(-3deg);
+    z-index: 2;
+}
+
+/* 廟會/生活次要相片 */
+.card-landscape {
+    width: 42%;
+    aspect-ratio: 1 / 1;
+    right: 8%;
+    bottom: 20px;
+    transform: rotate(3.5deg);
+    z-index: 1;
+}
+
+/* 浮動手寫標記 */
+.floating-cursive-tag {
+    position: absolute;
+    bottom: 35px;
+    left: 3%;
+    transform: rotate(-9deg);
+    z-index: 5;
+}
+
+.tag-script {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #D96328;
+    line-height: 1.2;
+    display: block;
+}
+
+/* 右上角手寫文字 */
+.hero-topright-quote {
+    position: absolute;
+    top: 10px;
+    right: 18%;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #4A463F;
+    line-height: 1.35;
+    transform: rotate(4deg);
+    text-align: right;
+    z-index: 4;
+}
+
+/* 右上芒草插圖 */
+.hero-grain-illustration {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    width: 160px;
+    height: 110px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* 右側圓形雙城印章 */
+.hero-round-stamp {
+    position: absolute;
+    bottom: 65px;
+    right: 2%;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #B0AAA0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: var(--display, sans-serif);
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #8C867C;
+    line-height: 1.25;
+}
+
+/* ---------------- 2. 雙欄兩日行程表 (DAY 1 & DAY 2) ---------------- */
+.twoday-schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.day-header-box {
+    margin-bottom: 24px;
+}
+
+.day-badge {
+    display: inline-block;
+    padding: 3px 14px;
+    font-family: var(--display, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.badge-orange {
+    background-color: #D96328;
+    color: #FFFFFF;
+}
+
+.badge-sand {
+    background-color: #D4C5A9;
+    color: #333333;
+}
+
+.day-main-theme {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.65rem;
+    font-weight: 900;
+    color: #111111;
+    margin: 0 0 6px 0;
+}
+
+.day-sub-desc {
+    font-size: 0.82rem;
+    color: #7E786E;
+    margin: 0;
+}
+
+/* 時間軸節點清單 */
+.timeline-nodes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+/* 時間軸垂直細線 */
+.timeline-nodes-list::before {
+    content: '';
+    position: absolute;
+    left: 64px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background-color: #E2DDD5;
+    z-index: 1;
+}
+
+.timeline-node-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.node-time-col {
+    width: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.time-text {
+    font-family: var(--display, sans-serif);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #8C867C;
+    line-height: 1.3;
+    text-align: right;
+}
+
+.node-num-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #D96328;
+    color: #FFFFFF;
+    font-family: var(--display, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 3px #F8F7F4;
+}
+
+.node-content-box {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #ECE7DE;
+    padding: 12px 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-node-card:hover .node-content-box {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.node-thumb {
+    width: 96px;
+    height: 72px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #EAE6DF;
+}
+
+.node-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.node-detail {
+    flex: 1;
+}
+
+.node-title-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 3px;
+}
+
+.node-heading {
+    font-family: var(--serif, serif);
+    font-size: 1rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0;
+}
+
+.node-cat-pill {
+    background: rgba(217, 99, 40, 0.1);
+    color: #D96328;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+}
+
+.node-location-tag {
+    font-size: 0.72rem;
+    color: #D96328;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.node-desc {
+    font-size: 0.76rem;
+    color: #6E685F;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------------- 3. 底部路線地圖與對話號召 (Map & Action) ---------------- */
+.twoday-map-action-section {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
+    padding-top: 36px;
+    border-top: 1px solid #E6E1D8;
+    margin-bottom: 20px;
+}
+
+.section-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #8C867C;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.section-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 6px 0;
+}
+
+.section-subtitle {
+    font-size: 0.84rem;
+    color: #6E685F;
+    line-height: 1.65;
+    margin: 0 0 16px 0;
+}
+
+.map-legend-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #4A463F;
+}
+
+.legend-dash {
+    width: 22px;
+    height: 0;
+    border-top: 2px dashed;
+}
+
+.dash-orange { border-color: #D96328; }
+.dash-teal { border-color: #4B9B9B; }
+
+.handdrawn-map-frame {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #EAE5DC;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.twoday-vector-map {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-cursive-watermark {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: #A6A095;
+}
+
+/* 右側號召區塊 */
+.map-action-right {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.reflection-photo-card {
+    width: 100%;
+    height: 190px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    background: #EAE6DF;
+}
+
+.reflection-photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.reflection-manifesto-box {
+    margin-bottom: 28px;
+}
+
+.manifesto-script-title {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #222222;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+}
+
+.manifesto-desc-text {
+    font-size: 0.88rem;
+    color: #6E685F;
+    line-height: 1.85;
+    margin: 0 0 22px 0;
+}
+
+.btn-register-twoday {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 36px;
+    background-color: #D96328;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(217, 99, 40, 0.35);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-register-twoday:hover {
+    background-color: #B84E1B;
+    transform: translateY(-2px);
+}
+
+.bottom-floating-seal {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.seal-text-group {
+    text-align: right;
+}
+
+.seal-cursive {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #D96328;
+    display: block;
+    line-height: 1.2;
+}
+
+.seal-towns {
+    font-family: var(--display, sans-serif);
+    font-size: 0.52rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #A6A095;
+    line-height: 1.3;
+}
+
+/* ---------------- 4. 響應式適配 (RWD) ---------------- */
+@media (max-width: 1100px) {
+    .twoday-hero-section {
+        grid-template-columns: 1fr;
+    }
+    .twoday-schedule-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .twoday-map-action-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .twoday-detail-stage {
+        padding: 20px 20px 60px 20px;
+    }
+    .node-content-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .node-thumb {
+        width: 100%;
+        height: 120px;
+    }
+}

@@ -1,0 +1,590 @@
+/* ====================================================================
+   最新消息專屬樣式表 (news.css) - 一比一精準還原設計稿
+   ==================================================================== */
+
+body.news-page-body {
+    background-color: #F8F7F4;
+    color: #1A1A1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 主容器寬度嚴格鎖定全站 1380px 標準 */
+.news-main-stage {
+    margin-top: 76px !important;
+    max-width: 1380px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 36px 40px 60px 40px !important;
+    box-sizing: border-box !important;
+}
+
+/* ---------------- 1. 頂部編輯室排版 (Hero Editorial) ---------------- */
+.news-hero-editorial {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.news-hero-left {
+    position: relative;
+    max-width: 520px;
+}
+
+.news-eyebrow {
+    display: block;
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #8C867C;
+    margin-bottom: 8px;
+}
+
+.news-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(3rem, 4.2vw, 4.4rem);
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 1.05;
+    color: #111111;
+    margin: 0 0 16px 0;
+}
+
+.news-slogan {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2E2E2E;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+    letter-spacing: 0.5px;
+}
+
+.news-desc {
+    font-size: 0.88rem;
+    color: #6E6961;
+    line-height: 1.95;
+    margin: 0;
+}
+
+/* 圓形浮水印圖章 (SAME LAND, NEW STORIES.) */
+.news-circle-stamp {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    width: 82px;
+    height: 82px;
+    border: 1px dashed #C8C0B2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+}
+
+.news-circle-stamp span {
+    font-family: var(--display, sans-serif);
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.3;
+    color: #A39D93;
+}
+
+/* 右側照片與屋簷手繪 */
+.news-hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    position: relative;
+}
+
+.news-hero-photo-wrapper {
+    position: relative;
+    width: 380px;
+    height: 250px;
+}
+
+.photo-curved-backdrop {
+    position: absolute;
+    inset: -8px -8px 8px 8px;
+    background: #E8E3D8;
+    border-radius: 20% 80% 80% 20% / 20% 20% 80% 80%;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.news-hero-photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    z-index: 2;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.news-hero-decor-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.news-roof-sketch {
+    width: 70px;
+    height: 45px;
+    opacity: 0.85;
+}
+
+.news-handwrite-vertical {
+    writing-mode: vertical-rl;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #4A463F;
+    letter-spacing: 4px;
+    line-height: 1.4;
+    transform: rotate(2deg);
+}
+
+/* ---------------- 2. 分類篩選膠囊列 ---------------- */
+.news-filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.news-pill-btn {
+    border: none;
+    background: #EAE6DF;
+    color: #4A463F;
+    padding: 7px 22px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.news-pill-btn.active {
+    background-color: #111111;
+    color: #FFFFFF;
+}
+
+.news-pill-btn:hover:not(.active) {
+    background: #DFDAD1;
+    color: #111111;
+}
+
+/* ---------------- 3. 主打置頂大卡 (Featured News Card) ---------------- */
+.news-featured-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    margin-bottom: 28px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-featured-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.featured-media-col {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    background: #EAE6DF;
+    overflow: hidden;
+}
+
+.featured-media-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.news-featured-card:hover .featured-media-col img {
+    transform: scale(1.04);
+}
+
+.news-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    color: #333333;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+.featured-image-quote {
+    position: absolute;
+    bottom: 16px;
+    left: 18px;
+    font-family: var(--serif, serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    z-index: 5;
+}
+
+.featured-content-col {
+    padding: 32px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.featured-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.news-date-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-date {
+    font-family: var(--display, sans-serif);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #8C867C;
+}
+
+.news-new-badge {
+    background: #D96328;
+    color: #FFFFFF;
+    font-family: var(--display, sans-serif);
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+}
+
+.decor-red-strokes {
+    display: flex;
+    gap: 4px;
+    transform: rotate(20deg);
+}
+
+.decor-red-strokes span {
+    width: 2px;
+    height: 14px;
+    background: #D96328;
+    opacity: 0.8;
+}
+
+.featured-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 14px 0;
+    line-height: 1.3;
+}
+
+.featured-desc {
+    font-size: 0.88rem;
+    color: #6E685F;
+    line-height: 1.85;
+    margin: 0 0 22px 0;
+}
+
+.news-read-more-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #D96328;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease;
+}
+
+.news-read-more-link:hover {
+    transform: translateX(4px);
+}
+
+/* ---------------- 4. 消息橫列清單 (List Rows) ---------------- */
+.news-articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 45px;
+    width: 100%;
+}
+
+.news-list-row {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 14px 24px 14px 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 170px 1fr 34px;
+    gap: 24px;
+    align-items: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.news-list-row:hover {
+    transform: translateY(-2px);
+    border-color: rgba(217, 99, 40, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.row-thumb-box {
+    position: relative;
+    width: 170px;
+    height: 105px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #EAE6DF;
+    flex-shrink: 0;
+}
+
+.row-thumb-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.row-content-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.row-date {
+    font-family: var(--display, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #9C9589;
+}
+
+.row-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0;
+    line-height: 1.35;
+    transition: color 0.2s ease;
+}
+
+.news-list-row:hover .row-title {
+    color: #D96328;
+}
+
+.row-desc {
+    font-size: 0.82rem;
+    color: #6E685F;
+    line-height: 1.65;
+    margin: 0 0 4px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.row-link {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #D96328;
+    text-decoration: none;
+}
+
+.row-circle-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #D8D2C6;
+    background: #FFFFFF;
+    color: #4A4641;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.news-list-row:hover .row-circle-arrow {
+    background: #D96328;
+    border-color: #D96328;
+    color: #FFFFFF;
+    transform: scale(1.06);
+}
+
+/* ---------------- 5. 底部手繪與功能收尾 ---------------- */
+.news-tail-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    align-items: center;
+    padding: 30px 0 30px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    width: 100%;
+}
+
+.tail-sketch-col {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.biking-sketch-svg {
+    width: 110px;
+    height: 90px;
+    opacity: 0.85;
+}
+
+.sketch-en-tag {
+    font-family: var(--display, sans-serif);
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    color: #A6A095;
+    margin-bottom: 6px;
+}
+
+.tail-action-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-load-more-news {
+    background: transparent;
+    border: 1px solid #D8D2C6;
+    border-radius: 999px;
+    padding: 9px 28px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4A463F;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+}
+
+.btn-load-more-news:hover {
+    border-color: #D96328;
+    color: #D96328;
+    background: #FFFFFF;
+}
+
+.tail-brand-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 240px;
+}
+
+.tail-brand-divider::before,
+.tail-brand-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #D8D2C6;
+}
+
+.tail-brand-divider span {
+    font-size: 0.72rem;
+    color: #8C867C;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.tail-quote-col {
+    text-align: right;
+}
+
+.script-cursive-closing {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #4A453E;
+    display: inline-block;
+    transform: rotate(-6deg);
+}
+
+/* ---------------- 6. RWD 響應式適配 ---------------- */
+@media (max-width: 992px) {
+    .news-hero-editorial {
+        grid-template-columns: 1fr;
+    }
+    .news-hero-right {
+        justify-content: flex-start;
+    }
+    .news-featured-card {
+        grid-template-columns: 1fr;
+    }
+    .featured-media-col {
+        height: 220px;
+    }
+    .news-tail-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+    .tail-sketch-col,
+    .tail-quote-col {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 680px) {
+    .news-main-stage {
+        padding: 20px 20px 50px 20px !important;
+    }
+    .news-list-row {
+        grid-template-columns: 1fr;
+    }
+    .row-thumb-box {
+        width: 100%;
+        height: 150px;
+    }
+    .row-circle-arrow {
+        display: none;
+    }
+}

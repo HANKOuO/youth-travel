@@ -1,0 +1,694 @@
+/* ====================================================================
+   全站核心共用樣式表 (common.css)
+   ==================================================================== */
+
+/* 1. 主題色彩與字體變數 */
+:root {
+    --paper: #FAF8F5;               /* 溫潤米白紙張底色 */
+    --black: #171717;               /* 刊物高對比炭黑 */
+    --gray: #666666;
+    --serif: 'Noto Serif TC', 'Playfair Display', Georgia, serif;
+    --display-serif-heavy: 'Bodoni Moda', 'Playfair Display', serif;
+    --display: 'Poppins', sans-serif;
+    --sans: 'Noto Sans TC', 'Poppins', sans-serif;
+
+    --bg-main: #F8F7F4;             /* 淺灰溫潤基底 */
+    --card-bg: #FFFFFF;             /* 純白卡片 */
+    --dark-bg: #121212;             /* 墨黑背景 */
+    --primary: #111111;             /* 主文字黑 */
+    --accent: #D96328;              /* 風土磚橘 */
+    --accent-hover: #B84E1B;
+    --gray-text: #666666;
+    --border-line: #E5E5E5;         /* 極簡分割線 */
+    
+    --radius-pill: 999px;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+    font-family: var(--sans);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+    scrollbar-gutter: stable; /* 核心關鍵：換頁時按鍵絕不左右晃動 */
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* 2. 全域固定導覽列 (鎖定 76px / 1380px) */
+.site-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 76px !important;
+    background: rgba(250, 248, 245, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1380px !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.nav-logo-img {
+    height: 46px !important;
+    width: auto !important;
+    object-fit: contain;
+    display: block;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex !important;
+    align-items: center !important;
+    gap: 34px !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    padding: 8px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--accent) !important;
+    font-weight: 700;
+}
+
+/* 5 大路線下拉選單 */
+.dropdown-chevron {
+    transition: transform 0.25s ease;
+}
+
+.nav-has-dropdown:hover .dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(14px);
+    width: 320px;
+    background: #FFFFFF;
+    border: 1px solid rgba(23, 23, 23, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-has-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dropdown-link:hover {
+    background: #FAF8F5;
+}
+
+.route-badge {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--accent);
+    background: rgba(217, 99, 40, 0.12);
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+.dropdown-link strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--dark-bg);
+    margin-bottom: 2px;
+}
+
+.dropdown-link small {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray-text);
+    line-height: 1.3;
+}
+
+/* 右側功能按鈕組 */
+.nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+}
+
+.nav-action-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-action-btn:hover {
+    color: var(--accent);
+    transform: scale(1.08);
+}
+
+.lang-dropdown-wrapper {
+    position: relative;
+}
+
+.nav-lang-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: var(--primary);
+    border: 1px solid rgba(23, 23, 23, 0.15);
+    background: transparent;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav-lang-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.lang-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    width: 120px;
+    background: #FFFFFF;
+    border: 1px solid rgba(23, 23, 23, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    list-style: none;
+    padding: 6px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: all 0.25s ease;
+}
+
+.lang-dropdown-wrapper.active .lang-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-menu li a {
+    display: block;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.lang-menu li a:hover,
+.lang-menu li a.active {
+    background: rgba(217, 99, 40, 0.08);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.nav-btn-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--accent) !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    padding: 9px 20px !important;
+    border-radius: var(--radius-pill) !important;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(217, 99, 40, 0.2);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.nav-btn-cta:hover {
+    background: var(--accent-hover) !important;
+    transform: translateY(-2px);
+}
+
+.hamburger-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--primary);
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. 全螢幕搜尋浮層 (Search Overlay) */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 23, 23, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-close-btn {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.search-modal-inner {
+    width: min(720px, 90%);
+    text-align: center;
+}
+
+.search-sub-title {
+    display: block;
+    font-family: var(--display);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.search-box {
+    display: flex;
+    border-bottom: 2px solid #FFFFFF;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+}
+
+.search-submit-btn {
+    background: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.search-quick-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-quick-tags a {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+}
+
+/* 4. 手機版抽屜導覽列 (Sidebar Drawer) */
+.sidebar-nav {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 280px; 
+    height: 100vh;
+    background: var(--paper);
+    border-right: 1px solid var(--border-line);
+    padding: 40px 30px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1500;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-nav.active { transform: translateX(0); }
+
+.sidebar-tabs {
+    list-style: none; 
+    display: flex;
+    flex-direction: column; 
+    gap: 12px;
+}
+
+.sidebar-tabs .tab-item a {
+    display: block; 
+    padding: 12px 18px;
+    font-size: 1.05rem; 
+    font-weight: 500;
+    color: var(--primary); 
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+}
+
+.sidebar-tabs .tab-item:hover a,
+.sidebar-tabs .tab-item.active a {
+    color: var(--accent);
+    background-color: rgba(217, 99, 40, 0.08);
+    font-weight: 700;
+}
+
+.sidebar-overlay {
+    position: fixed; 
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 1400; 
+    opacity: 0;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+
+/* 5. 全站統一深色雜誌風格頁尾 (Global Dark Footer) */
+.site-global-footer {
+    background-color: #0E0E0E;
+    color: #A39E97;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+.footer-main-grid {
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 70px 40px 50px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 36px;
+    box-sizing: border-box;
+}
+
+.footer-v-divider {
+    width: 1px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+
+.footer-brand-col {
+    flex: 1.1;
+    max-width: 320px;
+}
+
+.footer-brand-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 22px;
+}
+
+.footer-brand-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: 1.5px;
+}
+
+.footer-brand-slogan {
+    font-size: 0.72rem;
+    color: #7E7971;
+    letter-spacing: 2px;
+    margin-top: 3px;
+}
+
+.footer-brand-desc {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: #8C867C;
+    margin-bottom: 24px;
+}
+
+.footer-nav-columns {
+    display: flex;
+    justify-content: space-between;
+    flex: 2.6;
+    gap: 24px;
+}
+
+.nav-col-title,
+.subscribe-col-title {
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.title-underline {
+    width: 22px;
+    height: 1.5px;
+    background: #4A463F;
+    margin-bottom: 16px;
+}
+
+.nav-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-link-list li a {
+    color: #8C867C;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+.nav-link-list li a:hover {
+    color: #FFFFFF;
+}
+
+.footer-subscribe-col {
+    flex: 1.3;
+    max-width: 380px;
+}
+
+.subscribe-desc {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: #8C867C;
+    margin-bottom: 18px;
+}
+
+.subscribe-input-pill {
+    display: flex;
+    align-items: center;
+    background: #171615;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-pill);
+    padding: 4px 5px 4px 18px;
+    margin-bottom: 22px;
+}
+
+.subscribe-input-pill input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    font-size: 0.84rem;
+}
+
+.btn-subscribe-arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-social-stack {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social-icon-btn {
+    color: #8C867C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.social-icon-btn:hover { color: #FFFFFF; }
+
+.footer-legal-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 24px 0;
+}
+
+.footer-legal-inner {
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #635E56;
+    box-sizing: border-box;
+}
+
+.legal-links {
+    display: flex;
+    gap: 10px;
+}
+
+.legal-links a { color: #635E56; text-decoration: none; }
+
+/* 6. RWD 響應式斷點 */
+@media (max-width: 1024px) {
+    .nav-menu, .nav-btn-cta { display: none !important; }
+    .hamburger-toggle { display: flex !important; }
+    .footer-main-grid { flex-direction: column; gap: 45px; }
+    .footer-v-divider { display: none; }
+}
+
+@media (max-width: 768px) {
+    .nav-container, .footer-main-grid, .footer-legal-inner {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .footer-nav-columns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+    .footer-legal-inner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,362 @@
+/* ====================================================================
+   走讀路線專屬樣式表 (itinerary.css) - 一比一精準還原設計稿
+   ==================================================================== */
+
+body.routes-page-body {
+    background-color: #F8F7F4;
+    color: #1A1A1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* 主工作舞台 (對齊 1380px 標準) */
+.routes-main-stage {
+    margin-top: 76px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 40px 30px 40px;
+    max-width: 1680px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* ---------------- 1. 頂部編輯室排版 (Hero Editorial) ---------------- */
+.routes-header-editorial {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 24px;
+}
+
+.routes-eyebrow {
+    display: block;
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #8C867C;
+    margin-bottom: 8px;
+}
+
+.routes-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(2.8rem, 3.6vw, 4.2rem);
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 1.05;
+    color: #111111;
+    margin: 0 0 12px 0;
+}
+
+.routes-slogan {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: 1.28rem;
+    font-weight: 600;
+    color: #2E2E2E;
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.routes-header-mid {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.routes-mid-desc {
+    font-size: 0.88rem;
+    color: #6E6961;
+    line-height: 1.95;
+    margin: 0;
+}
+
+.routes-script-note .script-cursive {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: #D96328;
+    line-height: 1.25;
+    display: inline-block;
+    transform: rotate(-7deg);
+    white-space: nowrap;
+}
+
+.routes-header-right {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 16px;
+    position: relative;
+}
+
+.routes-grain-sketch {
+    width: 200px;
+    height: 90px;
+    opacity: 0.85;
+}
+
+.grain-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.routes-stamp-tag {
+    font-family: var(--display, sans-serif);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    color: #A6A095;
+    margin-bottom: 6px;
+}
+
+/* ---------------- 2. 中央 5 張主題路線卡牌群 (Cards Deck) ---------------- */
+.routes-cards-deck {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+    align-items: stretch;
+    margin-bottom: 24px;
+}
+
+.route-deck-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 490px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px 18px 20px 18px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.route-deck-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* 卡片背景照片與暗色雙向漸層 */
+.card-bg-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+
+.route-deck-card:hover .card-bg-layer {
+    transform: scale(1.06);
+}
+
+.card-shade-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(15, 15, 15, 0.78) 0%, 
+        rgba(15, 15, 15, 0.2) 42%, 
+        rgba(15, 15, 15, 0.4) 65%, 
+        rgba(15, 15, 15, 0.92) 100%
+    );
+    z-index: 2;
+}
+
+/* 01 卡片的紙膠帶貼紙效果 */
+.card-mask-tape {
+    position: absolute;
+    top: -8px;
+    right: 36px;
+    width: 32px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.48);
+    backdrop-filter: blur(4px);
+    transform: rotate(4deg);
+    border-left: 1px dashed rgba(255, 255, 255, 0.6);
+    border-right: 1px dashed rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+/* 卡片頂部文字 */
+.card-top-header {
+    position: relative;
+    z-index: 5;
+}
+
+.card-pill-tag {
+    display: inline-block;
+    background: #FFFFFF;
+    color: #D96328;
+    font-family: var(--display, sans-serif);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    margin-bottom: 12px;
+}
+
+.card-route-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    margin: 0 0 6px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.card-route-sub {
+    font-size: 0.76rem;
+    color: #D5D5D5;
+    line-height: 1.45;
+    margin: 0;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* 卡片底部資訊列：左側細項、右側圓圈箭頭按鈕 */
+.card-bottom-footer {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.meta-specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.spec-item {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #F0EDE8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.spec-icon {
+    font-size: 0.75rem;
+}
+
+/* 橘色圓圈箭頭按鈕 */
+.btn-card-circle-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #D96328;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(217, 99, 40, 0.4);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+    flex-shrink: 0;
+}
+
+.route-deck-card:hover .btn-card-circle-arrow {
+    background-color: #B84E1B;
+    transform: scale(1.1);
+}
+
+/* ---------------- 3. 底部資訊與翻頁按鈕列 ---------------- */
+.routes-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.routes-bottom-brand-note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stamp-en-texts {
+    font-family: var(--display, sans-serif);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.35;
+    color: #9C9589;
+}
+
+.routes-deck-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-deck-nav {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #D8D2C6;
+    background: #FFFFFF;
+    color: #4A4641;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-deck-nav:hover {
+    border-color: #D96328;
+    color: #D96328;
+    transform: scale(1.06);
+}
+
+/* ---------------- 4. RWD 斷點適配 ---------------- */
+@media (max-width: 1200px) {
+    .routes-cards-deck {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .routes-header-editorial {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .routes-header-right {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .routes-main-stage {
+        padding: 20px 20px;
+    }
+    .routes-cards-deck {
+        grid-template-columns: 1fr;
+    }
+    .route-deck-card {
+        height: 380px;
+    }
+}

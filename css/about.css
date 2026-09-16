@@ -1,0 +1,766 @@
+/* ====================================================================
+   關於我們專屬樣式表 (about.css) - 首屏 100vh 滿版 ✕ 底部全屏 CTA ✕ 字體放大版
+   ==================================================================== */
+
+/* 1. 解鎖全域捲軸，平滑滾動 */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    height: auto !important;
+}
+
+body.about-page-body {
+    background-color: #F8F7F4;
+    color: #1A1A1A;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    height: auto !important;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+.search-overlay:not(.active) {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* ==================== 2. 首屏 100vh 滿版全景橫幅 (大標封面) ==================== */
+.about-hero-full-banner {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 76px;
+    height: calc(100vh - 76px); /* 剛好佔滿第一屏視窗 */
+    min-height: 620px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hero-bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    display: block;
+}
+
+.hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(248, 247, 244, 0.95) 0%,
+        rgba(248, 247, 244, 0.84) 36%,
+        rgba(248, 247, 244, 0.35) 58%,
+        transparent 78%
+    );
+    z-index: 2;
+}
+
+.hero-content-inner {
+    position: relative;
+    z-index: 5;
+    max-width: 1380px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hero-vertical-meta {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #9C9589;
+    line-height: 1.4;
+}
+
+.hero-heading-block {
+    margin-left: 100px;
+    max-width: 620px;
+}
+
+.hero-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: #555047;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.hero-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(3.6rem, 5.5vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 1.05;
+    color: #111111;
+    margin: 0 0 18px 0;
+}
+
+.hero-sub-slogan {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(1.1rem, 1.45vw, 1.35rem);
+    font-weight: 600;
+    color: #33302B;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.hero-script-floating {
+    position: absolute;
+    right: 6%;
+    bottom: 25%;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    line-height: 1.4;
+    text-align: right;
+    pointer-events: none;
+}
+
+/* 底部滑動指示器 */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #2E2A24;
+    opacity: 0.85;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hero-scroll-indicator:hover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.scroll-prompt-text {
+    font-family: var(--display, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.scroll-mouse-icon {
+    width: 22px;
+    height: 34px;
+    border: 2px solid #2E2A24;
+    border-radius: 12px;
+    position: relative;
+}
+
+.scroll-wheel-dot {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 3px;
+    height: 6px;
+    background-color: #D96328;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: scrollDotAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollDotAnim {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 14px); opacity: 0; }
+}
+
+/* ==================== 3. 主舞台共用規範 (字體層級放大) ==================== */
+.about-main-container {
+    max-width: 1380px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 40px 80px 40px;
+    box-sizing: border-box;
+}
+
+.about-section-block {
+    padding: 85px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.about-section-block:last-child {
+    border-bottom: none;
+}
+
+.section-tag-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tag-num {
+    font-family: var(--display-serif-heavy, serif);
+    font-size: 1.35rem; /* 放大序號 */
+    font-weight: 900;
+    color: #111111;
+}
+
+.tag-en {
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.76rem; /* 放大英文小標 */
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #8C867C;
+}
+
+.section-main-heading {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(2.4rem, 3.4vw, 3rem); /* 放大主標題 */
+    font-weight: 900;
+    color: #111111;
+    margin: 0 0 14px 0;
+    line-height: 1.2;
+}
+
+.section-sub-heading {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: 1.45rem; /* 放大副標題 */
+    font-weight: 600;
+    color: #D96328;
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+}
+
+/* ==================== 4. 01 WHO WE ARE ==================== */
+.section-who-we-are {
+    display: grid;
+    grid-template-columns: 1.15fr 1.35fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.who-lead-p {
+    font-family: var(--serif, serif);
+    font-size: 1.25rem; /* 放大導言字體 */
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.7;
+    margin: 0 0 16px 0;
+}
+
+.who-body-p {
+    font-size: 0.94rem;
+    color: #5E584F;
+    line-height: 2.1;
+    margin: 0 0 24px 0;
+}
+
+.who-stamp-note {
+    font-family: var(--display, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #B5AFA6;
+}
+
+.who-right-col {
+    display: flex;
+    gap: 20px;
+    height: 300px;
+}
+
+.who-photo-box {
+    flex: 1.4;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #EAE6DF;
+}
+
+.who-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.who-dark-card {
+    flex: 1;
+    background-color: #2F3E35;
+    border-radius: 8px;
+    padding: 30px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #FFFFFF;
+}
+
+.dark-card-title {
+    font-family: var(--serif, serif);
+    font-size: 1.35rem; /* 放大深色卡標題 */
+    font-weight: 800;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.dark-card-foot {
+    font-family: var(--display, sans-serif);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==================== 5. 02 OUR BELIEF ==================== */
+.section-our-belief {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.belief-photo-frame {
+    width: 100%;
+    height: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #EAE6DF;
+}
+
+.belief-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.belief-body-p {
+    font-size: 0.95rem;
+    color: #5E584F;
+    line-height: 2.1;
+    margin: 0 0 28px 0;
+}
+
+.belief-sketch-cluster {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.towns-circle-sketch {
+    width: 80px;
+    height: 80px;
+    border: 1px dashed #C8C0B2;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display, sans-serif);
+    font-size: 0.52rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #9E988D;
+    line-height: 1.25;
+}
+
+.belief-cursive-text {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #4A463F;
+    line-height: 1.45;
+    transform: rotate(-3deg);
+}
+
+.wheat-sketch-icon {
+    width: 70px;
+    height: 60px;
+    opacity: 0.85;
+}
+
+/* ==================== 6. 03 OUR WAY ==================== */
+.section-our-way {
+    display: grid;
+    grid-template-columns: 1fr 1.65fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.way-body-p {
+    font-size: 0.95rem;
+    color: #5E584F;
+    line-height: 2;
+    margin: 0;
+}
+
+.way-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.pillar-item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pillar-icon-bubble {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #EDE8DF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.pillar-title {
+    font-family: var(--serif, serif);
+    font-size: 1.2rem; /* 放大柱標題 */
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 8px 0;
+}
+
+.pillar-desc {
+    font-size: 0.82rem;
+    color: #7E786E;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ==================== 7. 04 PEOPLE (深色質感區塊) ==================== */
+.section-people-silver {
+    background-color: #1F1E1B;
+    border-radius: 14px;
+    padding: 55px 60px !important;
+    border-bottom: none !important;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+
+.silver-inner-wrap {
+    display: grid;
+    grid-template-columns: 1.15fr 1.35fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.tag-row-dark .tag-num { color: #FFFFFF; }
+.tag-row-dark .tag-en { color: #A6A095; }
+
+.dark-theme-heading {
+    color: #FFFFFF !important;
+    font-size: 2.4rem !important; /* 放大深色主題標題 */
+    line-height: 1.3;
+}
+
+.silver-body-p {
+    font-size: 0.92rem;
+    color: #C8C2B7;
+    line-height: 2.1;
+    margin: 0;
+}
+
+.silver-right-col {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.silver-photo-box {
+    flex: 1.3;
+    height: 270px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.silver-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.silver-cursive-quote {
+    flex: 0.9;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.35rem; /* 放大草寫字體 */
+    color: #E2DDD5;
+    line-height: 1.55;
+    transform: rotate(-3deg);
+}
+
+/* ==================== 8. 05 OUR TOPICS (6 欄網格) ==================== */
+.topics-header-wrap {
+    margin-bottom: 36px;
+}
+
+.topics-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+}
+
+.topic-grid-card {
+    background: #FFFFFF;
+    border: 1px solid #ECE7DE;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease;
+}
+
+.topic-grid-card:hover {
+    transform: translateY(-4px);
+}
+
+.topic-thumb {
+    width: 100%;
+    height: 115px;
+    overflow: hidden;
+    background: #EAE6DF;
+}
+
+.topic-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.topic-grid-card:hover .topic-thumb img {
+    transform: scale(1.08);
+}
+
+.topic-body {
+    padding: 14px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-title {
+    font-family: var(--serif, serif);
+    font-size: 0.94rem; /* 放大網格卡片標題 */
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+}
+
+.topic-desc {
+    font-size: 0.75rem;
+    color: #6E685F;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ==================== 9. 底部全景滿版號召 (Full-Bleed Panoramic CTA) ==================== */
+.about-bottom-cta-banner {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: clamp(380px, 45vh, 480px); /* 放大滿版高度 */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.cta-bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cta-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cta-dark-shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 18, 18, 0.58);
+}
+
+.cta-content-inner {
+    position: relative;
+    z-index: 5;
+    max-width: 1380px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+
+.cta-left-text {
+    font-family: 'Playfair Display', var(--serif, serif);
+    font-style: italic;
+    font-size: clamp(2.2rem, 3.4vw, 3.2rem); /* 放大左側號召大字 */
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.cta-right-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.cta-prompt-title {
+    font-family: var(--serif, serif);
+    font-size: 1.35rem; /* 放大副標題 */
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.cta-buttons-row {
+    display: flex;
+    gap: 14px;
+}
+
+.btn-cta-ghost {
+    padding: 11px 28px;
+    border: 1.5px solid #FFFFFF;
+    border-radius: 999px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn-cta-ghost:hover {
+    background: #FFFFFF;
+    color: #111111;
+}
+
+.btn-cta-solid {
+    padding: 11px 28px;
+    background-color: #D96328;
+    border: 1.5px solid #D96328;
+    border-radius: 999px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(217, 99, 40, 0.4);
+    transition: all 0.2s ease;
+}
+
+.btn-cta-solid:hover {
+    background-color: #B84E1B;
+    border-color: #B84E1B;
+}
+
+/* ==================== 10. 響應式適配 ==================== */
+@media (max-width: 1200px) {
+    .topics-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .section-who-we-are,
+    .section-our-belief,
+    .silver-inner-wrap {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .who-right-col {
+        height: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero-full-banner {
+        height: calc(100vh - 64px);
+    }
+    .hero-heading-block {
+        margin-left: 0;
+    }
+    .hero-vertical-meta,
+    .hero-script-floating {
+        display: none;
+    }
+    .about-main-container {
+        padding: 40px 20px;
+    }
+    .section-our-way {
+        grid-template-columns: 1fr;
+    }
+    .way-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .silver-right-col {
+        flex-direction: column;
+    }
+    .topics-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-bottom-cta-banner {
+        height: auto;
+        padding: 60px 0;
+    }
+    .cta-content-inner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    .cta-right-actions {
+        align-items: flex-start;
+    }
+}

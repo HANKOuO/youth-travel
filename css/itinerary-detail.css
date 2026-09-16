@@ -1,0 +1,708 @@
+/* ====================================================================
+   一日遊路線詳情專屬樣式表 (itinerary-detail.css)
+   ==================================================================== */
+
+body.itinerary-detail-page {
+    background-color: #F8F7F4;
+    color: #1A1A1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 主容器寬度對齊 1380px 標準 */
+.itinerary-detail-stage {
+    margin-top: 76px;
+    max-width: 1380px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 24px 40px 80px 40px;
+    box-sizing: border-box;
+}
+
+/* 麵包屑導覽 */
+.detail-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    color: #8C867C;
+    margin-bottom: 24px;
+}
+
+.detail-breadcrumbs a {
+    color: #8C867C;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.detail-breadcrumbs a:hover {
+    color: #111111;
+}
+
+.crumb-divider {
+    font-size: 0.7rem;
+    color: #BDB7AB;
+}
+
+.crumb-current {
+    color: #111111;
+    font-weight: 700;
+}
+
+/* ---------------- 1. 頂部 Hero 排版區 ---------------- */
+.detail-hero-section {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.hero-title-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.hero-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(2.8rem, 3.8vw, 4rem);
+    font-weight: 900;
+    color: #111111;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.hero-script-badge {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #D96328;
+    transform: rotate(-6deg);
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-family: var(--serif, serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2E2E2E;
+    margin: 0 0 16px 0;
+}
+
+.hero-description {
+    font-size: 0.88rem;
+    color: #6E6961;
+    line-height: 1.95;
+    margin: 0 0 24px 0;
+}
+
+.hero-brand-seal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-brand-seal span {
+    font-family: var(--display, sans-serif);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.35;
+    color: #9C9589;
+}
+
+/* 右側拍立得相片堆疊 */
+.hero-right-collage {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collage-card {
+    position: absolute;
+    background: #FFFFFF;
+    padding: 8px 8px 18px 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.collage-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-puppet {
+    width: 55%;
+    aspect-ratio: 4 / 3.4;
+    left: 8%;
+    top: 20px;
+    transform: rotate(-4deg);
+    z-index: 2;
+}
+
+.card-temple {
+    width: 46%;
+    aspect-ratio: 1 / 1;
+    right: 4%;
+    bottom: 20px;
+    transform: rotate(3deg);
+    z-index: 1;
+}
+
+.hero-reed-sketch {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 150px;
+    height: 100px;
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.hero-cursive-note {
+    position: absolute;
+    bottom: 0;
+    right: 12%;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #D96328;
+    transform: rotate(-5deg);
+}
+
+/* ---------------- 2. A ~ F 六大方案切換膠囊橫列 ---------------- */
+.scheme-tabs-nav {
+    margin-bottom: 50px;
+}
+
+.scheme-tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.scheme-tab-card {
+    background: #FFFFFF;
+    border: 1px solid #E6E1D8;
+    border-radius: 8px;
+    padding: 12px 10px 10px 10px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s ease;
+}
+
+.scheme-tab-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.tab-badge {
+    font-family: var(--display-serif-heavy, serif);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #111111;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.tab-title {
+    display: block;
+    font-family: var(--serif, serif);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.25;
+    margin-bottom: 2px;
+}
+
+.tab-sub {
+    display: block;
+    font-size: 0.62rem;
+    color: #7E786E;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+}
+
+.tab-thumb {
+    width: 100%;
+    height: 70px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+    background: #EAE6DF;
+}
+
+.tab-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tab-arrow {
+    align-self: flex-end;
+    font-size: 0.75rem;
+    color: #6E685F;
+}
+
+/* 方案 A (Active) 狀態：高對比橘色風格 */
+.scheme-tab-card.active {
+    background: #D96328;
+    border-color: #D96328;
+    box-shadow: 0 6px 20px rgba(217, 99, 40, 0.35);
+}
+
+.scheme-tab-card.active .tab-badge,
+.scheme-tab-card.active .tab-title,
+.scheme-tab-card.active .tab-sub,
+.scheme-tab-card.active .tab-arrow {
+    color: #FFFFFF;
+}
+
+/* ---------------- 3. 當前選定路線詳細內容 ---------------- */
+.active-route-container {
+    margin-bottom: 60px;
+}
+
+.route-header-block {
+    margin-bottom: 36px;
+}
+
+.route-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #D96328;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.route-title-tags {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.route-main-name {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #111111;
+    margin: 0;
+}
+
+.route-keywords-pill {
+    background: #EDEAE4;
+    color: #D96328;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.route-lead-summary {
+    font-size: 0.92rem;
+    color: #5E584F;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* 雙欄內容佈局 */
+.route-two-columns-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* 左欄：時間軸清單 */
+.timeline-itinerary-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+/* 連接各節點的垂直細線 */
+.timeline-itinerary-col::before {
+    content: '';
+    position: absolute;
+    left: 65px;
+    top: 35px;
+    bottom: 35px;
+    width: 2px;
+    background-color: #E2DDD5;
+    z-index: 1;
+}
+
+.timeline-step-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.step-time-badge {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.time-range {
+    font-family: var(--display, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #8C867C;
+    line-height: 1.35;
+    text-align: right;
+}
+
+.step-circle-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #D96328;
+    color: #FFFFFF;
+    font-family: var(--display, sans-serif);
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px #F8F7F4;
+}
+
+.step-content-card {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #ECE7DE;
+    padding: 14px 18px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.step-thumb {
+    width: 110px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.step-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.step-text-detail {
+    flex: 1;
+}
+
+.step-title-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.step-heading {
+    font-family: var(--serif, serif);
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0;
+}
+
+.step-type-pill {
+    background: rgba(217, 99, 40, 0.1);
+    color: #D96328;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.step-location-tag {
+    font-size: 0.74rem;
+    color: #D96328;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.step-desc {
+    font-size: 0.78rem;
+    color: #6E685F;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* 右欄：規格卡與路線地圖 */
+.route-sidebar-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.route-specs-box {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 24px 22px;
+    border: 1px solid #EBE6DE;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.spec-row {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4A453E;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-cursive-note {
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #D96328;
+    text-align: right;
+    margin-bottom: 16px;
+}
+
+.btn-join-route {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #D96328;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 0;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(217, 99, 40, 0.35);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-sizing: border-box;
+}
+
+.btn-join-route:hover {
+    background-color: #B84E1B;
+    transform: translateY(-2px);
+}
+
+/* 路線地圖卡片 */
+.route-map-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 22px 20px;
+    border: 1px solid #EBE6DE;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.map-card-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #8C867C;
+}
+
+.map-card-title {
+    font-family: var(--serif, serif);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 4px 0 6px 0;
+}
+
+.map-card-sub {
+    font-size: 0.74rem;
+    color: #77726A;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+}
+
+.map-sketch-stage {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #EAE5DC;
+}
+
+.route-vector-map {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------------- 4. 底部其他路線推薦 (Other Routes) ---------------- */
+.other-routes-section {
+    padding-top: 40px;
+    border-top: 1px solid #E6E1D8;
+    margin-bottom: 20px;
+}
+
+.other-routes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+}
+
+.other-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #8C867C;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.other-heading {
+    font-family: var(--serif, serif);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 4px 0;
+}
+
+.other-sub {
+    font-size: 0.8rem;
+    color: #7E786E;
+    margin: 0;
+}
+
+.other-nav-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-arrow-round {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #D8D2C6;
+    background: #FFFFFF;
+    color: #4A4641;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.other-routes-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.other-route-card {
+    background: #FFFFFF;
+    border: 1px solid #E6E1D8;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease;
+}
+
+.other-route-card:hover {
+    transform: translateY(-4px);
+}
+
+.other-thumb {
+    width: 100%;
+    height: 105px;
+}
+
+.other-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.other-info {
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.other-info strong {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #111111;
+}
+
+.other-info .arrow {
+    font-size: 0.85rem;
+    color: #D96328;
+}
+
+/* ---------------- 5. 響應式適配 (RWD) ---------------- */
+@media (max-width: 1100px) {
+    .detail-hero-section {
+        grid-template-columns: 1fr;
+    }
+    .scheme-tabs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .route-two-columns-layout {
+        grid-template-columns: 1fr;
+    }
+    .other-routes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .itinerary-detail-stage {
+        padding: 20px 20px 60px 20px;
+    }
+    .scheme-tabs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .step-content-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .step-thumb {
+        width: 100%;
+        height: 120px;
+    }
+    .other-routes-grid {
+        grid-template-columns: 1fr;
+    }
+}
