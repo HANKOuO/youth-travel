@@ -1,5 +1,5 @@
 /* ====================================================================
-   全站核心共用樣式表 (common.css)
+   全站核心共用樣式表 (common.css) - Morcept 開闊寬版 ✕ 大 LOGO ✕ 零位移
    ==================================================================== */
 
 /* 1. 主題色彩與字體變數 */
@@ -32,12 +32,13 @@
     font-family: var(--sans);
 }
 
+/* 核心防抖動機制：強制保留捲軸槽，頁面切換時導覽列絕對不左右跳動 */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 92px;
-    scrollbar-gutter: stable; /* 核心關鍵：換頁時按鍵絕不左右晃動 */
+    scroll-padding-top: 96px;
+    scrollbar-gutter: stable;
+    overflow-y: scroll !important;
     overflow-x: hidden;
-    overflow-y: auto;
     height: auto;
 }
 
@@ -49,49 +50,111 @@ body {
     overflow-x: hidden;
 }
 
-/* 2. 全域固定導覽列 (鎖定 76px / 1380px) */
+/* ==================== 2. 全域固定頂部導覽列 (純淨無黑線全透明) ==================== */
 .site-header {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100% !important;
-    height: 76px !important;
-    background: rgba(250, 248, 245, 0.94);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+    height: 82px !important;
+    
+    /* 核心 1：移除所有深色漸層，回歸 100% 純透明 */
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    
+    /* 核心 2：徹底拔除邊框與陰影，杜絕次像素黑線 */
+    border: none !important;
+    border-bottom: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    
     z-index: 1000;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+
+    /* 平滑過渡動畫 */
+    transition: background-color 0.35s ease, 
+                backdrop-filter 0.35s ease, 
+                -webkit-backdrop-filter 0.35s ease, 
+                box-shadow 0.35s ease !important;
 }
 
+/* 往下滑動超過 30px 後：才浮現白色半透明與極淡的柔和分割線 */
+.site-header.scrolled {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* 容器寬度鎖定 (Morcept 大寬版 1620px) */
 .nav-container {
-    max-width: 1380px !important;
+    max-width: 1620px !important;
     width: 100% !important;
     height: 100% !important;
     margin: 0 auto !important;
-    padding: 0 40px !important;
+    padding: 0 48px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     box-sizing: border-box !important;
 }
 
+/* 品牌 LOGO 容器 */
 .nav-brand {
+    position: relative;
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--primary);
+    height: 100%;
+    flex-shrink: 0;
 }
 
+/* 兩張圖片完全重疊，保持相同尺寸與放大倍率 */
 .nav-logo-img {
-    height: 46px !important;
+    height: 56px !important;
     width: auto !important;
+    max-width: none !important;
+    aspect-ratio: auto;
     object-fit: contain;
     display: block;
+    transform: scale(1.18);
+    transform-origin: left center;
+    transition: opacity 0.35s ease;
 }
 
+/* 頂部狀態：白字顯示，黑字隱藏 */
+.nav-logo-img.logo-white {
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-logo-img.logo-black {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) scale(1.18);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 往下滑動產生白底時 (.scrolled)：白字漸隱，黑字浮現 */
+.site-header.scrolled .nav-logo-img.logo-white {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.site-header.scrolled .nav-logo-img.logo-black {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 選單項文字：頂部固定純白 */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -100,7 +163,7 @@ body {
 .nav-list {
     display: flex !important;
     align-items: center !important;
-    gap: 34px !important;
+    gap: 38px !important;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -111,9 +174,9 @@ body {
 }
 
 .nav-link {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--primary);
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: #FFFFFF !important; /* 預設純白 */
     text-decoration: none;
     letter-spacing: 0.5px;
     padding: 8px 0;
@@ -121,34 +184,64 @@ body {
     align-items: center;
     gap: 4px;
     white-space: nowrap;
-    transition: color 0.25s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* 輕微微影防止淺景吃字 */
+    transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
-.nav-link.active,
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
+    color: #FFA366 !important;
+}
+
+/* 往下滑動產生白底後，選單文字自然轉回深黑 */
+.site-header.scrolled .nav-link {
+    color: #111111 !important;
+    text-shadow: none !important;
+}
+
+.site-header.scrolled .nav-link:hover,
+.site-header.scrolled .nav-link.active {
     color: var(--accent) !important;
-    font-weight: 700;
 }
 
-/* 5 大路線下拉選單 */
-.dropdown-chevron {
-    transition: transform 0.25s ease;
+/* Iconstack 圖標與下拉箭頭 */
+.nav-icon-svg {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
 }
 
-.nav-has-dropdown:hover .dropdown-chevron {
+.nav-chevron-icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    stroke: #FFFFFF;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+    transition: transform 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+}
+
+.nav-has-dropdown:hover .nav-chevron-icon {
     transform: rotate(180deg);
 }
 
+.site-header.scrolled .nav-chevron-icon {
+    stroke: #333333;
+    filter: none;
+}
+
+/* 下拉選單本體維持純白底深色字 */
 .nav-dropdown-menu {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(14px);
     width: 320px;
-    background: #FFFFFF;
+    background: #FFFFFF !important;
     border: 1px solid rgba(23, 23, 23, 0.08);
     border-radius: 12px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
     list-style: none;
     padding: 10px;
     margin: 0;
@@ -194,125 +287,186 @@ body {
 .dropdown-link strong {
     display: block;
     font-size: 0.9rem;
-    color: var(--dark-bg);
+    color: #111111 !important;
     margin-bottom: 2px;
 }
 
 .dropdown-link small {
     display: block;
     font-size: 0.75rem;
-    color: var(--gray-text);
+    color: #666666 !important;
     line-height: 1.3;
 }
 
-/* 右側功能按鈕組 */
+/* 右側功能操作區 */
 .nav-actions {
     display: flex !important;
     align-items: center !important;
     gap: 18px !important;
+    flex-shrink: 0;
 }
 
 .nav-action-btn {
     background: transparent;
     border: none;
-    color: var(--primary);
+    color: #FFFFFF !important;
     cursor: pointer;
-    padding: 8px;
+    padding: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: color 0.2s ease, transform 0.2s ease;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+    transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease;
 }
 
 .nav-action-btn:hover {
-    color: var(--accent);
+    color: #FFA366 !important;
     transform: scale(1.08);
 }
 
+.site-header.scrolled .nav-action-btn {
+    color: #111111 !important;
+    filter: none;
+}
+
+/* 語言切換按鈕 */
 .lang-dropdown-wrapper {
     position: relative;
+    display: inline-block;
 }
 
 .nav-lang-btn {
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 6px !important;
-    padding: 5px 12px !important;
-    border-radius: 20px !important;
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
-    color: var(--primary);
-    border: 1px solid rgba(23, 23, 23, 0.15);
-    background: transparent;
+    padding: 7px 12px !important;
+    border-radius: 999px !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
     cursor: pointer;
     white-space: nowrap;
+    min-width: 88px !important;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+    transition: all 0.2s ease;
 }
 
 .nav-lang-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFA366 !important;
 }
 
-.lang-menu {
+.nav-globe-icon,
+.nav-caret-icon {
+    stroke: currentColor;
+}
+
+.lang-dropdown-wrapper.open .nav-caret-icon {
+    transform: rotate(180deg);
+}
+
+.site-header.scrolled .nav-lang-btn {
+    color: #111111 !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    filter: none;
+}
+
+.site-header.scrolled .nav-lang-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: var(--accent) !important;
+}
+
+/* 語言下拉選單面板 */
+.lang-dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     right: 0;
-    margin-top: 8px;
-    width: 120px;
-    background: #FFFFFF;
-    border: 1px solid rgba(23, 23, 23, 0.08);
+    background: #FFFFFF !important;
+    border: 1px solid #ECE7DE;
     border-radius: 8px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
     list-style: none;
     padding: 6px 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(6px);
-    transition: all 0.25s ease;
+    margin: 0;
+    min-width: 128px;
+    display: none;
+    z-index: 1050;
 }
 
-.lang-dropdown-wrapper.active .lang-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.lang-menu li a {
+.lang-dropdown-wrapper.open .lang-dropdown-menu {
     display: block;
-    padding: 8px 16px;
-    font-size: 0.85rem;
-    color: var(--primary);
-    text-decoration: none;
+    animation: langFadeIn 0.2s ease forwards;
 }
 
-.lang-menu li a:hover,
-.lang-menu li a.active {
-    background: rgba(217, 99, 40, 0.08);
-    color: var(--accent);
+@keyframes langFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-option {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 8px 18px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #4A4641 !important;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    display: block;
+}
+
+.lang-option:hover {
+    background-color: #F8F5EE;
+    color: var(--accent) !important;
+}
+
+.lang-option.active {
+    color: var(--accent) !important;
     font-weight: 700;
+    background-color: #FDF1EA;
 }
 
+/* 右側 CTA 開始規劃按鈕 */
 .nav-btn-cta {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 6px !important;
     background: var(--accent) !important;
     color: #FFFFFF !important;
     text-decoration: none !important;
-    font-size: 0.88rem !important;
+    font-size: 0.9rem !important;
     font-weight: 700 !important;
-    padding: 9px 20px !important;
+    padding: 9px 22px !important;
     border-radius: var(--radius-pill) !important;
     letter-spacing: 0.5px;
     white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(217, 99, 40, 0.2);
+    box-shadow: 0 4px 14px rgba(217, 99, 40, 0.35);
     transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .nav-btn-cta:hover {
     background: var(--accent-hover) !important;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+}
+
+.nav-cta-arrow {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.2;
+    transition: transform 0.2s ease;
+}
+
+.nav-btn-cta:hover .nav-cta-arrow {
+    transform: translateX(3px);
 }
 
 .hamburger-toggle {
@@ -326,7 +480,7 @@ body {
     justify-content: center;
 }
 
-/* 3. 全螢幕搜尋浮層 (Search Overlay) */
+/* ==================== 4. 全螢幕搜尋浮層 (Search Overlay) ==================== */
 .search-overlay {
     position: fixed;
     inset: 0;
@@ -418,7 +572,7 @@ body {
     border-radius: var(--radius-pill);
 }
 
-/* 4. 手機版抽屜導覽列 (Sidebar Drawer) */
+/* ==================== 5. 手機版抽屜導覽列 (Sidebar Drawer) ==================== */
 .sidebar-nav {
     position: fixed;
     top: 0; 
@@ -452,7 +606,7 @@ body {
     font-weight: 500;
     color: var(--primary); 
     text-decoration: none;
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
 }
 
 .sidebar-tabs .tab-item:hover a,
@@ -475,91 +629,132 @@ body {
 
 .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
 
-/* 5. 全站統一深色雜誌風格頁尾 (Global Dark Footer) */
+/* ====================================================================
+   全站統一高級頁尾規範 (深邃炭黑 ✕ 雜誌感層次排版)
+   ==================================================================== */
 .site-global-footer {
-    background-color: #0E0E0E;
-    color: #A39E97;
     width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #121211; /* 溫潤的炭灰深黑，比純黑更耐看 */
+    color: #FFFFFF;
+    position: relative;
+    z-index: 30;
     box-sizing: border-box;
-    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-main-grid {
+.footer-container {
     max-width: 1380px;
     width: 100%;
     margin: 0 auto;
-    padding: 70px 40px 50px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 36px;
+    padding: 85px 40px 40px 40px;
     box-sizing: border-box;
 }
 
-.footer-v-divider {
-    width: 1px;
-    height: 220px;
-    background: rgba(255, 255, 255, 0.08);
-    flex-shrink: 0;
+.footer-main-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 2.4fr 1.35fr;
+    gap: 70px;
+    align-items: flex-start;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* 1. 左側品牌 */
 .footer-brand-col {
-    flex: 1.1;
-    max-width: 320px;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-brand-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     text-decoration: none;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
+}
+
+.footer-brand-badge {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-brand-text-group {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-brand-title {
-    font-family: var(--serif);
-    font-size: 1.35rem;
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.25rem;
     font-weight: 800;
+    letter-spacing: 1px;
     color: #FFFFFF;
-    letter-spacing: 1.5px;
 }
 
 .footer-brand-slogan {
     font-size: 0.72rem;
-    color: #7E7971;
-    letter-spacing: 2px;
-    margin-top: 3px;
+    color: #8C867C;
+    letter-spacing: 1px;
+    margin-top: 2px;
 }
 
 .footer-brand-desc {
     font-size: 0.85rem;
+    color: #9C968C;
     line-height: 1.9;
-    color: #8C867C;
-    margin-bottom: 24px;
+    margin: 0 0 24px 0;
+    max-width: 320px;
 }
 
-.footer-nav-columns {
+.footer-brand-stamp {
     display: flex;
-    justify-content: space-between;
-    flex: 2.6;
-    gap: 24px;
+    flex-direction: column;
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #555048;
+    line-height: 1.5;
+}
+
+/* 2. 中間三欄 */
+.footer-nav-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.col-header-wrap {
+    margin-bottom: 22px;
+    position: relative;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.col-en-tag {
+    display: block;
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #D96328; /* 六腳主題橘 */
+    margin-bottom: 4px;
 }
 
 .nav-col-title,
 .subscribe-col-title {
-    font-family: var(--serif);
-    font-size: 0.98rem;
-    font-weight: 700;
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.05rem;
+    font-weight: 800;
     color: #FFFFFF;
-    margin-bottom: 10px;
-}
-
-.title-underline {
-    width: 22px;
-    height: 1.5px;
-    background: #4A463F;
-    margin-bottom: 16px;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
 .nav-link-list {
@@ -568,108 +763,170 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
-.nav-link-list li a {
-    color: #8C867C;
+.nav-link-list a {
     text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s ease;
+    font-size: 0.86rem;
+    color: #A6A096;
+    transition: all 0.25s ease;
+    display: inline-block;
 }
 
-.nav-link-list li a:hover {
+.nav-link-list a:hover {
     color: #FFFFFF;
+    transform: translateX(4px);
 }
 
-.footer-subscribe-col {
-    flex: 1.3;
-    max-width: 380px;
+.nav-link-list a.highlight-link {
+    color: #E2B18E;
+    font-weight: 700;
 }
 
+.nav-link-list a.highlight-link:hover {
+    color: #D96328;
+}
+
+/* 3. 右側訂閱與社群 */
 .subscribe-desc {
-    font-size: 0.85rem;
-    line-height: 1.75;
-    color: #8C867C;
-    margin-bottom: 18px;
+    font-size: 0.84rem;
+    color: #9C968C;
+    line-height: 1.8;
+    margin: 0 0 18px 0;
 }
 
-.subscribe-input-pill {
+.footer-subscribe-box {
     display: flex;
     align-items: center;
-    background: #171615;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: var(--radius-pill);
+    border-radius: 999px;
     padding: 4px 5px 4px 18px;
+    transition: border-color 0.25s ease, background 0.25s ease;
     margin-bottom: 22px;
 }
 
-.subscribe-input-pill input {
-    flex: 1;
+.footer-subscribe-box:focus-within {
+    border-color: #D96328;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-subscribe-box input {
     background: transparent;
     border: none;
     outline: none;
     color: #FFFFFF;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
+    flex: 1;
 }
 
-.btn-subscribe-arrow {
-    width: 34px;
-    height: 34px;
+.footer-subscribe-box input::placeholder {
+    color: #6C665E;
+}
+
+.btn-sub-send {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background-color: var(--accent);
-    color: #FFFFFF;
     border: none;
+    background: #D96328;
+    color: #FFFFFF;
+    font-size: 0.95rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.footer-social-stack {
+.btn-sub-send:hover {
+    background: #B84E1B;
+    transform: scale(1.08);
+}
+
+.footer-social-row {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 
-.social-icon-btn {
-    color: #8C867C;
+.social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
+    color: #A6A096;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-decoration: none;
+    transition: all 0.25s ease;
 }
 
-.social-icon-btn:hover { color: #FFFFFF; }
+.social-btn:hover {
+    background: #FFFFFF;
+    color: #111111;
+    transform: translateY(-2px);
+}
 
+/* 4. 最底部版權列 */
 .footer-legal-bar {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 24px 0;
-}
-
-.footer-legal-inner {
-    max-width: 1380px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 30px;
     font-size: 0.78rem;
-    color: #635E56;
-    box-sizing: border-box;
+    color: #666057;
 }
 
 .legal-links {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 14px;
 }
 
-.legal-links a { color: #635E56; text-decoration: none; }
+.legal-links a {
+    color: #7A746B;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
 
-/* 6. RWD 響應式斷點 */
-@media (max-width: 1024px) {
+.legal-links a:hover {
+    color: #D96328;
+}
+
+.legal-links .dot {
+    color: #44403A;
+}
+
+/* 5. 響應式適配 */
+@media (max-width: 1100px) {
+    .footer-main-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .footer-brand-desc {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-nav-columns {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .footer-legal-bar {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+    }
+}
+
+/* ==================== 7. RWD 響應式斷點 ==================== */
+@media (max-width: 1150px) {
     .nav-menu, .nav-btn-cta { display: none !important; }
     .hamburger-toggle { display: flex !important; }
     .footer-main-grid { flex-direction: column; gap: 45px; }

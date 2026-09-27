@@ -1,6 +1,12 @@
 /* ====================================================================
-   最新消息專屬樣式表 (news.css) - 一比一精準還原設計稿
+   最新消息專屬樣式表 (news.css) - 首屏 100vh 封面 ✕ 焦點大卡 ✕ 消息清單
    ==================================================================== */
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
 
 body.news-page-body {
     background-color: #F8F7F4;
@@ -8,156 +14,202 @@ body.news-page-body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* 主容器寬度嚴格鎖定全站 1380px 標準 */
-.news-main-stage {
-    margin-top: 76px !important;
-    max-width: 1380px !important;
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 36px 40px 60px 40px !important;
-    box-sizing: border-box !important;
-}
-
-/* ---------------- 1. 頂部編輯室排版 (Hero Editorial) ---------------- */
-.news-hero-editorial {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 48px;
-    align-items: center;
-    margin-bottom: 32px;
+/* ==================== 1. 首屏 100vh 滿版封面 ==================== */
+.news-hero-full-banner {
     position: relative;
-}
-
-.news-hero-left {
-    position: relative;
-    max-width: 520px;
-}
-
-.news-eyebrow {
-    display: block;
-    font-family: var(--display, 'Poppins', sans-serif);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 4px;
-    color: #8C867C;
-    margin-bottom: 8px;
-}
-
-.news-main-title {
-    font-family: var(--serif, 'Noto Serif TC', serif);
-    font-size: clamp(3rem, 4.2vw, 4.4rem);
-    font-weight: 900;
-    letter-spacing: 2px;
-    line-height: 1.05;
-    color: #111111;
-    margin: 0 0 16px 0;
-}
-
-.news-slogan {
-    font-family: 'Playfair Display', var(--serif, serif);
-    font-style: italic;
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: #2E2E2E;
-    line-height: 1.5;
-    margin: 0 0 16px 0;
-    letter-spacing: 0.5px;
-}
-
-.news-desc {
-    font-size: 0.88rem;
-    color: #6E6961;
-    line-height: 1.95;
-    margin: 0;
-}
-
-/* 圓形浮水印圖章 (SAME LAND, NEW STORIES.) */
-.news-circle-stamp {
-    position: absolute;
-    right: 0;
-    bottom: -10px;
-    width: 82px;
-    height: 82px;
-    border: 1px dashed #C8C0B2;
-    border-radius: 50%;
+    width: 100vw;
+    margin: 0 !important;
+    padding-top: 76px;    /* 留出固定導覽列高度 */
+    height: 100vh;        /* 精準 100vh 第一屏 */
+    min-height: 600px;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    pointer-events: none;
+    box-sizing: border-box;
 }
 
-.news-circle-stamp span {
-    font-family: var(--display, sans-serif);
-    font-size: 0.55rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    line-height: 1.3;
-    color: #A39D93;
-}
-
-/* 右側照片與屋簷手繪 */
-.news-hero-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
-    position: relative;
-}
-
-.news-hero-photo-wrapper {
-    position: relative;
-    width: 380px;
-    height: 250px;
-}
-
-.photo-curved-backdrop {
+.news-hero-full-banner .hero-bg-layer {
     position: absolute;
-    inset: -8px -8px 8px 8px;
-    background: #E8E3D8;
-    border-radius: 20% 80% 80% 20% / 20% 20% 80% 80%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    opacity: 0.5;
 }
 
-.news-hero-photo {
-    position: relative;
+.news-hero-full-banner .hero-bg-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
-    z-index: 2;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    object-position: center right;
+    display: block;
 }
 
-.news-hero-decor-group {
+/* 典雅淡米灰漸層（保證左側文字高對比可讀性，右側透出日常風景） */
+.news-hero-full-banner .hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(248, 247, 244, 0.96) 0%,
+        rgba(248, 247, 244, 0.86) 36%,
+        rgba(248, 247, 244, 0.35) 58%,
+        transparent 78%
+    );
+    z-index: 2;
+}
+
+.news-hero-full-banner .hero-content-inner {
+    position: relative;
+    z-index: 5;
+    max-width: 1380px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* 左側邊緣細小英文字標 */
+.news-hero-full-banner .hero-vertical-meta {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #9C9589;
+    line-height: 1.4;
+}
+
+/* 標題主區塊 */
+.news-hero-full-banner .hero-heading-block {
+    margin-left: 100px;
+    max-width: 650px;
+}
+
+.news-hero-full-banner .hero-eyebrow {
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: #555047;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.news-hero-full-banner .hero-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(3.6rem, 5.5vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 1.05;
+    color: #111111;
+    margin: 0 0 18px 0;
+}
+
+.news-hero-full-banner .hero-sub-slogan {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(1.1rem, 1.45vw, 1.35rem);
+    font-weight: 600;
+    color: #33302B;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* 右下側文青風手寫浮動字 */
+.news-hero-full-banner .hero-script-floating {
+    position: absolute;
+    right: 6%;
+    bottom: 25%;
+    font-family: 'Playfair Display', Georgia, cursive, serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    line-height: 1.45;
+    text-align: right;
+    pointer-events: none;
+}
+
+/* 底部滑動指示器 */
+.news-hero-full-banner .hero-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-}
-
-.news-roof-sketch {
-    width: 70px;
-    height: 45px;
+    text-decoration: none;
+    color: #2E2A24;
     opacity: 0.85;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.news-handwrite-vertical {
-    writing-mode: vertical-rl;
-    font-family: 'Playfair Display', Georgia, cursive, serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #4A463F;
-    letter-spacing: 4px;
-    line-height: 1.4;
-    transform: rotate(2deg);
+.news-hero-full-banner .hero-scroll-indicator:hover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
 }
 
-/* ---------------- 2. 分類篩選膠囊列 ---------------- */
+.news-hero-full-banner .scroll-prompt-text {
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.news-hero-full-banner .scroll-mouse-icon {
+    width: 22px;
+    height: 34px;
+    border: 2px solid #2E2A24;
+    border-radius: 12px;
+    position: relative;
+}
+
+.news-hero-full-banner .scroll-wheel-dot {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 3px;
+    height: 6px;
+    background-color: #D96328;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: scrollDotAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollDotAnim {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 14px); opacity: 0; }
+}
+
+/* ==================== 2. 第二屏：最新消息主舞台 ==================== */
+.news-main-stage {
+    margin-top: 0 !important; /* 緊接在 Hero 封面下方 */
+    max-width: 1380px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 50px 40px 60px 40px !important;
+    box-sizing: border-box !important;
+    scroll-margin-top: 76px;
+}
+
+/* ---------------- 分類篩選膠囊列 ---------------- */
 .news-filter-bar {
     display: flex;
     gap: 12px;
@@ -186,7 +238,7 @@ body.news-page-body {
     color: #111111;
 }
 
-/* ---------------- 3. 主打置頂大卡 (Featured News Card) ---------------- */
+/* ---------------- 主打置頂焦點大卡 (Featured News Card) ---------------- */
 .news-featured-card {
     background: #FFFFFF;
     border-radius: 10px;
@@ -336,7 +388,7 @@ body.news-page-body {
     transform: translateX(4px);
 }
 
-/* ---------------- 4. 消息橫列清單 (List Rows) ---------------- */
+/* ---------------- 消息橫列清單 (List Rows) ---------------- */
 .news-articles-list {
     display: flex;
     flex-direction: column;
@@ -451,7 +503,7 @@ body.news-page-body {
     transform: scale(1.06);
 }
 
-/* ---------------- 5. 底部手繪與功能收尾 ---------------- */
+/* ---------------- 底部手繪與功能收尾 ---------------- */
 .news-tail-section {
     display: grid;
     grid-template-columns: 1fr 1.2fr 1fr;
@@ -547,14 +599,8 @@ body.news-page-body {
     transform: rotate(-6deg);
 }
 
-/* ---------------- 6. RWD 響應式適配 ---------------- */
+/* ---------------- 響應式適配 ---------------- */
 @media (max-width: 992px) {
-    .news-hero-editorial {
-        grid-template-columns: 1fr;
-    }
-    .news-hero-right {
-        justify-content: flex-start;
-    }
     .news-featured-card {
         grid-template-columns: 1fr;
     }
@@ -573,9 +619,19 @@ body.news-page-body {
     }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 768px) {
+    .news-hero-full-banner {
+        height: 100vh;
+    }
+    .news-hero-full-banner .hero-heading-block {
+        margin-left: 0;
+    }
+    .news-hero-full-banner .hero-vertical-meta,
+    .news-hero-full-banner .hero-script-floating {
+        display: none;
+    }
     .news-main-stage {
-        padding: 20px 20px 50px 20px !important;
+        padding: 30px 20px 50px 20px !important;
     }
     .news-list-row {
         grid-template-columns: 1fr;

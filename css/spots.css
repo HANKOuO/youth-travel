@@ -1,15 +1,12 @@
 /* ====================================================================
-   壯遊據點專屬樣式表 (spots.css) - 無縫接合 ✕ 地圖全屏滿版
+   壯遊據點專屬樣式表 (spots.css) - 2.24:1 超寬手繪風土地圖專用
    ==================================================================== */
 
-/* 1. 全域初始化：清除任何預設外距與白邊縫隙 */
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: auto !important;
     height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 
 body.spots-map-body {
@@ -21,7 +18,6 @@ body.spots-map-body {
     height: auto !important;
     overflow-x: hidden;
     overflow-y: auto !important;
-    display: block; /* 避免 flex 產生額外的區塊縫距 */
 }
 
 .search-overlay:not(.active) {
@@ -29,19 +25,18 @@ body.spots-map-body {
     pointer-events: none !important;
 }
 
-/* ==================== 2. 首屏 100vh 滿版全景封面 ==================== */
+/* ==================== 1. 首屏 100vh 滿版封面 ==================== */
 .spots-hero-full-banner {
     position: relative;
     width: 100vw;
-    margin: 0 !important; /* 確保無外邊距縫隙 */
-    padding-top: 76px;    /* 留給頂部固定導覽列高度 */
-    height: 100vh;        /* 精準佔滿第一屏整個螢幕 */
+    margin-left: calc(-50vw + 50%);
+    margin-top: 76px;
+    height: calc(100vh - 76px);
     min-height: 600px;
     overflow: hidden;
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    border: none !important;
 }
 
 .hero-bg-layer {
@@ -205,58 +200,60 @@ body.spots-map-body {
     100% { transform: translate(-50%, 14px); opacity: 0; }
 }
 
-/* ==================== 3. 第二屏：純滿版手繪地圖 (無縫接合、填滿視窗) ==================== */
+/* ==================== 第二屏：純滿版手繪地圖 (無白邊徹底鋪滿) ==================== */
 .spots-map-viewport {
     position: relative;
-    width: 100vw;
-    height: 100vh;        /* 滿版佔滿整個畫面 */
-    min-height: 640px;
-    margin: 0 !important; /* 清除所有外距，徹底杜絕區塊間的白邊與縫隙 */
+    width: 100vw !important;
+    height: calc(100vh - 76px) !important; /* 精準扣除 76px 固定導覽列 */
+    min-height: 560px;
+    margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden;
-    background-color: #F8F5EE;
+    overflow: hidden !important;
+    background-color: #EFE9DC !important; /* 採用與地圖底色完全一致的暖米色調 */
     box-sizing: border-box;
-    border: none !important; /* 移除原本的分隔線 */
-    display: block;
+    display: block !important;
 }
 
 .map-interactive-canvas {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     position: relative;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* 核心容器：100% 佈滿視窗，不保留留白限制 */
+/* 解除原本的比例縮小限制，讓容器直接填滿整個視窗 */
 .map-artwork-container {
     position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
-/* 底圖滿版鋪滿畫面 */
+/* 底圖強制延展填滿，徹底消除上下左右任何白邊 */
 .map-base-illustration {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;    /* 徹底填滿視窗視野，不留黑邊與白縫 */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* 確保徹底鋪滿畫面視野 */
     object-position: center center;
     display: block;
     pointer-events: none;
     user-select: none;
 }
 
-/* ==================== 4. 左側 8 大分類項目：貼齊底圖橫線 ==================== */
+/* ==================== 3. 左側 8 大直式分類 (懸浮於左側空白水墨區) ==================== */
 .map-inline-filter-list {
     position: absolute;
-    top: 21.8%;          /* 起始於第一條橫線 */
-    left: 2.8%;          /* 貼合底圖左側圓點 */
-    width: 20%;          /* 覆蓋底圖橫線長度 */
-    height: 44.5%;       /* 8 條線的均勻跨距 */
+    top: 24%;
+    left: 4.5%;
+    width: 19%;
+    height: 52%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -266,23 +263,24 @@ body.spots-map-body {
 
 .inline-cat-item {
     display: flex;
-    align-items: flex-end;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
     background: transparent;
     border: none;
-    padding: 0 4px 3px 22px; /* 留空讓底圖原印小圓點自然露出 */
+    border-bottom: 1px dashed rgba(180, 170, 155, 0.4); /* 自帶手繪筆觸底線 */
+    padding: 4px 6px 4px 2px;
     cursor: pointer;
     font-family: var(--serif, 'Noto Serif TC', serif);
-    font-size: 0.88rem;
+    font-size: clamp(0.78rem, 0.92vw, 0.95rem);
     font-weight: 700;
     color: #4A463F;
-    line-height: 1;
+    line-height: 1.2;
     transition: all 0.2s ease;
     box-sizing: border-box;
 }
 
 .icat-icon {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: #8C867D;
     line-height: 1;
 }
@@ -295,14 +293,15 @@ body.spots-map-body {
 
 .icat-num {
     font-family: var(--display, sans-serif);
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 800;
     color: #9C968D;
 }
 
 .inline-cat-item:hover {
     color: #D96328;
-    transform: translateX(2px);
+    border-bottom-color: #D96328;
+    transform: translateX(4px);
 }
 
 .inline-cat-item:hover .icat-icon,
@@ -312,6 +311,7 @@ body.spots-map-body {
 
 .inline-cat-item.active {
     color: #D96328;
+    border-bottom: 1.5px solid #D96328;
     font-weight: 900;
 }
 
@@ -324,7 +324,7 @@ body.spots-map-body {
     color: #D96328;
 }
 
-/* ==================== 5. 極簡 Pin 點樣式 ==================== */
+/* ==================== 4. 極簡 Pin 點樣式 ==================== */
 .map-spot-pin {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -375,11 +375,11 @@ body.spots-map-body {
     transform: scale(1.15);
 }
 
-/* ==================== 6. 右側浮動資訊彈窗 (支援多相片切換) ==================== */
+/* ==================== 5. 右側浮動資訊彈窗 ==================== */
 .spot-popup-card-overlay {
     position: absolute;
-    top: 36px;
-    right: 48px;
+    top: 32px;
+    right: 42px;
     width: 360px;
     z-index: 50;
     pointer-events: none;
@@ -555,17 +555,15 @@ body.spots-map-body {
     transform: translateY(-2px);
 }
 
-/* ==================== 7. 全站統一標準頁尾 (與地圖緊密銜接無縫) ==================== */
+/* ==================== 6. 全站標準頁尾 ==================== */
 .site-global-footer {
     width: 100%;
     position: relative;
     z-index: 30;
     flex-shrink: 0;
-    margin-top: 0 !important; /* 清除頂部縫隙 */
-    border-top: none !important;
 }
 
-/* ==================== 8. 響應式適配 ==================== */
+/* ==================== 7. 響應式適配 ==================== */
 @media (max-width: 1024px) {
     .spot-popup-card-overlay {
         right: 20px;
@@ -579,7 +577,7 @@ body.spots-map-body {
         height: 100vh;
     }
     .map-inline-filter-list {
-        display: none; /* 手機螢幕較小，隱藏嵌入文字以保持地圖純淨 */
+        display: none;
     }
     .spot-popup-card-overlay {
         position: fixed;
