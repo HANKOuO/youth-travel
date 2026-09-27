@@ -20,15 +20,15 @@
     <div class="nav-container">
         
 <a href="index.html" class="nav-brand" aria-label="六腳青年壯遊首頁">
-    <img src="六腳LOGO_white.png" alt="六腳青年壯遊點" class="nav-logo-img logo-white">
-    <img src="六腳LOGO_dark.png" alt="六腳青年壯遊點" class="nav-logo-img logo-black">
+    <img src="assets/logo-white.png" alt="六腳青年壯遊點" class="nav-logo-img logo-white">
+    <img src="assets/logo-black.png" alt="六腳青年壯遊點" class="nav-logo-img logo-black">
 </a>
 
         <!-- 核心導覽選單 -->
         <nav class="nav-menu" id="navMenu">
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="about.html" class="nav-link" data-i18n="nav_about">關於我們</a>
+                    <a href="about.html" class="nav-link active" data-i18n="nav_about">關於我們</a>
                 </li>
                 <li class="nav-item">
                     <a href="spots.html" class="nav-link" data-i18n="nav_spots">壯遊據點</a>
@@ -42,11 +42,42 @@
                         </svg>
                     </a>
                     <ul class="nav-dropdown-menu">
-                        <li><a href="itinerary-detail.html" class="dropdown-link"><span class="route-badge">1 DAY</span><div><strong data-i18n="route_1day">一日遊規劃</strong><small data-i18n="route_1day_sub">工藝、老街、科技等 A~F 方案</small></div></a></li>
-                        <li><a href="twoday-detail.html" class="dropdown-link"><span class="route-badge">2 DAYS</span><div><strong data-i18n="route_2day">兩日遊規劃</strong><small data-i18n="route_2day_sub">工廠村寄宿與雙城深度慢活</small></div></a></li>
-                        <li><a href="itinerary.html#creative" class="dropdown-link"><span class="route-badge">CRAFT</span><div><strong data-i18n="route_craft">文創產業線</strong><small data-i18n="route_craft_sub">日式官舍、刺繡館與木藍染</small></div></a></li>
-                        <li><a href="outdoor-detail.html" class="dropdown-link"><span class="route-badge">EDU</span><div><strong data-i18n="route_edu">戶外教育專案</strong><small data-i18n="route_edu_sub">嘉禮有糖高中職 A~D 走讀</small></div></a></li>
-                        <li><a href="itinerary.html#global" class="dropdown-link"><span class="route-badge">GLOBAL</span><div><strong data-i18n="route_global">國際壯遊引力</strong><small data-i18n="route_global_sub">跨國青年炒糖與雙偶文化體驗</small></div></a></li>
+                        <li>
+                            <a href="itinerary-detail.html" class="dropdown-link">
+                                <span class="route-badge">1 DAY</span>
+                                <div>
+                                    <strong data-i18n="route_1day">一日遊規劃</strong>
+                                    <small data-i18n="route_1day_sub">工藝、老街、科技等 A~F 方案</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="twoday-detail.html" class="dropdown-link">
+                                <span class="route-badge">2 DAYS</span>
+                                <div>
+                                    <strong data-i18n="route_2day">兩日遊規劃</strong>
+                                    <small data-i18n="route_2day_sub">工廠村寄宿與雙城深度慢活</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="outdoor-detail.html" class="dropdown-link">
+                                <span class="route-badge">EDU</span>
+                                <div>
+                                    <strong data-i18n="route_edu">戶外教育專案</strong>
+                                    <small data-i18n="route_edu_sub">嘉禮有糖：高中職探究與青銀共創</small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="global-detail.html" class="dropdown-link">
+                                <span class="route-badge">GLOBAL</span>
+                                <div>
+                                    <strong data-i18n="route_global">國際壯遊引力</strong>
+                                    <small data-i18n="route_global_sub">來嘉，有藝思：外語學伴與雙偶文化</small>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -158,13 +189,6 @@
     </div>
 
     <div class="hero-content-inner">
-        <!-- 左側直書浮水印標籤 -->
-        <div class="hero-vertical-meta">
-            <span>PEOPLE</span>
-            <span>PLACES</span>
-            <span>CULTURE</span>
-            <span>STORIES</span>
-        </div>
 
         <div class="hero-heading-block">
             <span class="hero-eyebrow">ABOUT</span>
@@ -172,10 +196,6 @@
             <p class="hero-sub-slogan">從地方出發，和青年一起走進六腳與朴子。</p>
         </div>
 
-        <!-- 右側屋簷處手寫金句 -->
-        <div class="hero-script-floating">
-            在這片土地上，<br>藏著許多值得相遇的故事。
-        </div>
     </div>
 
     <!-- 底部滑動指示器 -->
@@ -332,8 +352,8 @@
         </div>
     </section>
 
-    <!-- 04 PEOPLE 青銀共創 -->
-    <section class="about-section-block section-people-silver">
+<!-- 04 PEOPLE 青銀共創 (滿版全幅黑底區塊) -->
+    <section class="section-people-silver">
         <div class="silver-inner-wrap">
             <div class="silver-left-col">
                 <div class="section-tag-row tag-row-dark">
@@ -362,87 +382,117 @@
         </div>
     </section>
 
-    <!-- 05 OUR TOPICS 地方的故事，不只一種樣子 -->
-    <section class="about-section-block section-our-topics">
-        <div class="topics-header-wrap">
-            <div class="section-tag-row">
-                <span class="tag-num">05</span>
-                <span class="tag-en">OUR TOPICS</span>
-            </div>
-            <h2 class="section-main-heading">地方的故事，不只一種樣子。</h2>
+<!-- 05 OUR TOPICS 地方的故事，不只一種樣子 -->
+<section class="about-section-block section-our-topics">
+    <div class="topics-header-wrap">
+        <div class="section-tag-row">
+            <span class="tag-num">05</span>
+            <span class="tag-en">OUR TOPICS</span>
         </div>
+        <h2 class="section-main-heading">地方的故事，不只一種樣子。</h2>
+    </div>
 
-        <!-- 6 欄水平卡牌網格 -->
-        <div class="topics-cards-grid">
-            
-            <!-- 卡片 1 -->
-            <div class="topic-grid-card">
-                <div class="topic-thumb">
+    <!-- 2x3 手撕拼貼方格網格 -->
+    <div class="topics-scrapbook-grid">
+        
+        <!-- 卡片 01 -->
+        <article class="scrapbook-card card-theme-amber">
+            <div class="card-left-content">
+                <span class="card-num-lead">01</span>
+                <h3 class="card-main-title">糖業工業遺產</h3>
+                <p class="card-desc-text">百年糖廠，見證地方的產業生活記憶。</p>
+                <span class="card-view-link">VIEW <span>→</span></span>
+            </div>
+            <div class="card-right-visual">
+                <div class="color-torn-patch"></div>
+                <div class="photo-torn-mask">
                     <img src="assets/水道頭文創聚落.jpg" alt="糖業工業遺產">
                 </div>
-                <div class="topic-body">
-                    <h3 class="topic-title">糖業工業遺產</h3>
-                    <p class="topic-desc">百年糖廠，見證地方的產業生活記憶。</p>
-                </div>
             </div>
+        </article>
 
-            <!-- 卡片 2 -->
-            <div class="topic-grid-card">
-                <div class="topic-thumb">
+        <!-- 卡片 02 -->
+        <article class="scrapbook-card card-theme-indigo">
+            <div class="card-left-content">
+                <span class="card-num-lead">02</span>
+                <h3 class="card-main-title">偶戲與工藝文化</h3>
+                <p class="card-desc-text">從懸絲偶到布袋戲，看見職人的手藝與傳承。</p>
+                <span class="card-view-link">VIEW <span>→</span></span>
+            </div>
+            <div class="card-right-visual">
+                <div class="color-torn-patch"></div>
+                <div class="photo-torn-mask">
                     <img src="assets/笑咪咪懸絲偶劇團.jpg" alt="偶戲與工藝文化">
                 </div>
-                <div class="topic-body">
-                    <h3 class="topic-title">偶戲與工藝文化</h3>
-                    <p class="topic-desc">從懸絲偶到布袋戲，看見職人的手藝與傳承。</p>
-                </div>
             </div>
+        </article>
 
-            <!-- 卡片 3 -->
-            <div class="topic-grid-card">
-                <div class="topic-thumb">
+        <!-- 卡片 03 -->
+        <article class="scrapbook-card card-theme-mustard">
+            <div class="card-left-content">
+                <span class="card-num-lead">03</span>
+                <h3 class="card-main-title">老街與建築景觀</h3>
+                <p class="card-desc-text">走進朴子老街與傳統市場，感受地方生活的溫度。</p>
+                <span class="card-view-link">VIEW <span>→</span></span>
+            </div>
+            <div class="card-right-visual">
+                <div class="color-torn-patch"></div>
+                <div class="photo-torn-mask">
                     <img src="assets/水道頭文創聚落.jpg" alt="老街與建築景觀">
                 </div>
-                <div class="topic-body">
-                    <h3 class="topic-title">老街與建築景觀</h3>
-                    <p class="topic-desc">走進朴子老街與傳統市場，感受地方生活的溫度。</p>
-                </div>
             </div>
+        </article>
 
-            <!-- 卡片 4 -->
-            <div class="topic-grid-card">
-                <div class="topic-thumb">
+        <!-- 卡片 04 -->
+        <article class="scrapbook-card card-theme-sage">
+            <div class="card-left-content">
+                <span class="card-num-lead">04</span>
+                <h3 class="card-main-title">公衛歷史與常民工藝</h3>
+                <p class="card-desc-text">從水道頭到刺繡文化，探索生活裡的歷史與技術。</p>
+                <span class="card-view-link">VIEW <span>→</span></span>
+            </div>
+            <div class="card-right-visual">
+                <div class="color-torn-patch"></div>
+                <div class="photo-torn-mask">
                     <img src="assets/藍染體驗.jpg" alt="公衛歷史與常民工藝">
                 </div>
-                <div class="topic-body">
-                    <h3 class="topic-title">公衛歷史與常民工藝</h3>
-                    <p class="topic-desc">從水道頭到刺繡文化，探索生活裡的歷史與技術。</p>
-                </div>
             </div>
+        </article>
 
-            <!-- 卡片 5 -->
-            <div class="topic-grid-card">
-                <div class="topic-thumb">
+        <!-- 卡片 05 -->
+        <article class="scrapbook-card card-theme-terracotta">
+            <div class="card-left-content">
+                <span class="card-num-lead">05</span>
+                <h3 class="card-main-title">影視文化 IP 巡禮</h3>
+                <p class="card-desc-text">走進戲劇拍攝場景，看見地方如何重現為故事。</p>
+                <span class="card-view-link">VIEW <span>→</span></span>
+            </div>
+            <div class="card-right-visual">
+                <div class="color-torn-patch"></div>
+                <div class="photo-torn-mask">
                     <img src="assets/水道頭文創聚落.jpg" alt="影視文化 IP 巡禮">
                 </div>
-                <div class="topic-body">
-                    <h3 class="topic-title">影視文化 IP 巡禮</h3>
-                    <p class="topic-desc">走進戲劇拍攝場景，看見地方如何重現為故事。</p>
-                </div>
             </div>
+        </article>
 
-            <!-- 卡片 6 -->
-            <div class="topic-grid-card">
-                <div class="topic-thumb">
+        <!-- 卡片 06 -->
+        <article class="scrapbook-card card-theme-slate">
+            <div class="card-left-content">
+                <span class="card-num-lead">06</span>
+                <h3 class="card-main-title">科技與創新轉譯</h3>
+                <p class="card-desc-text">用科技打開文化的想像，讓傳統走向未來。</p>
+                <span class="card-view-link">VIEW <span>→</span></span>
+            </div>
+            <div class="card-right-visual">
+                <div class="color-torn-patch"></div>
+                <div class="photo-torn-mask">
                     <img src="assets/笑咪咪懸絲偶劇團.jpg" alt="科技與創新轉譯">
                 </div>
-                <div class="topic-body">
-                    <h3 class="topic-title">科技與創新轉譯</h3>
-                    <p class="topic-desc">用科技打開文化的想像，讓傳統走向未來。</p>
-                </div>
             </div>
+        </article>
 
-        </div>
-    </section>
+    </div>
+</section>
 
 </main>
 
@@ -471,118 +521,130 @@
     </div>
 </section>
 
-<!-- ==================== 6. 全站統一標準頁尾 ==================== -->
+<!-- ==================== 6. 全站統一高級頁尾 ==================== -->
 <footer class="site-global-footer">
-    <div class="footer-main-grid">
+    <div class="footer-container">
+        <div class="footer-main-grid">
 
-        <div class="footer-brand-col">
-            <a href="index.html" class="footer-brand-header">
-                <svg class="footer-brand-icon" width="28" height="24" viewBox="0 0 28 24" fill="none">
-                    <rect x="3" y="4" width="22" height="16" rx="3" stroke="#FFFFFF" stroke-width="1.6"/>
-                    <circle cx="2" cy="12" r="2" fill="#FFFFFF"/>
-                    <circle cx="26" cy="12" r="2" fill="#FFFFFF"/>
-                    <line x1="8" y1="9" x2="20" y2="9" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="2 2"/>
-                </svg>
-                <div class="footer-brand-text-group">
-                    <span class="footer-brand-title">嘉義 × 青年壯遊</span>
-                    <span class="footer-brand-slogan">走進土地，遇見真實的日常</span>
+            <!-- 1. 左側品牌欄 -->
+            <div class="footer-brand-col">
+                <a href="index.html" class="footer-brand-header" aria-label="六腳青年壯遊首頁">
+                    <img src="assets/logo-white.png" alt="六腳青年壯遊點" class="footer-logo-img">
+                </a>
+
+                <p class="footer-brand-desc">
+                    用青年的視角走進六腳與朴子，<br>
+                    記錄地方真實的故事，<br>
+                    也創造屬於這個世代的在地連結。
+                </p>
+
+                <div class="footer-brand-stamp">
+                    <span>SAME LAND,</span>
+                    <span>NEW VOICES.</span>
                 </div>
-            </a>
+            </div>
 
-            <p class="footer-brand-desc">
-                用青年的視角，走進六腳與朴子，記錄地方的故事，也創造屬於這個世代的連結。
-            </p>
+            <!-- 2. 中間三大導覽欄位 -->
+            <div class="footer-nav-columns">
+                
+                <!-- 欄位 1: 認識地方 -->
+                <div class="footer-nav-col">
+                    <div class="col-header-wrap">
+                        <h4 class="nav-col-title">認識地方</h4>
+                    </div>
+                    <ul class="nav-link-list">
+                        <li><a href="about.html">計畫緣起</a></li>
+                        <li><a href="about.html">核心信念</a></li>
+                        <li><a href="about.html">青銀共創</a></li>
+                        <li><a href="about.html">風土主題</a></li>
+                        <li><a href="spots.html" class="highlight-link">風土地圖導覽 ↗</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-brand-stamp-en">SAME LAND,<br>NEW VOICES.</div>
+                <!-- 欄位 2: 走讀路線 -->
+                <div class="footer-nav-col">
+                    <div class="col-header-wrap">
+                        <h4 class="nav-col-title">走讀路線</h4>
+                    </div>
+                    <ul class="nav-link-list">
+                        <li><a href="itinerary-detail.html">一日遊規劃</a></li>
+                        <li><a href="twoday-detail.html">兩日遊規劃</a></li>
+                        <li><a href="outdoor-detail.html">戶外教育專案</a></li>
+                        <li><a href="global-detail.html">國際壯遊引力</a></li>
+                    </ul>
+                </div>
+
+                <!-- 欄位 3: 故事與動態 -->
+                <div class="footer-nav-col">
+                    <div class="col-header-wrap">
+                        <h4 class="nav-col-title">故事動態</h4>
+                    </div>
+                    <ul class="nav-link-list">
+                        <li><a href="journal.html">職人故事專訪</a></li>
+                        <li><a href="news.html">全部最新消息</a></li>
+                        <li><a href="news.html">活動與小旅行報名</a></li>
+                        <li><a href="news.html">地方新聞與團隊動態</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 3. 右側訂閱與社群 -->
+            <div class="footer-subscribe-col">
+                <div class="col-header-wrap">   
+                    <h4 class="subscribe-col-title">訂閱最新消息</h4>
+                </div>
+                <p class="subscribe-desc">一起關注六腳與朴子的日常，<br>接收最新活動與地方深度故事。</p>
+
+                <form class="footer-subscribe-box" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
+                    <input type="email" placeholder="輸入你的電子郵件" required autocomplete="email">
+                    <button type="submit" class="btn-sub-send" aria-label="確認訂閱">➔</button>
+                </form>
+
+<div class="footer-social-row">
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/ncyu_tcrc_/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+        </svg>
+    </a>
+
+    <!-- LINE (通訊對話氣泡) -->
+    <a href="https://line.me/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LINE">
+        <svg class="social-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+    </a>
+</div>
+            </div>
+
         </div>
 
-        <div class="footer-v-divider"></div>
-
-        <div class="footer-nav-columns">
-            <div class="footer-nav-col">
-                <h4 class="nav-col-title">關於我們</h4>
-                <div class="title-underline"></div>
-                <ul class="nav-link-list">
-                    <li><a href="about.html">計畫介紹</a></li>
-                    <li><a href="about.html">團隊成員</a></li>
-                    <li><a href="about.html">合作夥伴</a></li>
-                    <li><a href="contact.html">聯絡我們</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-nav-col">
-                <h4 class="nav-col-title">壯遊據點</h4>
-                <div class="title-underline"></div>
-                <ul class="nav-link-list">
-                    <li><a href="spots.html?town=六腳">六腳</a></li>
-                    <li><a href="spots.html?town=朴子">朴子</a></li>
-                    <li><a href="spots.html">周邊景點</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-nav-col">
-                <h4 class="nav-col-title">走讀路線</h4>
-                <div class="title-underline"></div>
-                <ul class="nav-link-list">
-                    <li><a href="itinerary-detail.html">一日遊規劃</a></li>
-                    <li><a href="twoday-detail.html">兩日遊規劃</a></li>
-                    <li><a href="creative-detail.html">文創產業線</a></li>
-                    <li><a href="outdoor-detail.html">戶外教育專案</a></li>
-                    <li><a href="global-detail.html">國際壯遊引力</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-nav-col">
-                <h4 class="nav-col-title">職人故事</h4>
-                <div class="title-underline"></div>
-                <ul class="nav-link-list">
-                    <li><a href="journal.html">職人列表</a></li>
-                    <li><a href="journal.html">訪談記錄</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-nav-col">
-                <h4 class="nav-col-title">最新消息</h4>
-                <div class="title-underline"></div>
-                <ul class="nav-link-list">
-                    <li><a href="news.html">全部消息</a></li>
-                    <li><a href="news.html">活動資訊</a></li>
-                    <li><a href="news.html">地方新聞</a></li>
-                    <li><a href="news.html">團隊動態</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-v-divider"></div>
-
-        <div class="footer-subscribe-col">
-            <h4 class="subscribe-col-title">訂閱最新消息</h4>
-            <div class="title-underline"></div>
-            <p class="subscribe-desc">一起關注六腳與朴子的日常，接收最新動態與活動資訊。</p>
-
-            <form class="subscribe-input-pill" onsubmit="event.preventDefault(); alert('感謝您的訂閱！');">
-                <input type="email" placeholder="輸入你的電子郵件" required autocomplete="email">
-                <button type="submit" class="btn-subscribe-arrow" aria-label="確認訂閱">➔</button>
-            </form>
-
-            <div class="footer-social-stack">
-                <a href="https://www.instagram.com/ncyu_tcrc_/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">IG</a>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">FB</a>
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">YT</a>
-                <a href="https://line.me/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LINE">LINE</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="footer-legal-bar">
-        <div class="footer-legal-inner">
+        <!-- 4. 底部版權與法律條款 -->
+        <div class="footer-legal-bar">
             <p class="copyright-text">© 2026 嘉義 × 青年壯遊 All rights reserved.</p>
             <div class="legal-links">
                 <a href="#">隱私權政策</a>
-                <span class="v-line">｜</span>
+                <span class="dot">·</span>
                 <a href="#">服務條款</a>
-                <span class="v-line">｜</span>
+                <span class="dot">·</span>
                 <a href="#">網站地圖</a>
             </div>
         </div>
