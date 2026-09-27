@@ -15,110 +15,88 @@
 </head>
 <body class="routes-page-body">
 
-<!-- ==================== 1. 全域標準頂部導覽列 ==================== -->
+<!-- ==================== 全域標準頂部導覽列 (Iconstack 圖標整合版) ==================== -->
 <header class="site-header" id="siteHeader">
     <div class="nav-container">
         
-        <a href="index.html" class="nav-brand">
-            <img src="六腳LOGO.png" alt="嘉義六腳青年壯遊 LOGO" class="nav-logo-img">
-        </a>
+<a href="index.html" class="nav-brand" aria-label="六腳青年壯遊首頁">
+    <img src="六腳LOGO_white.png" alt="六腳青年壯遊點" class="nav-logo-img logo-white">
+    <img src="六腳LOGO_dark.png" alt="六腳青年壯遊點" class="nav-logo-img logo-black">
+</a>
 
-        <!-- 電腦版核心導覽選單 -->
+        <!-- 核心導覽選單 -->
         <nav class="nav-menu" id="navMenu">
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="about.html" class="nav-link">關於我們</a>
+                    <a href="about.html" class="nav-link" data-i18n="nav_about">關於我們</a>
                 </li>
                 <li class="nav-item">
-                    <a href="spots.html" class="nav-link">壯遊點位</a>
+                    <a href="spots.html" class="nav-link" data-i18n="nav_spots">壯遊據點</a>
                 </li>
-
-                <!-- 5 大路線下拉選單 (當前頁面 Active) -->
                 <li class="nav-item nav-has-dropdown">
-                    <a href="itinerary.html" class="nav-link active nav-dropdown-trigger">
-                        走讀路線
-                        <svg class="dropdown-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m6 9 6 6 6-6"/>
+                    <a href="itinerary.html" class="nav-link nav-dropdown-trigger">
+                        <span data-i18n="nav_routes">走讀路線</span>
+                        <!-- Iconstack Chevron Down -->
+                        <svg class="nav-icon-svg nav-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </a>
                     <ul class="nav-dropdown-menu">
-                        <li>
-                            <a href="#oneday" class="dropdown-link">
-                                <span class="route-badge">1 DAY</span>
-                                <div><strong>一日遊規劃</strong><small>工藝、老街、科技等 A~F 方案</small></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#twoday" class="dropdown-link">
-                                <span class="route-badge">2 DAYS</span>
-                                <div><strong>兩日遊規劃</strong><small>工廠村寄宿與雙城深度慢活</small></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creative" class="dropdown-link">
-                                <span class="route-badge">CRAFT</span>
-                                <div><strong>文創產業線</strong><small>日式官舍、刺繡館與木藍染</small></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#outdoor" class="dropdown-link">
-                                <span class="route-badge">EDU</span>
-                                <div><strong>戶外教育專案</strong><small>嘉禮有糖高中職 A~D 走讀</small></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#global" class="dropdown-link">
-                                <span class="route-badge">GLOBAL</span>
-                                <div><strong>國際壯遊引力</strong><small>跨國青年炒糖與雙偶文化體驗</small></div>
-                            </a>
-                        </li>
+                        <li><a href="itinerary-detail.html" class="dropdown-link"><span class="route-badge">1 DAY</span><div><strong data-i18n="route_1day">一日遊規劃</strong><small data-i18n="route_1day_sub">工藝、老街、科技等 A~F 方案</small></div></a></li>
+                        <li><a href="twoday-detail.html" class="dropdown-link"><span class="route-badge">2 DAYS</span><div><strong data-i18n="route_2day">兩日遊規劃</strong><small data-i18n="route_2day_sub">工廠村寄宿與雙城深度慢活</small></div></a></li>
+                        <li><a href="itinerary.html#creative" class="dropdown-link"><span class="route-badge">CRAFT</span><div><strong data-i18n="route_craft">文創產業線</strong><small data-i18n="route_craft_sub">日式官舍、刺繡館與木藍染</small></div></a></li>
+                        <li><a href="outdoor-detail.html" class="dropdown-link"><span class="route-badge">EDU</span><div><strong data-i18n="route_edu">戶外教育專案</strong><small data-i18n="route_edu_sub">嘉禮有糖高中職 A~D 走讀</small></div></a></li>
+                        <li><a href="itinerary.html#global" class="dropdown-link"><span class="route-badge">GLOBAL</span><div><strong data-i18n="route_global">國際壯遊引力</strong><small data-i18n="route_global_sub">跨國青年炒糖與雙偶文化體驗</small></div></a></li>
                     </ul>
                 </li>
-
                 <li class="nav-item">
-                    <a href="journal.html" class="nav-link">職人故事</a>
+                    <a href="journal.html" class="nav-link" data-i18n="nav_journal">職人故事</a>
                 </li>
                 <li class="nav-item">
-                    <a href="news.html" class="nav-link">最新消息</a>
+                    <a href="news.html" class="nav-link" data-i18n="nav_news">最新消息</a>
                 </li>
             </ul>
         </nav>
 
         <!-- 右側功能操作區 -->
         <div class="nav-actions">
+            <!-- 搜尋按鈕 (Iconstack Search Icon) -->
             <button class="nav-action-btn" id="navSearchBtn" aria-label="搜尋">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="m21 21-4.3-4.3"/>
+                <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </button>
-
-            <div class="lang-dropdown-wrapper">
-                <button class="nav-lang-btn" id="langBtn" aria-label="語言切換">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                        <path d="M2 12h20"/>
+            
+            <!-- 語言切換選單 (Iconstack Globe Icon) -->
+            <div class="lang-dropdown-wrapper" id="langDropdownWrapper">
+                <button class="nav-lang-btn" id="langBtn" aria-expanded="false">
+                    <svg class="nav-icon-svg nav-globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
-                    <span id="currentLangText">繁中</span>
+                    <span id="currentLangLabel">繁中</span>
+                    <svg class="nav-icon-svg nav-caret-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </button>
-                <ul class="lang-menu" id="langMenu">
-                    <li><a href="#" class="lang-opt active" data-lang="zh-TW">繁體中文</a></li>
-                    <li><a href="#" class="lang-opt" data-lang="en">English</a></li>
-                    <li><a href="#" class="lang-opt" data-lang="ja">日本語</a></li>
-                    <li><a href="#" class="lang-opt" data-lang="vi">Tiếng Việt</a></li>
+                <ul class="lang-dropdown-menu" id="langMenu">
+                    <li><button type="button" class="lang-option active" data-lang="zh-TW">繁體中文</button></li>
+                    <li><button type="button" class="lang-option" data-lang="en">English</button></li>
+                    <li><button type="button" class="lang-option" data-lang="ja">日本語</button></li>
+                    <li><button type="button" class="lang-option" data-lang="vi">Tiếng Việt</button></li>
                 </ul>
             </div>
 
-            <a href="contact.html" class="nav-btn-cta">聯絡我們</a>
-
-            <button class="hamburger-toggle" id="navMobileToggle" aria-label="開啟選單">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="4" x2="20" y1="12" y2="12"/>
-                    <line x1="4" x2="20" y1="6" y2="6"/>
-                    <line x1="4" x2="20" y1="18" y2="18"/>
+            <!-- 右側行動呼籲按鈕 (Iconstack Arrow Right Icon) -->
+            <a href="contact.html" class="nav-btn-cta">
+                <span data-i18n="nav_cta">開始規劃</span>
+                <svg class="nav-icon-svg nav-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-            </button>
+            </a>
         </div>
 
     </div>
@@ -136,15 +114,54 @@
     </div>
 </div>
 
-<!-- ==================== 3. 走讀路線主工作區 ==================== -->
-<main class="routes-main-stage">
+<!-- ==================== 3. 走讀路線 首屏 100vh 滿版全景封面 (Hero Banner) ==================== -->
+<section class="itinerary-hero-full-banner" id="itineraryHero">
+    <div class="hero-bg-layer">
+        <img src="assets/水道頭文創聚落.jpg" alt="六腳朴子走讀路線全景" class="hero-bg-img">
+        <div class="hero-gradient-overlay"></div>
+    </div>
+
+    <div class="hero-content-inner">
+        <!-- 左側垂直裝飾英文 Meta -->
+        <div class="hero-vertical-meta">
+            <span>PEOPLE</span>
+            <span>PLACES</span>
+            <span>CULTURE</span>
+            <span>STORIES</span>
+        </div>
+
+        <!-- 標題文字主區塊 (比照參考圖排版) -->
+        <div class="hero-heading-block">
+            <span class="hero-eyebrow">R O U T E S</span>
+            <h1 class="hero-main-title">走讀路線</h1>
+            <p class="hero-sub-slogan">走進六腳與朴子，探索土地最真實的樣貌。</p>
+        </div>
+
+        <!-- 右下側文青風手寫浮動字 -->
+        <div class="hero-script-floating">
+            從一條路線開始，<br>
+            發現更多土地的故事。
+        </div>
+    </div>
+
+    <!-- 底部向下捲動提示 -->
+    <a href="#routeMainStage" class="hero-scroll-indicator" aria-label="向下捲動探索路線">
+        <span class="scroll-prompt-text">SCROLL TO ROUTES</span>
+        <div class="scroll-mouse-icon">
+            <span class="scroll-wheel-dot"></span>
+        </div>
+    </a>
+</section>
+
+<!-- ==================== 4. 走讀路線主工作區 ==================== -->
+<main class="routes-main-stage" id="routeMainStage">
     
     <!-- 頂部編輯室排版 (標題、引言、芒草插圖) -->
     <section class="routes-header-editorial">
         <div class="routes-header-left">
-            <span class="routes-eyebrow">ROUTES</span>
-            <h1 class="routes-main-title">走讀路線</h1>
-            <h2 class="routes-slogan">用一條路，<br>走進六腳與朴子的日常。</h2>
+            <span class="routes-eyebrow">CURATED ROUTES</span>
+            <h2 class="routes-main-title">主題探索</h2>
+            <h3 class="routes-slogan">用一條路，<br>走進六腳與朴子的日常。</h3>
         </div>
 
         <div class="routes-header-mid">
@@ -180,110 +197,110 @@
     <section class="routes-cards-deck">
 
         <!-- 卡片 01: 一日遊規劃 (含紙膠帶貼紙效果) -->
-<article class="route-deck-card" id="oneday" onclick="window.location.href='itinerary-detail.html'" style="cursor: pointer;">
-    <div class="card-mask-tape"></div>
-    <div class="card-bg-layer" style="background-image: url('assets/笑咪咪懸絲偶劇團.jpg');"></div>
-    <div class="card-shade-overlay"></div>
+        <article class="route-deck-card" id="oneday" onclick="window.location.href='itinerary-detail.html'" style="cursor: pointer;">
+            <div class="card-mask-tape"></div>
+            <div class="card-bg-layer" style="background-image: url('assets/笑咪咪懸絲偶劇團.jpg');"></div>
+            <div class="card-shade-overlay"></div>
 
-    <div class="card-top-header">
-        <span class="card-pill-tag">1DAY</span>
-        <h3 class="card-route-title">一日遊規劃</h3>
-        <p class="card-route-sub">工藝、老街、科技等 A~F 方案</p>
-    </div>
+            <div class="card-top-header">
+                <span class="card-pill-tag">1DAY</span>
+                <h3 class="card-route-title">一日遊規劃</h3>
+                <p class="card-route-sub">工藝、老街、科技等 A~F 方案</p>
+            </div>
 
-    <div class="card-bottom-footer">
-        <div class="meta-specs-list">
-            <div class="spec-item"><span class="spec-icon">📍</span> 4 個據點</div>
-            <div class="spec-item"><span class="spec-icon">🕒</span> 約 2.5 小時</div>
-            <div class="spec-item"><span class="spec-icon">🚶</span> 適合步行</div>
-        </div>
-        <a href="itinerary-detail.html" class="btn-card-circle-arrow" aria-label="查看一日遊規劃">➔</a>
-    </div>
-</article>
+            <div class="card-bottom-footer">
+                <div class="meta-specs-list">
+                    <div class="spec-item"><span class="spec-icon">📍</span> 4 個據點</div>
+                    <div class="spec-item"><span class="spec-icon">🕒</span> 約 2.5 小時</div>
+                    <div class="spec-item"><span class="spec-icon">🚶</span> 適合步行</div>
+                </div>
+                <a href="itinerary-detail.html" class="btn-card-circle-arrow" aria-label="查看一日遊規劃">➔</a>
+            </div>
+        </article>
 
-<!-- itinerary.html 中的卡片 02 -->
-<article class="route-deck-card" id="twoday" onclick="window.location.href='twoday-detail.html'" style="cursor: pointer;">
-    <div class="card-bg-layer" style="background-image: url('assets/水道頭文創聚落.jpg');"></div>
-    <div class="card-shade-overlay"></div>
+        <!-- 卡片 02: 兩日遊規劃 -->
+        <article class="route-deck-card" id="twoday" onclick="window.location.href='twoday-detail.html'" style="cursor: pointer;">
+            <div class="card-bg-layer" style="background-image: url('assets/水道頭文創聚落.jpg');"></div>
+            <div class="card-shade-overlay"></div>
 
-    <div class="card-top-header">
-        <span class="card-pill-tag">2DAYS</span>
-        <h3 class="card-route-title">兩日遊規劃</h3>
-        <p class="card-route-sub">工廠村寄宿與雙城深度慢活</p>
-    </div>
+            <div class="card-top-header">
+                <span class="card-pill-tag">2DAYS</span>
+                <h3 class="card-route-title">兩日遊規劃</h3>
+                <p class="card-route-sub">工廠村寄宿與雙城深度慢活</p>
+            </div>
 
-    <div class="card-bottom-footer">
-        <div class="meta-specs-list">
-            <div class="spec-item"><span class="spec-icon">📍</span> 5 個據點</div>
-            <div class="spec-item"><span class="spec-icon">🕒</span> 約 3 小時</div>
-            <div class="spec-item"><span class="spec-icon">🚶</span> 適合步行</div>
-        </div>
-        <a href="twoday-detail.html" class="btn-card-circle-arrow" aria-label="查看兩日遊規劃">➔</a>
-    </div>
-</article>
+            <div class="card-bottom-footer">
+                <div class="meta-specs-list">
+                    <div class="spec-item"><span class="spec-icon">📍</span> 5 個據點</div>
+                    <div class="spec-item"><span class="spec-icon">🕒</span> 約 3 小時</div>
+                    <div class="spec-item"><span class="spec-icon">🚶</span> 適合步行</div>
+                </div>
+                <a href="twoday-detail.html" class="btn-card-circle-arrow" aria-label="查看兩日遊規劃">➔</a>
+            </div>
+        </article>
 
-<!-- itinerary.html 卡片 03: 文創產業線 -->
-<article class="route-deck-card" id="creative" onclick="window.location.href='creative-detail.html'" style="cursor: pointer;">
-    <div class="card-bg-layer" style="background-image: url('assets/藍染體驗.jpg');"></div>
-    <div class="card-shade-overlay"></div>
+        <!-- 卡片 03: 文創產業線 -->
+        <article class="route-deck-card" id="creative" onclick="window.location.href='creative-detail.html'" style="cursor: pointer;">
+            <div class="card-bg-layer" style="background-image: url('assets/藍染體驗.jpg');"></div>
+            <div class="card-shade-overlay"></div>
 
-    <div class="card-top-header">
-        <span class="card-pill-tag">CRAFT</span>
-        <h3 class="card-route-title">文創產業線</h3>
-        <p class="card-route-sub">日式官舍、刺繡館與木藍染</p>
-    </div>
+            <div class="card-top-header">
+                <span class="card-pill-tag">CRAFT</span>
+                <h3 class="card-route-title">文創產業線</h3>
+                <p class="card-route-sub">日式官舍、刺繡館與木藍染</p>
+            </div>
 
-    <div class="card-bottom-footer">
-        <div class="meta-specs-list">
-            <div class="spec-item"><span class="spec-icon">📍</span> 4 個據點</div>
-            <div class="spec-item"><span class="spec-icon">🕒</span> 約 3 小時</div>
-            <div class="spec-item"><span class="spec-icon">🚲</span> 適合騎乘</div>
-        </div>
-        <a href="creative-detail.html" class="btn-card-circle-arrow" aria-label="查看文創產業線">➔</a>
-    </div>
-</article>
+            <div class="card-bottom-footer">
+                <div class="meta-specs-list">
+                    <div class="spec-item"><span class="spec-icon">📍</span> 4 個據點</div>
+                    <div class="spec-item"><span class="spec-icon">🕒</span> 約 3 小時</div>
+                    <div class="spec-item"><span class="spec-icon">🚲</span> 適合騎乘</div>
+                </div>
+                <a href="creative-detail.html" class="btn-card-circle-arrow" aria-label="查看文創產業線">➔</a>
+            </div>
+        </article>
 
-<!-- itinerary.html 卡片 04: 戶外教育專案 -->
-<article class="route-deck-card" id="outdoor" onclick="window.location.href='outdoor-detail.html'" style="cursor: pointer;">
-    <div class="card-bg-layer" style="background-image: url('assets/水道頭文創聚落.jpg');"></div>
-    <div class="card-shade-overlay"></div>
+        <!-- 卡片 04: 戶外教育專案 -->
+        <article class="route-deck-card" id="outdoor" onclick="window.location.href='outdoor-detail.html'" style="cursor: pointer;">
+            <div class="card-bg-layer" style="background-image: url('assets/水道頭文創聚落.jpg');"></div>
+            <div class="card-shade-overlay"></div>
 
-    <div class="card-top-header">
-        <span class="card-pill-tag">EDU</span>
-        <h3 class="card-route-title">戶外教育專案</h3>
-        <p class="card-route-sub">嘉禮有糖高中職 A~D 走讀</p>
-    </div>
+            <div class="card-top-header">
+                <span class="card-pill-tag">EDU</span>
+                <h3 class="card-route-title">戶外教育專案</h3>
+                <p class="card-route-sub">嘉禮有糖高中職 A~D 走讀</p>
+            </div>
 
-    <div class="card-bottom-footer">
-        <div class="meta-specs-list">
-            <div class="spec-item"><span class="spec-icon">📍</span> 4 個據點</div>
-            <div class="spec-item"><span class="spec-icon">🕒</span> 約 6.5 小時</div>
-            <div class="spec-item"><span class="spec-icon">🚶</span> 適合學校團體</div>
-        </div>
-        <a href="outdoor-detail.html" class="btn-card-circle-arrow" aria-label="查看戶外教育專案">➔</a>
-    </div>
-</article>
+            <div class="card-bottom-footer">
+                <div class="meta-specs-list">
+                    <div class="spec-item"><span class="spec-icon">📍</span> 4 個據點</div>
+                    <div class="spec-item"><span class="spec-icon">🕒</span> 約 6.5 小時</div>
+                    <div class="spec-item"><span class="spec-icon">🚶</span> 適合學校團體</div>
+                </div>
+                <a href="outdoor-detail.html" class="btn-card-circle-arrow" aria-label="查看戶外教育專案">➔</a>
+            </div>
+        </article>
 
-<!-- itinerary.html 中的卡片 05 -->
-<article class="route-deck-card" id="global" onclick="window.location.href='global-detail.html'" style="cursor: pointer;">
-    <div class="card-bg-layer" style="background-image: url('assets/笑咪咪懸絲偶劇團.jpg');"></div>
-    <div class="card-shade-overlay"></div>
+        <!-- 卡片 05: 國際壯遊引力 -->
+        <article class="route-deck-card" id="global" onclick="window.location.href='global-detail.html'" style="cursor: pointer;">
+            <div class="card-bg-layer" style="background-image: url('assets/笑咪咪懸絲偶劇團.jpg');"></div>
+            <div class="card-shade-overlay"></div>
 
-    <div class="card-top-header">
-        <span class="card-pill-tag">GLOBAL</span>
-        <h3 class="card-route-title">國際壯遊引力</h3>
-        <p class="card-route-sub">跨國青年炒糖與雙偶文化體驗</p>
-    </div>
+            <div class="card-top-header">
+                <span class="card-pill-tag">GLOBAL</span>
+                <h3 class="card-route-title">國際壯遊引力</h3>
+                <p class="card-route-sub">跨國青年炒糖與雙偶文化體驗</p>
+            </div>
 
-    <div class="card-bottom-footer">
-        <div class="meta-specs-list">
-            <div class="spec-item"><span class="spec-icon">📍</span> 6 個據點</div>
-            <div class="spec-item"><span class="spec-icon">🕒</span> 約 8 小時</div>
-            <div class="spec-item"><span class="spec-icon">🚶</span> 適合步行 + 在地交通</div>
-        </div>
-        <a href="global-detail.html" class="btn-card-circle-arrow" aria-label="查看國際壯遊引力">➔</a>
-    </div>
-</article>
+            <div class="card-bottom-footer">
+                <div class="meta-specs-list">
+                    <div class="spec-item"><span class="spec-icon">📍</span> 6 個據點</div>
+                    <div class="spec-item"><span class="spec-icon">🕒</span> 約 8 小時</div>
+                    <div class="spec-item"><span class="spec-icon">🚶</span> 適合步行 + 在地交通</div>
+                </div>
+                <a href="global-detail.html" class="btn-card-circle-arrow" aria-label="查看國際壯遊引力">➔</a>
+            </div>
+        </article>
 
     </section>
 
@@ -304,7 +321,7 @@
 
 </main>
 
-<!-- ==================== 4. 全站統一標準頁尾 ==================== -->
+<!-- ==================== 5. 全站統一標準頁尾 ==================== -->
 <footer class="site-global-footer">
     <div class="footer-main-grid">
 
@@ -366,9 +383,11 @@
                 <h4 class="nav-col-title">走讀路線</h4>
                 <div class="title-underline"></div>
                 <ul class="nav-link-list">
-                    <li><a href="itinerary.html#featured">推薦路線</a></li>
-                    <li><a href="itinerary.html#themed">主題路線</a></li>
-                    <li><a href="spots.html">地圖導覽</a></li>
+                    <li><a href="itinerary.html#oneday">一日遊規劃</a></li>
+                    <li><a href="itinerary.html#twoday">兩日遊規劃</a></li>
+                    <li><a href="itinerary.html#creative">文創產業線</a></li>
+                    <li><a href="itinerary.html#outdoor">戶外教育專案</a></li>
+                    <li><a href="itinerary.html#global">國際壯遊引力</a></li>
                 </ul>
             </div>
 
