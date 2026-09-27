@@ -1,0 +1,890 @@
+/* ====================================================================
+   壯遊據點專屬樣式表 (spots.css) - 首屏 100vh ✕ 第二屏全屏無縫手繪風土地圖
+   ==================================================================== */
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    height: auto !important;
+}
+
+body.spots-map-body {
+    background-color: #E8DDCB !important;
+    color: #1A1A1A;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    height: auto !important;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+/* ==================== 1. 首屏 100vh 滿版封面 ==================== */
+.spots-hero-full-banner {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 0;
+    height: 100vh; /* 標準滿版 100vh，導覽列全透明穿透 */
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hero-bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    display: block;
+}
+
+/* 壯遊據點 Hero 漸層 (平滑過渡至地圖色調) */
+.spots-hero-full-banner .hero-gradient-overlay {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.45) 16%,
+        rgba(0, 0, 0, 0) 36%,
+        rgba(232, 221, 203, 0) 50%,
+        rgba(232, 221, 203, 0.8) 78%,
+        #E8DDCB 100%
+    ) !important;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-content-inner {
+    position: relative;
+    z-index: 5;
+    max-width: 1380px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hero-heading-block {
+    margin-left: 100px;
+    max-width: 620px;
+    transform: translateY(150px);
+}
+
+.hero-eyebrow {
+    font-family: var(--display, sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: #555047;
+    margin-bottom: 14px;
+    display: block;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+}
+
+.hero-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(3.6rem, 5.5vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 1.05;
+    color: #111111;
+    margin: 0 0 18px 0;
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
+}
+
+.hero-sub-slogan {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(1.1rem, 1.45vw, 1.35rem);
+    font-weight: 600;
+    color: #33302B;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+}
+
+/* 底部滑動指示器 */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #2E2A24;
+    opacity: 0.85;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hero-scroll-indicator:hover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.scroll-prompt-text {
+    font-family: var(--display, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.scroll-mouse-icon {
+    width: 22px;
+    height: 34px;
+    border: 2px solid #2E2A24;
+    border-radius: 12px;
+    position: relative;
+}
+
+.scroll-wheel-dot {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 3px;
+    height: 6px;
+    background-color: #D96328;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: scrollDotAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollDotAnim {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 14px); opacity: 0; }
+}
+
+/* ==================== 2. 第二屏：全景地圖滿版視口 ==================== */
+.spots-map-viewport {
+    position: relative;
+    width: 100vw !important;
+    height: calc(100vh - 82px) !important; /* 扣除頂部 82px 導覽列 */
+    min-height: 560px;
+    margin: 0 !important;
+    padding: 0 !important;                /* 拔除外圍留白 */
+    overflow: hidden !important;
+    background-color: #E8DDCB !important; /* 取自地圖基底色，完全融接 */
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+.map-interactive-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.map-artwork-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+}
+
+/* 核心底圖：滿版展開且置中呈現 */
+.map-base-illustration {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ==================== 3. 左側 8 大分類選單 ==================== */
+.map-inline-filter-list {
+    position: absolute !important;
+    top: 30% !important;             /* 稍微往下置中 */
+    left: 4.8% !important;
+    width: 13.5% !important;
+    height: 36% !important;          /* 高度從 52% 收斂到 36%，間距更恰到好處 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.inline-cat-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none !important;
+    padding: 4px 0 6px 0 !important;
+    cursor: pointer;
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(0.78rem, 0.95vw, 0.98rem);
+    font-weight: 700;
+    color: #4A463F;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.icat-icon {
+    font-size: 0.88rem;
+    color: #8C867D;
+    line-height: 1;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.icat-name {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* 數字：固定在最右側 */
+.icat-num {
+    font-family: var(--display, sans-serif);
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: #9C968D;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* 核心：底線絕對定位在項目最底部，從左延伸，但右邊空出 28px 往左縮 */
+.inline-cat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 24px !important;              /* 線條右側往左退縮 28px（想縮更短可改大數值） */
+    border-bottom: 1px dashed rgba(180, 170, 155, 0.55);
+    transition: border-color 0.2s ease;
+    pointer-events: none;
+}
+
+/* 懸停 (Hover) */
+.inline-cat-item:hover {
+    color: #D96328;
+    transform: translateX(4px);
+}
+
+.inline-cat-item:hover::after {
+    border-bottom-color: #D96328;
+}
+
+.inline-cat-item:hover .icat-icon,
+.inline-cat-item:hover .icat-num {
+    color: #D96328;
+}
+
+/* 選中 (Active) */
+.inline-cat-item.active {
+    color: #D96328;
+    font-weight: 900;
+}
+
+.inline-cat-item.active::after {
+    border-bottom: 1.6px solid #D96328; /* 選中時為實線橘色，右側同樣內縮 */
+}
+
+.inline-cat-item.active .icat-icon,
+.inline-cat-item.active .icat-num {
+    color: #D96328;
+}
+
+/* ==================== 4. 方案 B：小圓點 + 互動彈出立體插畫 ==================== */
+.map-spot-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease;
+}
+
+/* 常態下的小巧質感圓點 */
+.pin-marker-bubble {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    z-index: 2;
+}
+
+.pin-dot-core {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FFFFFF;
+}
+
+/* 類別色彩 */
+.pin-orange .pin-marker-bubble { background-color: #D96328; }
+.pin-brown .pin-marker-bubble  { background-color: #795548; }
+.pin-red .pin-marker-bubble    { background-color: #C0392B; }
+.pin-blue .pin-marker-bubble   { background-color: #2980B9; }
+.pin-green .pin-marker-bubble  { background-color: #557A46; }
+.pin-purple .pin-marker-bubble { background-color: #8E44AD; }
+.pin-darkgray .pin-marker-bubble { background-color: #4A4A4A; }
+
+/* 核心：預設收合隱藏的插畫預覽氣泡 */
+.pin-popout-preview {
+    position: absolute;
+    bottom: 26px; /* 位於圓點正上方 */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px) scale(0.6);
+    transform-origin: bottom center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 50;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==================== 頂部點位專用：朝下方展開 (pop-down) ==================== */
+.map-spot-pin.pop-down .pin-popout-preview {
+    bottom: auto !important;
+    top: 26px !important;              /* 改為定位在小圓點下方 */
+    transform: translateX(-50%) translateY(-10px) scale(0.6);
+    transform-origin: top center;       /* 動畫原點改在頂部 */
+}
+
+/* 懸停 (Hover) 或選中 (Active) 時向下彈出 */
+.map-spot-pin.pop-down:hover .pin-popout-preview,
+.map-spot-pin.pop-down.active .pin-popout-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* pop-down 底下的景點名稱間距微調 */
+.map-spot-pin.pop-down .popout-name {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+/* ==================== 插畫懸浮預覽 (純淨去背無框版) ==================== */
+.popout-img-box {
+    width: 100px;
+    height: 87px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* 徹底移除舊有的底部小三角形 */
+.popout-img-box::after {
+    display: none !important;
+}
+
+/* 手繪插畫本體：以柔和陰影襯托線條，懸停時微幅上浮放大 */
+.popout-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.22));
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 景點名稱深色標籤 */
+.popout-name {
+    margin-top: 4px;
+    background: rgba(35, 31, 28, 0.92);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 懸停 (Hover) 或選中 (Active) 時的互動動效 */
+.map-spot-pin:hover,
+.map-spot-pin.active {
+    z-index: 45;
+}
+
+/* 底層圓點放大並加上主題橘光暈 */
+.map-spot-pin:hover .pin-marker-bubble,
+.map-spot-pin.active .pin-marker-bubble {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(217, 99, 40, 0.35);
+}
+
+/* 整個預覽層平滑顯現並浮起 */
+.map-spot-pin:hover .pin-popout-preview,
+.map-spot-pin.active .pin-popout-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* 插畫自然微幅放大上浮 */
+.map-spot-pin:hover .popout-img-box img,
+.map-spot-pin.active .popout-img-box img {
+    transform: scale(1.12) translateY(-2px);
+}
+
+/* ==================== 5. 右側浮動資訊彈窗 ==================== */
+.spot-popup-card-overlay {
+    position: absolute;
+    top: 32px;
+    right: 42px;
+    width: 360px;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spot-popup-card-overlay.open {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.popup-card-inner {
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.14);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 18px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.popup-loc-tag {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #D96328;
+}
+
+.popup-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #A5A095;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.popup-close-btn:hover { color: #111111; }
+
+.popup-gallery-block {
+    margin-bottom: 12px;
+}
+
+.popup-main-pic {
+    width: 100%;
+    height: 165px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #E8E4DC;
+    margin-bottom: 8px;
+}
+
+.popup-main-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.popup-thumbs-strip {
+    display: flex;
+    gap: 8px;
+}
+
+.pop-thumb {
+    width: 52px;
+    height: 36px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.55;
+    border: 1.5px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.pop-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pop-thumb:hover { opacity: 0.9; }
+.pop-thumb.active {
+    opacity: 1;
+    border-color: #D96328;
+    box-shadow: 0 2px 6px rgba(217, 99, 40, 0.3);
+}
+
+.popup-tags-wrap {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.pop-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+}
+
+.tag-accent { background: #FDEEE6; color: #D96328; }
+.tag-sand { background: #F0EDE6; color: #6E685F; }
+
+.popup-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #111111;
+    margin: 0 0 6px 0;
+    line-height: 1.25;
+}
+
+.popup-desc {
+    font-size: 0.78rem;
+    color: #5E584F;
+    line-height: 1.65;
+    margin: 0 0 10px 0;
+}
+
+.popup-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 12px;
+    background-color: #FAF8F5;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+
+.feat-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: #4A4641;
+}
+
+.feat-bullet {
+    color: #D96328;
+    font-size: 0.7rem;
+}
+
+.popup-link-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8.5px 0;
+    border-radius: 999px;
+    background-color: #D96328;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(217, 99, 40, 0.28);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.popup-link-btn:hover {
+    background-color: #B84E1B;
+    transform: translateY(-2px);
+}
+
+/* ==================== 6. 全站標準頁尾 ==================== */
+.site-global-footer {
+    width: 100%;
+    position: relative;
+    z-index: 30;
+    flex-shrink: 0;
+}
+
+/* ==================== 7. 響應式適配 ==================== */
+@media (max-width: 1024px) {
+    .spot-popup-card-overlay {
+        right: 20px;
+        top: 20px;
+        width: 310px;
+    }
+}
+
+@media (max-width: 768px) {
+    .spots-hero-full-banner {
+        height: 100vh;
+    }
+    .map-inline-filter-list {
+        display: none;
+    }
+    .spot-popup-card-overlay {
+        position: fixed;
+        right: 5%;
+        top: auto;
+        bottom: 20px;
+        width: 90%;
+        transform: translateY(40px);
+    }
+    .spot-popup-card-overlay.open {
+        transform: translateY(0);
+    }
+}
+
+/* ==================== 8. 模式切換按鈕 (膠囊按鈕群) ==================== */
+.view-switch-control {
+    position: absolute;
+    top: 24px;
+    right: 36px;
+    z-index: 40;
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 4px;
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.view-switch-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #6C665C;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.view-switch-btn:hover {
+    color: #1A1A1A;
+}
+
+.view-switch-btn.active {
+    background: #D96328;
+    color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(217, 99, 40, 0.3);
+}
+
+/* ==================== 9. 據點圖鑑網格視圖 ==================== */
+.spots-grid-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #E8DDCB;
+    padding: 80px 48px 60px;
+    box-sizing: border-box;
+}
+
+.spots-grid-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.grid-filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.grid-filter-tag {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #555047;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.grid-filter-tag:hover,
+.grid-filter-tag.active {
+    background: #2C2824;
+    color: #FFFFFF;
+    border-color: #2C2824;
+}
+
+/* 4 欄自適應卡片網格 */
+.spots-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.spot-col-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.spot-col-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+.spot-col-img {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #ECE7DE;
+}
+
+.spot-col-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.spot-col-card:hover .spot-col-img img {
+    transform: scale(1.06);
+}
+
+.spot-col-body {
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.spot-col-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.spot-col-town {
+    font-size: 0.72rem;
+    color: #8C867D;
+    font-weight: 600;
+}
+
+.spot-col-tag {
+    font-size: 0.65rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: #FDEEE6;
+    color: #D96328;
+    font-weight: 700;
+}
+
+.spot-col-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.spot-col-desc {
+    font-size: 0.78rem;
+    color: #666158;
+    line-height: 1.6;
+    margin: 0 0 14px;
+    flex: 1;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.spot-col-foot {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #D96328;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+@media (max-width: 1200px) {
+    .spots-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .spots-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .spots-grid-viewport { padding: 70px 20px 40px; }
+}
+
+@media (max-width: 520px) {
+    .spots-cards-grid { grid-template-columns: 1fr; }
+}
