@@ -1,5 +1,5 @@
 /* ====================================================================
-   走讀路線專屬樣式表 (itinerary.css) - 簡約封面 ✕ 卡牌群
+   走讀路線專屬樣式表 (itinerary.css) - 首屏 100vh 無霧感 ✕ 主題卡牌群
    ==================================================================== */
 
 /* 1. 啟用平滑捲動 */
@@ -20,13 +20,13 @@ body.routes-page-body {
     overflow-x: hidden;
 }
 
-/* ==================== 2. 首屏 100vh 滿版封面 (完全比照參考圖質感) ==================== */
+/* ==================== 2. 首屏 100vh 滿版封面 (無白色霧感) ==================== */
 .itinerary-hero-full-banner {
     position: relative;
     width: 100vw;
     margin: 0 !important;
-    padding-top: 76px;    /* 留出固定導覽列高度 */
-    height: 100vh;        /* 精準 100vh 第一屏 */
+    padding-top: 0 !important; /* 移除舊有的 76px 留白，改為真正滿版 */
+    height: 100vh;             /* 精準 100vh 第一屏，導覽列純透明覆蓋穿透 */
     min-height: 600px;
     overflow: hidden;
     display: flex;
@@ -48,20 +48,6 @@ body.routes-page-body {
     object-fit: cover;
     object-position: center right;
     display: block;
-}
-
-/* 典雅淡米灰漸層（左側柔和霧化保持字體高對比，右側透出古樸景致） */
-.itinerary-hero-full-banner .hero-gradient-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(248, 247, 244, 0.96) 0%,
-        rgba(248, 247, 244, 0.86) 36%,
-        rgba(248, 247, 244, 0.35) 58%,
-        transparent 78%
-    );
-    z-index: 2;
 }
 
 .itinerary-hero-full-banner .hero-content-inner {
@@ -99,6 +85,7 @@ body.routes-page-body {
 .itinerary-hero-full-banner .hero-heading-block {
     margin-left: 100px;
     max-width: 650px;
+    transform: translateY(150px);
 }
 
 .itinerary-hero-full-banner .hero-eyebrow {
@@ -109,6 +96,7 @@ body.routes-page-body {
     color: #555047;
     margin-bottom: 14px;
     display: block;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
 }
 
 .itinerary-hero-full-banner .hero-main-title {
@@ -119,6 +107,8 @@ body.routes-page-body {
     line-height: 1.05;
     color: #111111;
     margin: 0 0 18px 0;
+    /* 移除白霧後，微立體陰影保證字體層次立體可讀 */
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
 }
 
 .itinerary-hero-full-banner .hero-sub-slogan {
@@ -128,6 +118,7 @@ body.routes-page-body {
     color: #33302B;
     margin: 0;
     letter-spacing: 0.5px;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
 }
 
 /* 右下側文青風手寫浮動字 */
@@ -200,6 +191,27 @@ body.routes-page-body {
     100% { transform: translate(-50%, 14px); opacity: 0; }
 }
 
+/* ==================== 走讀路線 Hero 上黑下白漸層 (完整權重) ==================== */
+.itinerary-hero-full-banner .hero-gradient-overlay {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* 上方 35% 黑色漸層 (護住白字選單) + 底部 35% 白色漸層 (柔和銜接卡牌區) */
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 16%,
+        rgba(0, 0, 0, 0) 36%,
+        rgba(248, 247, 244, 0) 65%,
+        rgba(248, 247, 244, 0.8) 86%,
+        #F8F7F4 100%
+    ) !important;
+    z-index: 2;
+    pointer-events: none;
+}
+
 /* ==================== 3. 第二屏：路線主工作舞台 ==================== */
 .routes-main-stage {
     margin-top: 0;
@@ -216,82 +228,61 @@ body.routes-page-body {
     scroll-margin-top: 76px;
 }
 
-/* ---------------- 3-1. 頂部編輯室排版 ---------------- */
+/* ---------------- 3-1. 頂部編輯室排版 (居中策展式) ---------------- */
 .routes-header-editorial {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr 1fr;
-    align-items: flex-end;
-    gap: 30px;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 42px;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.routes-title-center-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 680px;
 }
 
 .routes-eyebrow {
     display: block;
     font-family: var(--display, 'Poppins', sans-serif);
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     font-weight: 800;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     color: #8C867C;
     margin-bottom: 8px;
 }
 
+/* 標題與芒草定位外框 */
+.main-title-with-art {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
 .routes-header-editorial .routes-main-title {
     font-family: var(--serif, 'Noto Serif TC', serif);
-    font-size: clamp(2.4rem, 3.2vw, 3.8rem);
+    font-size: clamp(2.4rem, 3.6vw, 3.4rem);
     font-weight: 900;
-    letter-spacing: 2px;
-    line-height: 1.05;
+    letter-spacing: 4px;
+    line-height: 1.1;
     color: #111111;
-    margin: 0 0 10px 0;
-}
-
-.routes-slogan {
-    font-family: 'Playfair Display', var(--serif, serif);
-    font-style: italic;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #2E2E2E;
-    line-height: 1.5;
-    margin: 0;
-    letter-spacing: 0.5px;
-}
-
-.routes-header-mid {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.routes-mid-desc {
-    font-size: 0.88rem;
-    color: #6E6961;
-    line-height: 1.95;
     margin: 0;
 }
 
-.routes-script-note .script-cursive {
-    font-family: 'Playfair Display', Georgia, cursive, serif;
-    font-style: italic;
-    font-size: 1.35rem;
-    color: #D96328;
-    line-height: 1.25;
-    display: inline-block;
-    transform: rotate(-7deg);
-    white-space: nowrap;
-}
-
-.routes-header-right {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 16px;
-    position: relative;
-}
-
-.routes-grain-sketch {
-    width: 200px;
-    height: 90px;
-    opacity: 0.85;
+/* 芒草線稿：如輕巧印章般飄在標題右上方 */
+.title-grain-sketch {
+    position: absolute;
+    top: -24px;
+    right: -72px;
+    width: 76px;
+    height: 44px;
+    pointer-events: none;
+    opacity: 0.75;
 }
 
 .grain-svg {
@@ -299,21 +290,22 @@ body.routes-page-body {
     height: 100%;
 }
 
-.routes-stamp-tag {
-    font-family: var(--display, sans-serif);
-    font-size: 0.58rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    line-height: 1.4;
-    color: #A6A095;
-    margin-bottom: 6px;
+/* 居中副標題 */
+.routes-slogan-center {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+    font-weight: 600;
+    color: #555047;
+    letter-spacing: 1px;
+    margin: 0;
+    line-height: 1.6;
 }
 
-/* ---------------- 3-2. 中央 5 張主題路線卡牌群 ---------------- */
+/* ---------------- 3-2. 中央 4 張主題路線卡牌群 ---------------- */
 .routes-cards-deck {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);  /* 👈 由 repeat(5, 1fr) 改為 repeat(4, 1fr) */
+    gap: 20px;                             /* 4 欄時將間距由 16px 微調至 20px，比例更和諧 */
     width: 100%;
     align-items: stretch;
     margin-bottom: 28px;
@@ -383,6 +375,9 @@ body.routes-page-body {
 .card-top-header {
     position: relative;
     z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .card-pill-tag {
@@ -396,34 +391,36 @@ body.routes-page-body {
     padding: 4px 12px;
     border-radius: 999px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .card-route-title {
+    writing-mode: vertical-rl;            /* 啟用文字垂直直書（由右至左、由上至下） */
+    text-orientation: upright;            /* 確保中文字端正直立 */
     font-family: var(--serif, 'Noto Serif TC', serif);
-    font-size: 1.45rem;
+    font-size: 2rem;
     font-weight: 900;
-    color: #FFFFFF;
-    letter-spacing: 0.5px;
-    margin: 0 0 6px 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    letter-spacing: 6px;                  /* 直排時字距稍微拉開，呼吸感更好 */
+    color: #F7F5F0;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+    max-height: 260px;                    /* 限制高度避免壓到底部按鈕 */
 }
 
 .card-route-sub {
-    font-size: 0.76rem;
-    color: #D5D5D5;
-    line-height: 1.45;
-    margin: 0;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+    display: none;                        /* 直書模式下隱藏副文字，版面最純粹乾淨 */
 }
 
 .card-bottom-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 關鍵：讓內容一律靠右對齊 */
+    width: 100%;
+    margin-top: auto;
     position: relative;
     z-index: 5;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
+    box-sizing: border-box;
 }
 
 .meta-specs-list {
@@ -448,25 +445,24 @@ body.routes-page-body {
 }
 
 .btn-card-circle-arrow {
-    width: 38px;
-    height: 38px;
+    margin-left: auto !important; /* 確保無論左側有無文字，箭頭一律推至最右邊 */
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background-color: #D96328;
     color: #FFFFFF;
-    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.05rem;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(217, 99, 40, 0.4);
+    text-decoration: none;
+    font-size: 1rem;
     transition: transform 0.25s ease, background-color 0.25s ease;
     flex-shrink: 0;
 }
 
 .route-deck-card:hover .btn-card-circle-arrow {
+    transform: scale(1.1) translateX(2px);
     background-color: #B84E1B;
-    transform: scale(1.1);
 }
 
 /* ---------------- 3-3. 底部翻頁與品牌裝飾 ---------------- */
@@ -520,16 +516,14 @@ body.routes-page-body {
 }
 
 /* ---------------- 4. 響應式適配 ---------------- */
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
     .routes-cards-deck {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 平板尺寸自適應為 2x2 雙欄排版 */
+        gap: 16px;
     }
     .routes-header-editorial {
         grid-template-columns: 1fr;
         gap: 20px;
-    }
-    .routes-header-right {
-        justify-content: flex-start;
     }
 }
 
@@ -548,7 +542,7 @@ body.routes-page-body {
         padding: 30px 20px;
     }
     .routes-cards-deck {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;            /* 手機版維持單欄卡片 */
     }
     .route-deck-card {
         height: 380px;

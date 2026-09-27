@@ -81,13 +81,18 @@ body {
                 box-shadow 0.35s ease !important;
 }
 
-/* 往下滑動超過 30px 後：才浮現白色半透明與極淡的柔和分割線 */
+/* ==================== 往下滑動時的毛玻璃微透明導覽列 ==================== */
 .site-header.scrolled {
-    background: rgba(255, 255, 255, 0.92) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    /* 將原本較厚的 0.92 降低為 0.72 ~ 0.75 的清透白 */
+    background: rgba(255, 255, 255, 0.72) !important;
+    
+    /* 核心毛玻璃效果：模糊背景畫面，透出下方滑過的內容 */
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    
+    /* 極淡的微透明底邊線與柔和投影 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03) !important;
 }
 
 /* 容器寬度鎖定 (Morcept 大寬版 1620px) */
@@ -634,7 +639,7 @@ body {
    ==================================================================== */
 .site-global-footer {
     width: 100%;
-    background-color: #121211; /* 溫潤的炭灰深黑，比純黑更耐看 */
+    background-color: #121211;
     color: #FFFFFF;
     position: relative;
     z-index: 30;
@@ -643,20 +648,20 @@ body {
 }
 
 .footer-container {
-    max-width: 1380px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 85px 40px 40px 40px;
-    box-sizing: border-box;
+    max-width: 1620px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 90px 48px 45px 48px !important;
+    box-sizing: border-box !important;
 }
 
 .footer-main-grid {
-    display: grid;
-    grid-template-columns: 1.35fr 2.4fr 1.35fr;
-    gap: 70px;
-    align-items: flex-start;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid !important;
+    grid-template-columns: 340px 1fr 360px !important; /* 左側品牌固定 340px、右側訂閱固定 360px、中間導航完全展開 */
+    gap: 80px !important;
+    align-items: flex-start !important;
+    padding-bottom: 70px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 /* 1. 左側品牌 */
@@ -665,26 +670,36 @@ body {
     flex-direction: column;
 }
 
+/* ==================== 頁尾官方純 LOGO 樣式 ==================== */
 .footer-brand-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    margin-bottom: 20px;
+    display: inline-block !important;
+    text-decoration: none !important;
+    margin-bottom: 24px !important;
+    padding: 0 !important;
 }
 
-.footer-brand-badge {
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* 移除外層的小框框限制，讓 LOGO 展現清晰橫版質感 */
+.footer-logo-img {
+    height: 70px !important;       /* 高度鎖定在 48px，比例大氣且不突兀 */
+    width: auto !important;
+    max-width: 220px !important;
+    object-fit: contain !important;
+    display: block !important;
+    opacity: 0.95;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footer-brand-header:hover .footer-logo-img {
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .footer-brand-text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand-col {
     display: flex;
     flex-direction: column;
 }
@@ -725,9 +740,9 @@ body {
 
 /* 2. 中間三欄 */
 .footer-nav-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 85px !important; /* 充分拉開「認識地方」「走讀路線」「故事與動態」的橫向距離 */
 }
 
 .col-header-wrap {
@@ -763,7 +778,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px !important; /* 項目縱向也微幅拉開，閱讀更舒適 */
 }
 
 .nav-link-list a {
@@ -790,10 +805,10 @@ body {
 
 /* 3. 右側訂閱與社群 */
 .subscribe-desc {
-    font-size: 0.84rem;
+    font-size: 0.86rem !important;
     color: #9C968C;
-    line-height: 1.8;
-    margin: 0 0 18px 0;
+    line-height: 1.85;
+    margin: 0 0 20px 0;
 }
 
 .footer-subscribe-box {
@@ -802,9 +817,9 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
-    padding: 4px 5px 4px 18px;
+    padding: 5px 6px 5px 20px !important;
+    margin-bottom: 24px !important;
     transition: border-color 0.25s ease, background 0.25s ease;
-    margin-bottom: 22px;
 }
 
 .footer-subscribe-box:focus-within {
@@ -845,31 +860,45 @@ body {
     transform: scale(1.08);
 }
 
+/* ==================== 頁尾社群按鈕 (IconStack 樣式) ==================== */
 .footer-social-row {
     display: flex;
+    align-items: center;
     gap: 12px;
 }
 
 .social-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     color: #A6A096;
-    font-size: 0.72rem;
-    font-weight: 700;
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.social-icon-svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+/* 懸停效果：背景切換為主題橘、圖標轉白並微幅放大上浮 */
 .social-btn:hover {
-    background: #FFFFFF;
-    color: #111111;
-    transform: translateY(-2px);
+    background-color: #D96328;
+    border-color: #D96328;
+    color: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(217, 99, 40, 0.35);
+}
+
+.social-btn:hover .social-icon-svg {
+    transform: scale(1.1);
 }
 
 /* 4. 最底部版權列 */
@@ -877,8 +906,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 30px;
-    font-size: 0.78rem;
+    padding-top: 35px !important;
+    font-size: 0.8rem !important;
     color: #666057;
 }
 
@@ -929,8 +958,6 @@ body {
 @media (max-width: 1150px) {
     .nav-menu, .nav-btn-cta { display: none !important; }
     .hamburger-toggle { display: flex !important; }
-    .footer-main-grid { flex-direction: column; gap: 45px; }
-    .footer-v-divider { display: none; }
 }
 
 @media (max-width: 768px) {

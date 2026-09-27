@@ -1,5 +1,5 @@
 /* ====================================================================
-   關於我們專屬樣式表 (about.css) - 首屏 100vh 滿版 ✕ 底部全屏 CTA ✕ 字體放大版
+   關於我們專屬樣式表 (about.css) - 首屏 100vh 滿版 ✕ 底部全屏 CTA ✕ 純淨內容排版
    ==================================================================== */
 
 /* 1. 解鎖全域捲軸，平滑滾動 */
@@ -21,18 +21,13 @@ body.about-page-body {
     overflow-y: auto !important;
 }
 
-.search-overlay:not(.active) {
-    display: none !important;
-    pointer-events: none !important;
-}
-
 /* ==================== 2. 首屏 100vh 滿版全景橫幅 (大標封面) ==================== */
 .about-hero-full-banner {
     position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    margin-top: 76px;
-    height: calc(100vh - 76px); /* 剛好佔滿第一屏視窗 */
+    margin-top: 0;
+    height: 100vh; /* 真正滿版 100vh 第一屏，由 common.css 的導覽列自然覆蓋穿透 */
     min-height: 620px;
     overflow: hidden;
     display: flex;
@@ -56,18 +51,6 @@ body.about-page-body {
     display: block;
 }
 
-.hero-gradient-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(248, 247, 244, 0.95) 0%,
-        rgba(248, 247, 244, 0.84) 36%,
-        rgba(248, 247, 244, 0.35) 58%,
-        transparent 78%
-    );
-    z-index: 2;
-}
 
 .hero-content-inner {
     position: relative;
@@ -102,6 +85,7 @@ body.about-page-body {
 .hero-heading-block {
     margin-left: 100px;
     max-width: 620px;
+    transform: translateY(150px);
 }
 
 .hero-eyebrow {
@@ -122,6 +106,12 @@ body.about-page-body {
     line-height: 1.05;
     color: #111111;
     margin: 0 0 18px 0;
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
+}
+
+.hero-sub-slogan,
+.hero-eyebrow {
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
 }
 
 .hero-sub-slogan {
@@ -202,6 +192,27 @@ body.about-page-body {
     100% { transform: translate(-50%, 14px); opacity: 0; }
 }
 
+/* ==================== 統一全站 Hero 漸層遮罩 (上黑下白) ==================== */
+.hero-gradient-overlay {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* 核心層次：頂部 30% 黑色漸層 (護白字) + 中間清透原圖 + 底部 35% 米白漸層 (柔和融接內容) */
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.35) 15%,
+        rgba(0, 0, 0, 0) 35%,
+        rgba(248, 247, 244, 0) 65%,
+        rgba(248, 247, 244, 0.75) 85%,
+        #F8F7F4 100%
+    ) !important;
+    z-index: 2;
+    pointer-events: none;
+}
+
 /* ==================== 3. 主舞台共用規範 (字體層級放大) ==================== */
 .about-main-container {
     max-width: 1380px;
@@ -230,14 +241,14 @@ body.about-page-body {
 
 .tag-num {
     font-family: var(--display-serif-heavy, serif);
-    font-size: 1.35rem; /* 放大序號 */
+    font-size: 1.35rem;
     font-weight: 900;
     color: #111111;
 }
 
 .tag-en {
     font-family: var(--display, 'Poppins', sans-serif);
-    font-size: 0.76rem; /* 放大英文小標 */
+    font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 3px;
     color: #8C867C;
@@ -245,7 +256,7 @@ body.about-page-body {
 
 .section-main-heading {
     font-family: var(--serif, 'Noto Serif TC', serif);
-    font-size: clamp(2.4rem, 3.4vw, 3rem); /* 放大主標題 */
+    font-size: clamp(2.4rem, 3.4vw, 3rem);
     font-weight: 900;
     color: #111111;
     margin: 0 0 14px 0;
@@ -255,7 +266,7 @@ body.about-page-body {
 .section-sub-heading {
     font-family: 'Playfair Display', var(--serif, serif);
     font-style: italic;
-    font-size: 1.45rem; /* 放大副標題 */
+    font-size: 1.45rem;
     font-weight: 600;
     color: #D96328;
     margin: 0 0 20px 0;
@@ -272,7 +283,7 @@ body.about-page-body {
 
 .who-lead-p {
     font-family: var(--serif, serif);
-    font-size: 1.25rem; /* 放大導言字體 */
+    font-size: 1.25rem;
     font-weight: 800;
     color: #111111;
     line-height: 1.7;
@@ -328,7 +339,7 @@ body.about-page-body {
 
 .dark-card-title {
     font-family: var(--serif, serif);
-    font-size: 1.35rem; /* 放大深色卡標題 */
+    font-size: 1.35rem;
     font-weight: 800;
     line-height: 1.5;
     margin: 0;
@@ -412,11 +423,16 @@ body.about-page-body {
 }
 
 /* ==================== 6. 03 OUR WAY ==================== */
-.section-our-way {
+.about-section-block.section-our-way {
     display: grid;
     grid-template-columns: 1fr 1.65fr;
     gap: 50px;
     align-items: center;
+    border-bottom: none !important;
+    
+    /* 直接修改這兩行數值即可完全控制 03 的高度 */
+    padding-top: 100px !important;    /* 03 與上方 02 的間距 (預設是 85~100px，改 30px 會大幅收縮) */
+    padding-bottom: 150px !important; /* 03 與下方 04 黑底的間距 */
 }
 
 .way-body-p {
@@ -453,7 +469,7 @@ body.about-page-body {
 
 .pillar-title {
     font-family: var(--serif, serif);
-    font-size: 1.2rem; /* 放大柱標題 */
+    font-size: 1.2rem;
     font-weight: 800;
     color: #111111;
     margin: 0 0 8px 0;
@@ -466,21 +482,37 @@ body.about-page-body {
     margin: 0;
 }
 
-/* ==================== 7. 04 PEOPLE (深色質感區塊) ==================== */
+/* ==================== 7. 04 PEOPLE (全幅滿版黑底區塊) ==================== */
 .section-people-silver {
-    background-color: #1F1E1B;
-    border-radius: 14px;
-    padding: 55px 60px !important;
+    /* 核心穿透技巧：脫離 .about-main-container 的 1380px 寬度限制，橫向伸展至視窗 100vw 邊界 */
+    width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    
+    background-color: #1F1E1B !important;
+    color: #FFFFFF !important;
+    border-radius: 0 !important;              /* 滿版貼邊，拔除原本的圓角 */
+    padding: 85px 0 !important;               /* 上下呼吸間距，水平靠內部容器對齊 */
     border-bottom: none !important;
-    color: #FFFFFF;
-    margin-bottom: 24px;
+    margin-top: 0 !important; /* 確保直接緊接在 03 下方，不產生多餘斷層 */
+    margin-bottom: 40px;
+    box-sizing: border-box !important;
 }
 
+/* 內部版心：限制最大寬度為 1380px，並置中與全站內容嚴格對齊 */
 .silver-inner-wrap {
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
     display: grid;
     grid-template-columns: 1.15fr 1.35fr;
     gap: 60px;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .tag-row-dark .tag-num { color: #FFFFFF; }
@@ -488,12 +520,13 @@ body.about-page-body {
 
 .dark-theme-heading {
     color: #FFFFFF !important;
-    font-size: 2.4rem !important; /* 放大深色主題標題 */
-    line-height: 1.3;
+    font-size: clamp(2.4rem, 3.4vw, 3rem) !important;
+    line-height: 1.25;
+    margin: 0 0 20px 0;
 }
 
 .silver-body-p {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: #C8C2B7;
     line-height: 2.1;
     margin: 0;
@@ -507,9 +540,10 @@ body.about-page-body {
 
 .silver-photo-box {
     flex: 1.3;
-    height: 270px;
+    height: 320px;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
 }
 
 .silver-photo-box img {
@@ -523,78 +557,195 @@ body.about-page-body {
     flex: 0.9;
     font-family: 'Playfair Display', Georgia, cursive, serif;
     font-style: italic;
-    font-size: 1.35rem; /* 放大草寫字體 */
+    font-size: 1.35rem;
     color: #E2DDD5;
     line-height: 1.55;
     transform: rotate(-3deg);
 }
 
-/* ==================== 8. 05 OUR TOPICS (6 欄網格) ==================== */
+/* ==================== 8. 05 OUR TOPICS (手撕紙感 2x3 方格排版) ==================== */
+.section-our-topics {
+    padding-top: 40px !important;
+    padding-bottom: 60px !important;
+}
+
 .topics-header-wrap {
-    margin-bottom: 36px;
+    margin-bottom: 28px;
 }
 
-.topics-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 16px;
+/* 2 列 x 3 欄大網格佈局 */
+.topics-scrapbook-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px 28px !important;
 }
 
-.topic-grid-card {
+/* 白底卡片外框 */
+.scrapbook-card {
     background: #FFFFFF;
-    border: 1px solid #ECE7DE;
-    border-radius: 8px;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    height: 195px; /* 控制高度，確保 6 格剛好收進一屏視圖 */
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    cursor: pointer;
+}
+
+.scrapbook-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
+}
+
+/* 左側文字欄 */
+.card-left-content {
+    padding: 20px 16px 18px 24px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.25s ease;
+    justify-content: space-between;
+    z-index: 2;
 }
 
-.topic-grid-card:hover {
-    transform: translateY(-4px);
+.card-num-lead {
+    font-family: var(--display-serif-heavy, serif);
+    font-size: 1.85rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.5px;
 }
 
-.topic-thumb {
-    width: 100%;
-    height: 115px;
+.card-main-title {
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 4px 0 6px 0;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+}
+
+.card-desc-text {
+    font-size: 0.76rem;
+    color: #555048;
+    line-height: 1.55;
+    margin: 0;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    background: #EAE6DF;
 }
 
-.topic-thumb img {
+.card-view-link {
+    font-family: var(--display, 'Poppins', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #8C867C;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.scrapbook-card:hover .card-view-link {
+    color: #111111;
+    transform: translateX(4px);
+}
+
+/* 右側撕紙圖像容器 */
+.card-right-visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 手撕照片主體：利用多邊形剪裁出不規則的破損毛邊 (Torn Edge) */
+.photo-torn-mask {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(
+        12% 0%, 28% 4%, 48% 0%, 74% 5%, 100% 0%, 
+        100% 100%, 82% 98%, 56% 100%, 35% 97%, 16% 100%, 
+        8% 78%, 14% 54%, 6% 32%, 10% 12%
+    );
+    transition: transform 0.4s ease;
+}
+
+.scrapbook-card:hover .photo-torn-mask {
+    transform: scale(1.05);
+}
+
+.photo-torn-mask img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
 }
 
-.topic-grid-card:hover .topic-thumb img {
-    transform: scale(1.08);
+/* 底層彩色撕紙襯底 (露出邊緣顏色) */
+.color-torn-patch {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.08) translate(-4px, -2px);
+    clip-path: polygon(
+        8% 0%, 35% 2%, 60% 0%, 88% 3%, 100% 0%, 
+        100% 100%, 75% 100%, 45% 98%, 18% 100%, 0% 92%, 
+        3% 65%, 0% 38%, 4% 15%
+    );
+    opacity: 0.9;
 }
 
-.topic-body {
-    padding: 14px 12px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+/* ===== 各主題色配置（完全對應圖片中的色彩氛圍） ===== */
+/* 01 琥珀暖色 */
+.card-theme-amber .card-num-lead { color: #C47B2B; }
+.card-theme-amber .color-torn-patch { background: #D98838; }
+
+/* 02 復古靛藍 (對應懸絲偶) */
+.card-theme-indigo .card-num-lead { color: #2B5E7D; }
+.card-theme-indigo .color-torn-patch { background: #356F93; }
+
+/* 03 磚褐芥黃 (對應老街紅磚) */
+.card-theme-mustard .card-num-lead { color: #C28B2C; }
+.card-theme-mustard .color-torn-patch { background: #D49D38; }
+
+/* 04 鼠尾草綠/工藝染綠 */
+.card-theme-sage .card-num-lead { color: #517154; }
+.card-theme-sage .color-torn-patch { background: #628265; }
+
+/* 05 陶磚赤橘 (對應相機攝影) */
+.card-theme-terracotta .card-num-lead { color: #C8542F; }
+.card-theme-terracotta .color-torn-patch { background: #DC623B; }
+
+/* 06 炭灰墨藍 */
+.card-theme-slate .card-num-lead { color: #4F5D6B; }
+.card-theme-slate .color-torn-patch { background: #607182; }
+
+/* RWD 響應式適配 */
+@media (max-width: 1180px) {
+    .topics-scrapbook-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
 }
 
-.topic-title {
-    font-family: var(--serif, serif);
-    font-size: 0.94rem; /* 放大網格卡片標題 */
-    font-weight: 800;
-    color: #111111;
-    margin: 0 0 6px 0;
-    line-height: 1.35;
-}
-
-.topic-desc {
-    font-size: 0.75rem;
-    color: #6E685F;
-    line-height: 1.55;
-    margin: 0;
+@media (max-width: 680px) {
+    .topics-scrapbook-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .scrapbook-card {
+        height: auto;
+        min-height: 180px;
+    }
 }
 
 /* ==================== 9. 底部全景滿版號召 (Full-Bleed Panoramic CTA) ==================== */
@@ -602,7 +753,7 @@ body.about-page-body {
     position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    height: clamp(380px, 45vh, 480px); /* 放大滿版高度 */
+    height: clamp(380px, 45vh, 480px);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -649,7 +800,7 @@ body.about-page-body {
 .cta-left-text {
     font-family: 'Playfair Display', var(--serif, serif);
     font-style: italic;
-    font-size: clamp(2.2rem, 3.4vw, 3.2rem); /* 放大左側號召大字 */
+    font-size: clamp(2.2rem, 3.4vw, 3.2rem);
     font-weight: 700;
     line-height: 1.3;
 }
@@ -663,7 +814,7 @@ body.about-page-body {
 
 .cta-prompt-title {
     font-family: var(--serif, serif);
-    font-size: 1.35rem; /* 放大副標題 */
+    font-size: 1.35rem;
     font-weight: 800;
     letter-spacing: 1.5px;
 }
@@ -725,7 +876,7 @@ body.about-page-body {
 
 @media (max-width: 768px) {
     .about-hero-full-banner {
-        height: calc(100vh - 64px);
+        height: 100vh;
     }
     .hero-heading-block {
         margin-left: 0;

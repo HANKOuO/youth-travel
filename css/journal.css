@@ -1,5 +1,5 @@
 /* ====================================================================
-   職人故事專屬樣式表 (journal.css) - 首屏 100vh 封面 ✕ 職人卡牌
+   職人故事專屬樣式表 (journal.css) - 首屏 100vh 無霧感 ✕ 職人卡牌
    ==================================================================== */
 
 html {
@@ -17,13 +17,13 @@ body.journal-page-body {
     min-height: 100vh;
 }
 
-/* ==================== 1. 首屏 100vh 滿版封面 ==================== */
+/* ==================== 1. 首屏 100vh 滿版封面 (無白色霧感) ==================== */
 .journal-hero-full-banner {
     position: relative;
     width: 100vw;
     margin: 0 !important;
-    padding-top: 76px;    /* 留出固定導覽列高度 */
-    height: 100vh;        /* 精準 100vh 第一屏 */
+    padding-top: 0 !important; /* 移除舊有的 76px 留白，改為真正滿版 */
+    height: 100vh;             /* 精準 100vh 第一屏，導覽列純透明覆蓋穿透 */
     min-height: 600px;
     overflow: hidden;
     display: flex;
@@ -47,20 +47,7 @@ body.journal-page-body {
     display: block;
 }
 
-/* 典雅淡米灰漸層（保證左側文字高可讀性，右側透出職人專注畫面） */
-.journal-hero-full-banner .hero-gradient-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(248, 247, 244, 0.96) 0%,
-        rgba(248, 247, 244, 0.86) 36%,
-        rgba(248, 247, 244, 0.35) 58%,
-        transparent 78%
-    );
-    z-index: 2;
-}
-
+.journal-hero-content-inner,
 .journal-hero-full-banner .hero-content-inner {
     position: relative;
     z-index: 5;
@@ -96,6 +83,7 @@ body.journal-page-body {
 .journal-hero-full-banner .hero-heading-block {
     margin-left: 100px;
     max-width: 650px;
+    transform: translateY(150px);
 }
 
 .journal-hero-full-banner .hero-eyebrow {
@@ -106,6 +94,7 @@ body.journal-page-body {
     color: #555047;
     margin-bottom: 14px;
     display: block;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
 }
 
 .journal-hero-full-banner .hero-main-title {
@@ -116,6 +105,8 @@ body.journal-page-body {
     line-height: 1.05;
     color: #111111;
     margin: 0 0 18px 0;
+    /* 移除白霧後，微立體陰影保證字體層次立體可讀 */
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
 }
 
 .journal-hero-full-banner .hero-sub-slogan {
@@ -125,6 +116,7 @@ body.journal-page-body {
     color: #33302B;
     margin: 0;
     letter-spacing: 0.5px;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
 }
 
 /* 右下側手寫浮動字 */
@@ -195,6 +187,26 @@ body.journal-page-body {
 @keyframes scrollDotAnim {
     0% { transform: translate(-50%, 0); opacity: 1; }
     100% { transform: translate(-50%, 14px); opacity: 0; }
+}
+
+/* ==================== 職人故事 Hero 上黑下白漸層 ==================== */
+.journal-hero-full-banner .hero-gradient-overlay {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.45) 16%,
+        rgba(0, 0, 0, 0) 36%,
+        rgba(248, 247, 244, 0) 65%,
+        rgba(248, 247, 244, 0.8) 86%,
+        #F8F7F4 100%
+    ) !important;
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* ==================== 2. 第二屏：職人故事主舞台 ==================== */
@@ -655,4 +667,10 @@ body.journal-page-body {
         align-items: flex-start;
         gap: 14px;
     }
+}
+
+@keyframes pulseDot {
+    0% { transform: scale(0.95); opacity: 0.6; }
+    50% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.6; }
 }

@@ -1,8 +1,8 @@
 /* ====================================================================
-   一日遊路線詳情專屬樣式表 (itinerary-detail.css) - 高質感雜誌排版
+   戶外教育專案專屬樣式表 (outdoor-detail.css) - 嘉禮有糖高中職 A~D 方案
    ==================================================================== */
 
-html, body.itinerary-detail-page {
+html, body.outdoor-detail-page, body.itinerary-detail-page {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -25,11 +25,12 @@ html, body.itinerary-detail-page {
         rgba(15, 15, 15, 0.15) 75%,
         rgba(248, 247, 244, 0) 100%
     ) !important;
-    z-index: 90 !important;              /* 低於 header (z-index: 100)，但高於頁面內容 */
-    pointer-events: none !important;     /* 不會阻擋導覽列的滑鼠點擊 */
+    z-index: 90 !important;
+    pointer-events: none !important;
 }
 
 /* 確保 header 背景全透明，讓黑漸層穿透出來襯底 */
+body.outdoor-detail-page .site-header,
 body.itinerary-detail-page .site-header {
     background: transparent !important;
     border-bottom: none !important;
@@ -37,6 +38,7 @@ body.itinerary-detail-page .site-header {
 }
 
 /* 當頁面向下滑動，觸發 common.js 的 scrolled 狀態時切換為實心底色 */
+body.outdoor-detail-page .site-header.scrolled,
 body.itinerary-detail-page .site-header.scrolled {
     background: rgba(248, 247, 244, 0.96) !important;
     backdrop-filter: blur(12px) !important;
@@ -52,14 +54,14 @@ body.itinerary-detail-page .site-header.scrolled {
     box-sizing: border-box;
 }
 
-/* ==================== 1. 沉浸式寬幅 Hero 橫幅 ==================== */
+/* ==================== 1. 沉浸式寬幅 Hero 橫幅 (440px) ==================== */
 .compact-hero-banner {
     position: relative;
     width: 100vw;
-    height: 440px;                      /* 精準高度：大器且不佔滿全螢幕 */
+    height: 440px;
     min-height: 400px;
     display: flex;
-    align-items: flex-end;              /* 文字重心落在橫幅偏下方 */
+    align-items: flex-end;
     padding-bottom: 50px;
     box-sizing: border-box;
     overflow: hidden;
@@ -77,10 +79,9 @@ body.itinerary-detail-page .site-header.scrolled {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 38%;
+    object-position: center 35%;
 }
 
-/* 雙向漸層：頂部黑漸層護住白色導覽列，底部暗度托起大標題 */
 .compact-scrim-overlay {
     position: absolute;
     inset: 0;
@@ -88,10 +89,10 @@ body.itinerary-detail-page .site-header.scrolled {
     height: 100%;
     background: linear-gradient(
         180deg,
-        rgba(15, 15, 15, 0.75) 0%,
+        rgba(15, 15, 15, 0.78) 0%,
         rgba(15, 15, 15, 0.35) 40%,
         rgba(15, 15, 15, 0.65) 80%,
-        rgba(15, 15, 15, 0.85) 100%
+        rgba(15, 15, 15, 0.88) 100%
     );
     z-index: 2;
 }
@@ -106,7 +107,7 @@ body.itinerary-detail-page .site-header.scrolled {
     box-sizing: border-box;
 }
 
-/* 麵包屑改為半透明淺白色 */
+/* 麵包屑半透明白 */
 .detail-breadcrumbs-light {
     display: inline-flex;
     align-items: center;
@@ -180,17 +181,17 @@ body.itinerary-detail-page .site-header.scrolled {
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* ---------------- 2. A ~ F 方案切換列重構 (精緻、高雅、不笨重) ---------------- */
+/* ==================== 2. A ~ D 方案切換列 (4 方案專屬四等分) ==================== */
 .section-full-schemes {
     width: 100%;
     background-color: #F8F7F4;
     padding: 24px 0 10px 0;
 }
 
-.scheme-tabs-grid {
+.scheme-tabs-grid.tabs-4 {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px;
     width: 100%;
 }
 
@@ -198,12 +199,12 @@ body.itinerary-detail-page .site-header.scrolled {
     background: #FFFFFF;
     border: 1px solid #E4DFD5;
     border-radius: 8px;
-    padding: 14px 16px;
+    padding: 14px 18px;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     transition: all 0.25s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
@@ -216,7 +217,7 @@ body.itinerary-detail-page .site-header.scrolled {
 
 .tab-badge {
     font-family: var(--display-serif-heavy, serif);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 900;
     color: #6E685F;
     line-height: 1;
@@ -230,7 +231,7 @@ body.itinerary-detail-page .site-header.scrolled {
     letter-spacing: 0.5px;
 }
 
-/* 選中狀態 (Active)：使用深邃暖橘框線與提亮背景，不再是一整塊沉重的死橘色 */
+/* 選中狀態 (Active) */
 .scheme-tab-card.active {
     background: #FFFFFF;
     border: 2px solid #D96328;
@@ -246,7 +247,7 @@ body.itinerary-detail-page .site-header.scrolled {
     font-weight: 900;
 }
 
-/* ---------------- 3. 下方路線標題精簡 (消除上下重複文字) ---------------- */
+/* ==================== 3. 路線主內容區 (雙欄佈局) ==================== */
 .section-full-itinerary {
     width: 100%;
     background-color: #F8F7F4;
@@ -254,15 +255,15 @@ body.itinerary-detail-page .site-header.scrolled {
 }
 
 .route-header-block {
-    margin-bottom: 28px;
-    padding-top: 10px;
+    margin-bottom: 24px;
+    padding-top: 6px;
 }
 
 .route-title-tags {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
 }
 
 .route-eyebrow {
@@ -283,11 +284,7 @@ body.itinerary-detail-page .site-header.scrolled {
 }
 
 .route-lead-summary {
-    font-size: 0.96rem;
-    color: #4A453E;
-    line-height: 1.8;
-    margin: 0;
-    max-width: 900px;
+    display: none;                      /* 隱藏重複冗長摘要，保持清爽 */
 }
 
 .route-two-columns-layout {
@@ -297,11 +294,11 @@ body.itinerary-detail-page .site-header.scrolled {
     align-items: flex-start;
 }
 
-/* 左欄時間軸樣式 */
+/* 左欄時間軸節點清單 */
 .timeline-itinerary-col {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     position: relative;
 }
 
@@ -309,8 +306,8 @@ body.itinerary-detail-page .site-header.scrolled {
     content: '';
     position: absolute;
     left: 65px;
-    top: 35px;
-    bottom: 35px;
+    top: 30px;
+    bottom: 30px;
     width: 2px;
     background-color: #E2DDD5;
     z-index: 1;
@@ -356,6 +353,7 @@ body.itinerary-detail-page .site-header.scrolled {
     box-shadow: 0 0 0 4px #F8F7F4;
 }
 
+/* 節點卡片：維持單純舒適的左右結構 */
 .step-content-card {
     flex: 1;
     background: #FFFFFF;
@@ -366,14 +364,21 @@ body.itinerary-detail-page .site-header.scrolled {
     gap: 18px;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step-content-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 .step-thumb {
-    width: 110px;
-    height: 80px;
+    width: 105px;
+    height: 75px;
     border-radius: 6px;
     overflow: hidden;
     flex-shrink: 0;
+    background: #EAE6DF;
 }
 
 .step-thumb img {
@@ -383,47 +388,35 @@ body.itinerary-detail-page .site-header.scrolled {
     display: block;
 }
 
-.step-text-detail { flex: 1; }
-
-.step-title-line {
+.step-text-detail {
+    flex: 1;
+    min-width: 0;
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 4px;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .step-heading {
-    font-family: var(--serif, serif);
-    font-size: 1.08rem;
+    font-family: var(--serif, 'Noto Serif TC', serif);
+    font-size: 1.05rem;
     font-weight: 800;
     color: #111111;
     margin: 0;
+    line-height: 1.3;
 }
 
-.step-type-pill {
-    background: rgba(217, 99, 40, 0.1);
-    color: #D96328;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 4px;
-}
-
-.step-location-tag {
-    font-size: 0.74rem;
-    color: #D96328;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
+/* 單行精鍊說明文 */
 .step-desc {
     font-size: 0.8rem;
     color: #6E685F;
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* 右欄側邊欄 */
+/* 右欄側邊欄 (規格卡 + 地圖) */
 .route-sidebar-col {
     display: flex;
     flex-direction: column;
@@ -454,6 +447,16 @@ body.itinerary-detail-page .site-header.scrolled {
     gap: 8px;
 }
 
+/* 適合年段重點標註 */
+#specTarget {
+    color: #D96328;
+    background: rgba(217, 99, 40, 0.08);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
 .sidebar-cursive-note {
     font-family: 'Playfair Display', Georgia, cursive, serif;
     font-style: italic;
@@ -470,7 +473,7 @@ body.itinerary-detail-page .site-header.scrolled {
     background-color: #D96328;
     color: #FFFFFF;
     text-decoration: none;
-    padding: 11px 0;
+    padding: 12px 0;
     border-radius: 999px;
     font-size: 0.92rem;
     font-weight: 700;
@@ -528,7 +531,7 @@ body.itinerary-detail-page .site-header.scrolled {
     display: block;
 }
 
-/* ==================== 4. 區塊四：底部其他路線推薦 ==================== */
+/* ==================== 4. 底部其他教案推薦 ==================== */
 .section-full-other-routes {
     width: 100%;
     background-color: #FFFFFF;
@@ -569,8 +572,8 @@ body.itinerary-detail-page .site-header.scrolled {
 
 .other-routes-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
     width: 100%;
 }
 
@@ -588,7 +591,7 @@ body.itinerary-detail-page .site-header.scrolled {
 
 .other-thumb {
     width: 100%;
-    height: 110px;
+    height: 120px;
 }
 
 .other-thumb img {
@@ -599,14 +602,14 @@ body.itinerary-detail-page .site-header.scrolled {
 }
 
 .other-info {
-    padding: 10px 12px;
+    padding: 12px 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .other-info strong {
-    font-size: 0.82rem;
+    font-size: 0.86rem;
     font-weight: 700;
     color: #111111;
 }
@@ -616,18 +619,19 @@ body.itinerary-detail-page .site-header.scrolled {
     color: #D96328;
 }
 
-/* ==================== 5. 響應式適配 ==================== */
+/* ==================== 5. 響應式適配 (RWD) ==================== */
 @media (max-width: 1100px) {
-    .hero-content-split { grid-template-columns: 1fr; }
-    .scheme-tabs-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .scheme-tabs-grid.tabs-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
     .route-two-columns-layout { grid-template-columns: 1fr; }
-    .other-routes-grid { grid-template-columns: repeat(3, 1fr); }
+    .other-routes-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
     .site-content-container { padding: 0 20px; }
-    .scheme-tabs-grid { grid-template-columns: repeat(2, 1fr); }
+    .compact-hero-banner { height: 380px; padding-bottom: 35px; }
+    .scheme-tabs-grid.tabs-4 { grid-template-columns: 1fr !important; }
     .step-content-card { flex-direction: column; align-items: flex-start; }
     .step-thumb { width: 100%; height: 120px; }
+    .step-desc { white-space: normal; }
     .other-routes-grid { grid-template-columns: 1fr; }
 }

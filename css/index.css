@@ -507,33 +507,39 @@ main.content-container {
     margin: 2px 0 0 0;
 }
 
-/* 視覺框本體 (260px 高度鎖死，防止被截斷) */
+/* 視覺框本體：徹底移除所有卡片的黑底、邊框與裁切限制 */
 .card-visual-box {
     position: relative;
     width: 100%;
-    height: 260px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    overflow: hidden;
+    height: 280px;                            /* 稍微增加高度空間，讓相片投影更自然 */
+    background: transparent !important;       /* 移除半透明黑底 */
+    border: none !important;                  /* 移除 1px 邊框 */
+    box-shadow: none !important;              /* 移除任何外框陰影 */
+    border-radius: 0 !important;
+    overflow: visible !important;             /* 改為 visible，避免拍立得旋轉時邊角被遮罩裁切 */
     margin-bottom: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* 01 地圖視覺 (修復被截斷問題) */
+/* 01 地圖視覺：徹底移除外圍黑框與背景，只保留純地圖 */
 .visual-map-box {
-    background-color: #050505;
-    padding: 20px;
+    background: transparent !important;       /* 移除深黑底色 */
+    border: none !important;                  /* 移除邊框 */
+    box-shadow: none !important;              /* 移除任何陰影外框 */
+    padding: 10px 0 !important;
 }
 
 .journey-map-graphic {
-    max-width: 84%;
-    max-height: 84%;
+    max-width: 130% !important;
+    max-height: 130% !important;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.06));
+    margin: 0 auto;
+    background: transparent !important;
+    /* 加上微立體柔和投影，讓地圖在深色大背景上輪廓分明 */
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.55));
     transition: transform 0.4s ease;
 }
 
